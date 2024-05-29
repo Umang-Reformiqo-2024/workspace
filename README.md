@@ -1,2 +1,2 @@
-![Logo](https://drive.google.com/file/d/1Ig9Ff_BNEHO-O9PfzvDQaQRapRtgZacz/view?usp=sharing)
+![Logo](https://workspaceco.in/wp-content/uploads/2023/09/w3.png)
 # workspace
