@@ -6,6 +6,8 @@ class AppColor{
 
   /// Black
   black = Color(0xFF2F2F2F),
+  black202020 = Color(0xFF202020),
+  black5D5D5D = Color(0xFF5D5D5D),
   blackText=Color(0xFF373737),
   blackTextPrimary = Color(0xFF1E1E1E),
   blackTextSecondary = Color(0xFF575757),
@@ -31,6 +33,7 @@ class AppColor{
   ///TextField Colors
   whiteTextField = Color(0xFFF6F6F6),
   grayTextFieldBorder = Color(0xFFE8E8E8),
+  grayTextFieldHint = Color(0xFF898989),
   whiteHintTextField = Color(0xFF838383),
   suffixText = Color(0xFFB2B2B2)
   ;

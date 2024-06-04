@@ -1,57 +1,88 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:workspace/app_data/app_colors/app_color.dart';
+import 'package:workspace/app_data/app_fonts/app_font.dart';
+import 'package:workspace/widgets/text_widget.dart';
 
 class RecommendedSpaceItem extends StatelessWidget {
-  final String imagePath;
+  final String pngAssetPath;
   final String title;
   final String description;
   final Widget favIcon;
+  final void Function() onTapItem;
+  final void Function() onTapFavIcon;
 
   RecommendedSpaceItem({
-    required this.imagePath,
+    required this.pngAssetPath,
     required this.title,
     required this.description,
-    required this.favIcon
+    required this.favIcon,
+    required this.onTapItem,
+    required this.onTapFavIcon
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Stack(
+    return Container(
+      padding: const EdgeInsets.all(8),
+      margin: const EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: Colors.grey[100]
+      ),
+      child: InkWell(
+        onTap: () => onTapItem(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                imagePath,
-                width: double.infinity,
-                height: 200,
-                fit: BoxFit.cover,
-              ),
+            Stack(
+              children: [
+                CarouselSlider(
+                    items: List.generate(5, (index) => ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        pngAssetPath,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                    ),),
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      viewportFraction: 1,
+                      aspectRatio: 16/9,
+
+                    ),
+                ),
+                // ClipRRect(
+                //   borderRadius: BorderRadius.circular(10),
+                //   child: Image.asset(
+                //     pngAssetPath,
+                //     width: double.infinity,
+                //     height: 200,
+                //     fit: BoxFit.fill,
+                //   ),
+                // ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: InkWell(
+                    onTap: () => onTapFavIcon(),
+                    child: Container(
+                        height: 35,
+                        width: 35,
+                        child: favIcon),
+                  ),
+                ),
+              ],
             ),
-            Positioned(
-              top: 8,
-              right: 8,
-              child: favIcon,
-            ),
+            const SizedBox(height: 8),
+            TextWidget.simpleText(data: title,fontFamily: AppFont.primary,fontSize: 16,fontWeight: FontWeight.bold,fontColor: AppColor.blackTextPrimary),
+            TextWidget.simpleText(data: description,fontFamily: AppFont.primary,fontSize: 14,fontWeight: FontWeight.normal,fontColor: AppColor.blackText),
+            const SizedBox(height: 8,)
           ],
         ),
-        SizedBox(height: 8),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          description,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.grey,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

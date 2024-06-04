@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:vector_graphics/vector_graphics.dart';
+import 'package:workspace/app_data/app_colors/app_color.dart';
+import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/home_controller.dart';
 
 import '../widgets/category_widget.dart';
@@ -20,8 +23,20 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: Colors.white,
           appBar: AppBar(
             backgroundColor: Colors.white,
-            elevation: 0,
-            title: Image.asset("assets/icons/test_icons/app_logo.png"),
+            foregroundColor: Colors.white,
+            shadowColor: Colors.white,
+            surfaceTintColor: Colors.white,
+            title: Row(
+              children: [
+                Image.asset("assets/icons/test_icons/app_logo.png"),
+                const Spacer(),
+                const Icon(
+                  Icons.notifications_on_outlined,
+                  size: 32,
+                  color: AppColor.black,
+                )
+              ],
+            ),
             centerTitle: false,
             automaticallyImplyLeading: false,
           ),
@@ -38,7 +53,13 @@ class HomeScreen extends StatelessWidget {
                         child: TextField(
                           decoration: InputDecoration(
                             hintText: 'Search Now',
-                            prefixIcon: Icon(Icons.search),
+                            hintStyle: const TextStyle(
+                              fontFamily: AppFont.primary,
+                              fontWeight: FontWeight.normal,
+                              color: AppColor.grayTextFieldHint
+                            ),
+                            prefixIcon: const Icon(Icons.search),
+                            prefixIconColor: AppColor.grayTextFieldHint,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8.0),
                               borderSide: BorderSide.none,
@@ -48,106 +69,171 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+                      //Filter Button
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: SvgPicture.asset(
-                          "assets/icons/svg_icons/filters_icon.svg",
-                          height: 50,
-                          width: 50,
+                        child: GestureDetector(
+                          onTap: () {
+                            QuickAlert.show(
+                                context: context,
+                                type: QuickAlertType.custom,
+                                animType: QuickAlertAnimType.slideInUp,
+                                borderRadius: 20,
+                                title: "Filter",
+                                confirmBtnText: "Apply",
+                                confirmBtnColor: AppColor.red,
+                                widget: Column(
+                                  children: List.generate(
+                                    3,
+                                    (index) => Container(
+                                        height: 50,
+                                        margin: const EdgeInsets.all(5),
+                                        color: Colors.amber.withOpacity(0.5)),
+                                  ),
+                                ));
+                          },
+                          child: SvgPicture.asset(
+                            "assets/icons/svg_icons/filters_icon.svg",
+                            height: 50,
+                            width: 50,
+                          ),
                         ),
                       )
                     ],
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 10,),
                   // Categories
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        CategoryItem(
-                          iconPath: 'assets/icons/test_icons/meeting_room.png',
-                          label: 'Meeting Room',
-                          isSelected: true,
-                        ),
-                        CategoryItem(
-                          iconPath:
-                              'assets/icons/test_icons/virtual_office.png',
-                          label: 'Virtual Office',
-                        ),
-                        CategoryItem(
-                          iconPath: 'assets/icons/test_icons/office_space.png',
-                          label: 'Office Space',
-                        ),
-                        CategoryItem(
-                          iconPath: 'assets/icons/test_icons/training_room.png',
-                          label: 'Training Room',
-                        ),
-                      ],
+                  SizedBox(
+                    height: 100,
+                    child: GridView.builder(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: controller.categoryItemAssetString.length,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 1,
+                          mainAxisExtent: 100,
+                          mainAxisSpacing: 10),
+                      itemBuilder: (context, index) {
+                        return CategoryItem(
+                            svgAssetPath: controller.categoryItemAssetString[index].assetPath,
+                            label: controller.categoryItemAssetString[index].lable,
+                            index: index,
+                            selectedIndex: controller.selectedCategoryIndex,
+                            onTap: () => controller.onTapCategoryItem(index: index),
+                        );
+                      },
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   // Recommended Space
-                  Text(
+                  const Text(
                     'Recommended Space',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 16),
-                  // Recommended Space Item
-                  RecommendedSpaceItem(
-                    imagePath: 'assets/icons/test_icons/item_1.png',
-                    title: 'Pitch - Conference Room 10 Seater',
-                    description: 'Lorem ipsum dolor sit amet,',
-                    favIcon: Icon(
-                      Icons.favorite_border,
-                      color: Colors.white,
-                    ),
+                  const SizedBox(height: 16),
+                  ListView.builder(
+                    itemCount: controller.itemListHome.length,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                    return RecommendedSpaceItem(
+                    pngAssetPath: controller.itemListHome[index].pngAssetPath,
+                    title: controller.itemListHome[index].title,
+                    description: controller.itemListHome[index].subTitle,
+                    favIcon: Icon(controller.itemListHome[index].isFavourite?Icons.favorite_outlined:Icons.favorite_outline_sharp,color:controller.itemListHome[index].isFavourite?AppColor.red: Colors.white,),
+                    onTapItem: () => debugPrint("====[On Tap Item]==="),
+                    onTapFavIcon:  () => controller.onTapFavButton(index:index),
+                      );
+                    },
                   ),
-                  SizedBox(height: 16),
-                  RecommendedSpaceItem(
-                    imagePath: 'assets/icons/test_icons/item_2.png',
-                    title: 'Co-Working Space',
-                    description: 'Lorem ipsum dolor sit amet,',
-                    favIcon: Icon(
-                      Icons.favorite_border,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  VectorGraphic(
-                      loader: SvgAssetLoader(
-                          "assets/icons/svg_icons/filters_icon.svg"))
                 ],
               ),
             ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Search',
+              bottomNavigationBar: Container(
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColor.black.withOpacity(0.3),
+                      offset: Offset(0, -1),
+                      blurRadius: 3,
+                      spreadRadius: 1
+                    )
+                  ]
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset("assets/icons/bottom_bar_icon/3.svg"),
+                        Text("Search",style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: AppFont.primary,
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.black202020
+                        ),)
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset("assets/icons/bottom_bar_icon/2.svg"),
+                        Text("Wishlist",style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: AppFont.primary,
+                          fontWeight: FontWeight.normal,
+                          color: AppColor.black5D5D5D
+                        ),)
+                      ],
+                    ),Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset("assets/icons/bottom_bar_icon/6.svg"),
+                        Text("Bookings",style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: AppFont.primary,
+                          fontWeight: FontWeight.normal,
+                          color: AppColor.black5D5D5D
+                        ),)
+                      ],
+                    ),Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset("assets/icons/bottom_bar_icon/1.svg"),
+                        Text("Team",style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: AppFont.primary,
+                          fontWeight: FontWeight.normal,
+                          color: AppColor.black5D5D5D
+                        ),)
+                      ],
+                    ),Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset("assets/icons/bottom_bar_icon/5.svg"),
+                        Text("Account",style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: AppFont.primary,
+                          fontWeight: FontWeight.normal,
+                          color: AppColor.black5D5D5D
+                        ),)
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border),
-                label: 'Wishlist',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.book),
-                label: 'Bookings',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.chat),
-                label: 'Team',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle),
-                label: 'Account',
-              ),
-            ],
-          ),
         ));
       },
     );

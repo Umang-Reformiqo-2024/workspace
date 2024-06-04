@@ -1,38 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
+import 'package:workspace/app_data/app_fonts/app_font.dart';
+import 'package:workspace/widgets/text_widget.dart';
 
 class CategoryItem extends StatelessWidget {
-  final String iconPath;
+  final String svgAssetPath;
   final String label;
-  final bool isSelected;
+  final int index;
+  final int selectedIndex;
+  final void Function() onTap;
 
-  CategoryItem({
-    required this.iconPath,
+  const CategoryItem({
+    super.key,
+    required this.svgAssetPath,
     required this.label,
-    this.isSelected = false,
+    required this.index,
+    required this.selectedIndex,
+    required this.onTap
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 16.0),
-      child: Column(
+     return InkWell(
+       splashFactory: NoSplash.splashFactory,
+       onTap: onTap,
+       child: Column(
         children: [
-          Image.asset(
-            iconPath,
-            height: 40,
-            width: 40,
-          ),
-          SizedBox(height: 8),
-          Text(
-            label,
-            style: TextStyle(
-              color: isSelected ? AppColor.blackTextPrimary : AppColor.blackTextSecondary,
-              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+          SizedBox(
+                height: 70,
+                child: SvgPicture.asset(svgAssetPath)
             ),
+          const SizedBox(height: 8,),
+          TextWidget.simpleText(
+            data: label,
+            fontColor: index==selectedIndex ? AppColor.redTextPrimary : AppColor.blackTextPrimary,
+            fontWeight: index==selectedIndex ? FontWeight.bold : FontWeight.normal,
+            fontFamily: AppFont.primary,
+            fontSize: 12
           ),
         ],
-      ),
-    );
+           ),
+     );
   }
 }

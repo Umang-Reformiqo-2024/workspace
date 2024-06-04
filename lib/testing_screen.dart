@@ -55,30 +55,30 @@ class TestingScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   // Categories
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        CategoryItem(
-                          iconPath: 'assets/icons/test_icons/meeting_room.png',
-                          label: 'Meeting Room',
-                          isSelected: true,
-                        ),
-                        CategoryItem(
-                          iconPath: 'assets/icons/test_icons/virtual_office.png',
-                          label: 'Virtual Office',
-                        ),
-                        CategoryItem(
-                          iconPath: 'assets/icons/test_icons/office_space.png',
-                          label: 'Office Space',
-                        ),
-                        CategoryItem(
-                          iconPath: 'assets/icons/test_icons/training_room.png',
-                          label: 'Training Room',
-                        ),
-                      ],
-                    ),
-                  ),
+                  // SingleChildScrollView(
+                  //   scrollDirection: Axis.horizontal,
+                  //   child: Row(
+                  //     children: [
+                  //       CategoryItem(
+                  //         iconPath: 'assets/icons/test_icons/meeting_room.png',
+                  //         label: 'Meeting Room',
+                  //         isSelected: true,
+                  //       ),
+                  //       CategoryItem(
+                  //         iconPath: 'assets/icons/test_icons/virtual_office.png',
+                  //         label: 'Virtual Office',
+                  //       ),
+                  //       CategoryItem(
+                  //         iconPath: 'assets/icons/test_icons/office_space.png',
+                  //         label: 'Office Space',
+                  //       ),
+                  //       CategoryItem(
+                  //         iconPath: 'assets/icons/test_icons/training_room.png',
+                  //         label: 'Training Room',
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   SizedBox(height: 16),
                   // Recommended Space
                   Text(
@@ -91,17 +91,23 @@ class TestingScreen extends StatelessWidget {
                   SizedBox(height: 16),
                   // Recommended Space Item
                   RecommendedSpaceItem(
-                    imagePath: 'assets/icons/test_icons/item_1.png',
+                    pngAssetPath: 'assets/icons/test_icons/item_1.png',
                     title: 'Pitch - Conference Room 10 Seater',
                     description: 'Lorem ipsum dolor sit amet,',
                     favIcon: Icon(Icons.favorite_border,color: Colors.white,),
+                    onTapItem: () => debugPrint("====[On Tap Item]==="),
+                    onTapFavIcon:  () => debugPrint("====[On Tap Fav Icon]==="),
                   ),
                   SizedBox(height: 16),
                   RecommendedSpaceItem(
-                    imagePath: 'assets/icons/test_icons/item_2.png',
+                    pngAssetPath: 'assets/icons/test_icons/item_2.png',
                     title: 'Co-Working Space',
                     description: 'Lorem ipsum dolor sit amet,',
-                    favIcon: Icon(Icons.favorite_border,color: Colors.white,),),
+                    favIcon: Icon(Icons.favorite_border,color: Colors.white,),
+                    onTapItem: () => debugPrint("====[On Tap Item]==="),
+                    onTapFavIcon:  () => debugPrint("====[On Tap Fav Icon]==="),
+                  ),
+
                   SizedBox(height: 16),
                   VectorGraphic(loader: SvgAssetLoader("assets/icons/svg_icons/filters_icon.svg"))
                 ],
