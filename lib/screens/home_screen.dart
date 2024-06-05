@@ -21,25 +21,25 @@ class HomeScreen extends StatelessWidget {
         return SafeArea(
             child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.white,
-            shadowColor: Colors.white,
-            surfaceTintColor: Colors.white,
-            title: Row(
-              children: [
-                Image.asset("assets/icons/test_icons/app_logo.png"),
-                const Spacer(),
-                const Icon(
-                  Icons.notifications_on_outlined,
-                  size: 32,
-                  color: AppColor.black,
-                )
-              ],
-            ),
-            centerTitle: false,
-            automaticallyImplyLeading: false,
-          ),
+          // appBar: AppBar(
+          //   backgroundColor: Colors.white,
+          //   foregroundColor: Colors.white,
+          //   shadowColor: Colors.white,
+          //   surfaceTintColor: Colors.white,
+          //   title: Row(
+          //     children: [
+          //       Image.asset("assets/icons/test_icons/app_logo.png"),
+          //       const Spacer(),
+          //       const Icon(
+          //         Icons.notifications_on_outlined,
+          //         size: 32,
+          //         color: AppColor.black,
+          //       )
+          //     ],
+          //   ),
+          //   centerTitle: false,
+          //   automaticallyImplyLeading: false,
+          // ),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -153,87 +153,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-              bottomNavigationBar: Container(
-                height: 70,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColor.black.withOpacity(0.3),
-                      offset: Offset(0, -1),
-                      blurRadius: 3,
-                      spreadRadius: 1
-                    )
-                  ]
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset("assets/icons/bottom_bar_icon/3.svg"),
-                        Text("Search",style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: AppFont.primary,
-                          fontWeight: FontWeight.bold,
-                          color: AppColor.black202020
-                        ),)
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset("assets/icons/bottom_bar_icon/2.svg"),
-                        Text("Wishlist",style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: AppFont.primary,
-                          fontWeight: FontWeight.normal,
-                          color: AppColor.black5D5D5D
-                        ),)
-                      ],
-                    ),Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset("assets/icons/bottom_bar_icon/6.svg"),
-                        Text("Bookings",style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: AppFont.primary,
-                          fontWeight: FontWeight.normal,
-                          color: AppColor.black5D5D5D
-                        ),)
-                      ],
-                    ),Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset("assets/icons/bottom_bar_icon/1.svg"),
-                        Text("Team",style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: AppFont.primary,
-                          fontWeight: FontWeight.normal,
-                          color: AppColor.black5D5D5D
-                        ),)
-                      ],
-                    ),Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset("assets/icons/bottom_bar_icon/5.svg"),
-                        Text("Account",style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: AppFont.primary,
-                          fontWeight: FontWeight.normal,
-                          color: AppColor.black5D5D5D
-                        ),)
-                      ],
-                    ),
-                  ],
-                ),
-              ),
         ));
       },
     );
