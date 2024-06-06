@@ -21,25 +21,25 @@ class HomeScreen extends StatelessWidget {
         return SafeArea(
             child: Scaffold(
           backgroundColor: Colors.white,
-          // appBar: AppBar(
-          //   backgroundColor: Colors.white,
-          //   foregroundColor: Colors.white,
-          //   shadowColor: Colors.white,
-          //   surfaceTintColor: Colors.white,
-          //   title: Row(
-          //     children: [
-          //       Image.asset("assets/icons/test_icons/app_logo.png"),
-          //       const Spacer(),
-          //       const Icon(
-          //         Icons.notifications_on_outlined,
-          //         size: 32,
-          //         color: AppColor.black,
-          //       )
-          //     ],
-          //   ),
-          //   centerTitle: false,
-          //   automaticallyImplyLeading: false,
-          // ),
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.white,
+            shadowColor: Colors.white,
+            surfaceTintColor: Colors.white,
+            title: Row(
+              children: [
+                Image.asset("assets/icons/test_icons/app_logo.png"),
+                const Spacer(),
+                const Icon(
+                  Icons.notifications_on_outlined,
+                  size: 32,
+                  color: AppColor.black,
+                )
+              ],
+            ),
+            centerTitle: false,
+            automaticallyImplyLeading: false,
+          ),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
