@@ -72,6 +72,9 @@ flutter:
     - assets/icons/test_icons/
     - assets/icons/item_icons/
     - assets/icons/bottom_bar_icon/
+    - assets/v2/
+    - assets/v2/svg/
+    - assets/v2/png/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
