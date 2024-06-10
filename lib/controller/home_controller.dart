@@ -51,9 +51,9 @@ class HomeController extends GetxController {
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_0.png", title: "Hub Central", subTitle: "The Heartbeat of Collaboration", location: "location"),
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_1.png", title: "Unity Commons", subTitle: "Where Community and Creativity Converge", location: "location"),
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_2.png", title: "Innovator's Nexus", subTitle: "Where Boundless Ideas Intersect", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_3.png", title: "Elevate Workspace", subTitle: "Inspiring Growth and Success", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_4.png", title: "Collab Central", subTitle: "Where Teams Come Together to Thrive", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_5.png", title: "Creative Commons", subTitle: "Unleash Your Imagination in a Shared Space", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/location_2.png", title: "Elevate Workspace", subTitle: "Inspiring Growth and Success", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/location_3.png", title: "Collab Central", subTitle: "Where Teams Come Together to Thrive", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/location_4.png", title: "Creative Commons", subTitle: "Unleash Your Imagination in a Shared Space", location: "location"),
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_6.png", title: "Synergy Station", subTitle: "Where Energy and Ideas Flow Freely", location: "location"),
    ];
   List<HomeItemModelClass> trainingRoomItemList=[

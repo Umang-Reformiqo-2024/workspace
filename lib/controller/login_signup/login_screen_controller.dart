@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../screens/home/wsc_location_screen.dart';
+
 class LoginScreenController extends GetxController{
 
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool isPasswordHidden = true;
+  bool startNextPageAnimation = false;
 
   onTapPasswordEye() {
     isPasswordHidden?isPasswordHidden=false:isPasswordHidden=true;
@@ -18,7 +21,18 @@ class LoginScreenController extends GetxController{
   }
 
   onTapSkipAndBrowseButton(){
-
+    Future.delayed(const Duration(milliseconds: 10), () {
+      startNextPageAnimation = true;
+      update();
+      Future.delayed(const Duration(seconds: 1), () {
+        Get.to(() => const WscLocationScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: Duration(milliseconds: 1500));
+      }).whenComplete(() {
+        Future.delayed(const Duration(seconds: 2),() {
+          startNextPageAnimation = false;
+          update();
+        },);
+      });
+    });
   }
 
   void userInputValidation() {
@@ -32,7 +46,18 @@ class LoginScreenController extends GetxController{
       }
     else
       {
-        //Get.offAll(()=> const HomeScreen());
+        Future.delayed(const Duration(milliseconds: 10), () {
+          startNextPageAnimation = true;
+          update();
+          Future.delayed(const Duration(seconds: 1), () {
+            Get.to(() => const WscLocationScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: Duration(milliseconds: 1500));
+          }).whenComplete(() {
+            Future.delayed(const Duration(seconds: 2),() {
+              startNextPageAnimation = false;
+              update();
+            },);
+          });
+        });
       }
   }
 
