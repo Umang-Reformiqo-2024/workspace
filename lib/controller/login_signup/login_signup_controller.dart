@@ -1,6 +1,7 @@
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:workspace/screens/login_signup/login_screen.dart';
+import 'package:workspace/screens/login_signup/signup_screen.dart';
 
 class LoginSignupController extends GetxController{
 
@@ -22,8 +23,18 @@ class LoginSignupController extends GetxController{
     });
   }
   onTapSignup(){
-    startNextPageAnimation=true;
-    update();
+    Future.delayed(const Duration(milliseconds: 10), () {
+      startNextPageAnimation = true;
+      update();
+      Future.delayed(const Duration(seconds: 1), () {
+        Get.to(() => const SignupScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: Duration(milliseconds: 1500));
+      }).whenComplete(() {
+        Future.delayed(const Duration(seconds: 2),() {
+          startNextPageAnimation = false;
+          update();
+        },);
+      });
+    });
   }
   onTapSkipAndBrowse(){
     startNextPageAnimation=true;
