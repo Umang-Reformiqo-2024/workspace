@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/home/wsc_location_controller.dart';
+import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
 class WscLocationScreen extends StatelessWidget {
   const WscLocationScreen({super.key});
@@ -13,10 +16,11 @@ class WscLocationScreen extends StatelessWidget {
       builder: (controller) => Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          forceMaterialTransparency: true,
           title: Image.asset("assets/v2/png/app_logo.webp",height: 150,width: 150,fit: BoxFit.fill,),
           automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
-          actions: [const Icon(Icons.message_outlined),const SizedBox(width: 10,),const Icon(Icons.info_outline),const SizedBox(width: 10,)],
+          actions: const [Icon(Icons.message_outlined),SizedBox(width: 10,),Icon(Icons.info_outline),SizedBox(width: 10,)],
         ),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -24,6 +28,92 @@ class WscLocationScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Location",style: TextStyle(fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
+                      const SizedBox(height: 10,),
+                      DropdownMenu(
+                          hintText: "Select Location",
+                          menuStyle: const MenuStyle(
+                            backgroundColor: WidgetStatePropertyAll(Colors.white),
+                          ),
+                          width: 200,
+                          onSelected: (value) {
+                            debugPrint("===[$value]===");
+                          },
+                          dropdownMenuEntries: controller.workSpaceLocations
+                              .map((location) => DropdownMenuEntry(
+                              label: location.title??"",
+                              value: location.title??"",
+                              leadingIcon: Image.asset(location.logo??"",height: 60,width: 60,scale: 1,)
+                          )).toList()),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Number of people",style: TextStyle(fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
+                      const SizedBox(height: 10,),
+                      DropdownMenu(
+                          hintText: "1",
+                          menuStyle: const MenuStyle(
+                            backgroundColor: WidgetStatePropertyAll(Colors.white),
+                          ),
+                          width: 150,
+                          onSelected: (value) {
+                            debugPrint("===[$value]===");
+                          },
+                          dropdownMenuEntries: ['1', '2', '3','4','5','6','7','8','9','10','11','12']
+                              .map((location) => DropdownMenuEntry(
+                              label: location,
+                              value: location,
+                              //leadingIcon: Image.asset("assets/v2/png/app_logo.webp",height: 60,width: 60,scale: 1,)
+                          )).toList()),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Type of workspace",style: TextStyle(fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
+                      const SizedBox(height: 10,),
+                      DropdownMenu(
+                          hintText: "Meeting Room",
+                          menuStyle: const MenuStyle(
+                            backgroundColor: WidgetStatePropertyAll(Colors.white),
+                          ),
+                          width: 200,
+                          onSelected: (value) {
+                            debugPrint("===[$value]===");
+                          },
+                          dropdownMenuEntries: ['Meeting Room', 'Personal Cabin', 'Dedicated Desk']
+                              .map((location) => DropdownMenuEntry(
+                              label: location,
+                              value: location,
+                              //leadingIcon: Image.asset("assets/v2/png/app_logo.webp",height: 60,width: 60,scale: 1,)
+                          )).toList()),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15,),
+              AppButtonPrimary(onTap: () {
+
+              }, text: "Book Now",buttonMargin: EdgeInsets.zero,),
+              const SizedBox(height: 20,),
               const Text("Our Locations",style: TextStyle(fontFamily: AppFont.primary,fontWeight: FontWeight.bold,fontSize: 22),),
               const SizedBox(height: 20,),
               Expanded(
@@ -42,7 +132,7 @@ class WscLocationScreen extends StatelessWidget {
 
   Widget locationCard(index){
     return Container(
-        margin: const EdgeInsets.all(5),
+        margin: const EdgeInsets.fromLTRB(5, 10, 5, 5),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             border: Border.all(color: const Color(0xFFCACACA))
@@ -58,7 +148,7 @@ class WscLocationScreen extends StatelessWidget {
               child: Text("WorkSpaceCo. City Center",style: TextStyle(fontFamily: AppFont.primary,fontSize: 20,fontWeight: FontWeight.w500),),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10,top: 10,bottom: 10),
+              padding: const EdgeInsets.only(left: 10,top: 10,bottom: 20),
               child: Row(children: [
                 SizedBox(
                   child: Row(
