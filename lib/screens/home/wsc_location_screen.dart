@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/home/wsc_location_controller.dart';
+import 'package:workspace/controller/home/wsc_location_detail_screen_controller.dart';
+import 'package:workspace/screens/home/wsc_location_detail_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
 class WscLocationScreen extends StatelessWidget {
@@ -120,7 +122,7 @@ class WscLocationScreen extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: 4,
                   itemBuilder: (context, index) {
-                  return locationCard(index);
+                  return locationCard(index: index,onTapLocation: () => Get.to(()=> WscLocationDetailScreen()),);
                 },),
               )
             ],
@@ -130,67 +132,71 @@ class WscLocationScreen extends StatelessWidget {
     );
   }
 
-  Widget locationCard(index){
-    return Container(
-        margin: const EdgeInsets.fromLTRB(5, 10, 5, 5),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            border: Border.all(color: const Color(0xFFCACACA))
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(borderRadius: const BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),child: Image.asset("assets/v2/png/location_${index+1}.webp")),
-            const SizedBox(height: 10,),
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Text("WorkSpaceCo. City Center",style: TextStyle(fontFamily: AppFont.primary,fontSize: 20,fontWeight: FontWeight.w500),),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10,top: 10,bottom: 20),
-              child: Row(children: [
-                SizedBox(
-                  child: Row(
-                    children: [
-                      Container(width: 10,height: 10,decoration: BoxDecoration(
-                          color: const Color(0xFFF15C5C),
-                          borderRadius: BorderRadius.circular(50)
-                      ),),
-                      const SizedBox(width: 5,),
-                      const Text("Rooms")
-                    ],
+  Widget locationCard({required int index, required Function() onTapLocation}){
+    return InkWell(
+      splashFactory: NoSplash.splashFactory,
+      onTap: () => onTapLocation(),
+      child: Container(
+          margin: const EdgeInsets.fromLTRB(5, 10, 5, 5),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: const Color(0xFFCACACA))
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(borderRadius: const BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),child: Image.asset("assets/v2/png/location_${index+1}.webp")),
+              const SizedBox(height: 10,),
+              const Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Text("WorkSpaceCo. City Center",style: TextStyle(fontFamily: AppFont.primary,fontSize: 20,fontWeight: FontWeight.w500),),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10,top: 10,bottom: 20),
+                child: Row(children: [
+                  SizedBox(
+                    child: Row(
+                      children: [
+                        Container(width: 10,height: 10,decoration: BoxDecoration(
+                            color: const Color(0xFFF15C5C),
+                            borderRadius: BorderRadius.circular(50)
+                        ),),
+                        const SizedBox(width: 5,),
+                        const Text("Rooms")
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(width: 20,),
-                SizedBox(
-                  child: Row(
-                    children: [
-                      Container(width: 10,height: 10,decoration: BoxDecoration(
-                          color: const Color(0xFFF15C5C),
-                          borderRadius: BorderRadius.circular(50)
-                      ),),
-                      const SizedBox(width: 5,),
-                      const Text("Desk")
-                    ],
+                  const SizedBox(width: 20,),
+                  SizedBox(
+                    child: Row(
+                      children: [
+                        Container(width: 10,height: 10,decoration: BoxDecoration(
+                            color: const Color(0xFFF15C5C),
+                            borderRadius: BorderRadius.circular(50)
+                        ),),
+                        const SizedBox(width: 5,),
+                        const Text("Desk")
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(width: 20,),
-                SizedBox(
-                  child: Row(
-                    children: [
-                      Container(width: 10,height: 10,decoration: BoxDecoration(
-                          color: const Color(0xFFC3C3C3),
-                          borderRadius: BorderRadius.circular(50)
-                      ),),
-                      const SizedBox(width: 5,),
-                      const Text("Cabins")
-                    ],
+                  const SizedBox(width: 20,),
+                  SizedBox(
+                    child: Row(
+                      children: [
+                        Container(width: 10,height: 10,decoration: BoxDecoration(
+                            color: const Color(0xFFC3C3C3),
+                            borderRadius: BorderRadius.circular(50)
+                        ),),
+                        const SizedBox(width: 5,),
+                        const Text("Cabins")
+                      ],
+                    ),
                   ),
-                ),
-              ],),
-            )
-          ],
-        ));
+                ],),
+              )
+            ],
+          )),
+    );
   }
 }
