@@ -160,6 +160,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fw_tab_bar:
+    dependency: "direct main"
+    description:
+      name: fw_tab_bar
+      sha256: "98b53ebc9612f61a53564a5c854c2cb7959f59204457ab6c0d0ae3fc70f0339a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   get:
     dependency: "direct main"
     description:
