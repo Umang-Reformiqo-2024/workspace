@@ -83,16 +83,25 @@ class FeedScreen extends StatelessWidget {
                     const Divider(indent: 5,endIndent: 5,),
                     Row(
                       children: [
-                        IconButton(onPressed: () {}, icon: Icon(Icons.favorite_outlined,color: AppColor.red,)),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.comment,color: AppColor.black,)),
-                        Spacer(),
-                        IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.share,color: AppColor.black,))
+                        IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_outlined,color: AppColor.red,)),
+                        const Text("180"),
+                        const SizedBox(width: 10,),
+                        IconButton(onPressed: () {}, icon: const Icon(Icons.comment,color: AppColor.black,)),
+                        const Text("45"),
+                        const Spacer(),
+                        IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.share,color: AppColor.black,))
                       ],
                     )
                   ],
                 ),
               );
             },),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: AppColor.blackText,
+              shape: const OvalBorder(),
+              child: const Icon(Icons.add,color: Colors.white,),
+            ),
           ),
         );
       },
