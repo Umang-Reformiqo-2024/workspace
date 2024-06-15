@@ -42,7 +42,7 @@ dependencies:
   image_picker: ^1.1.2
   badges: ^3.1.2
   simple_ripple_animation: ^0.0.9
-  fw_tab_bar:
+  fw_tab_bar: ^0.0.3
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/home/wsc_location_detail_screen_controller.dart';
 import 'package:workspace/screens/community/community_screen.dart';
+import 'package:workspace/screens/feed/feed_screen.dart';
 import 'package:workspace/screens/home_screen.dart';
 import 'package:workspace/screens/login_signup/login_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
@@ -61,7 +62,7 @@ class WscLocationDetailScreen extends StatelessWidget {
                   child: Row(children: [
                             Expanded(child: AppButtonPrimary(onTap: () {Get.to(CommunityScreen());}, text: "Community",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
                             const SizedBox(width: 10,),
-                            Expanded(child: AppButtonPrimary(onTap: () {}, text: "Feed",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                            Expanded(child: AppButtonPrimary(onTap: () {Get.to(FeedScreen());}, text: "Feed",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
                             const SizedBox(width: 10,),
                             Expanded(child: AppButtonPrimary(onTap: () {}, text: "Visitor",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
                   ],),

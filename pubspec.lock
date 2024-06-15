@@ -164,10 +164,10 @@ packages:
     dependency: "direct main"
     description:
       name: fw_tab_bar
-      sha256: "98b53ebc9612f61a53564a5c854c2cb7959f59204457ab6c0d0ae3fc70f0339a"
+      sha256: fe575540c7968d88b6ee7fda9a7806c30074bb928f021b0facc6b6cac46d82c3
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   get:
     dependency: "direct main"
     description:
