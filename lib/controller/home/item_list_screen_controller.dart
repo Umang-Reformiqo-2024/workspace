@@ -1,11 +1,9 @@
 import 'package:get/get.dart';
-import 'package:workspace/model/home_item_model_class.dart';
 
-import '../model/category_model_class.dart';
+import '../../model/category_model_class.dart';
+import '../../model/home_item_model_class.dart';
 
-class HomeController extends GetxController {
-
-
+class ItemListScreenController extends GetxController{
 
   List<CategoryModelClass> categoryItemAssetString = [
     CategoryModelClass("assets/icons/svg_icons/meeting_room_svg.svg", "Meeting Room"),
@@ -55,7 +53,7 @@ class HomeController extends GetxController {
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/location_3.png", title: "Collab Central", subTitle: "Where Teams Come Together to Thrive", location: "location"),
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/location_4.png", title: "Creative Commons", subTitle: "Unleash Your Imagination in a Shared Space", location: "location"),
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_6.png", title: "Synergy Station", subTitle: "Where Energy and Ideas Flow Freely", location: "location"),
-   ];
+  ];
   List<HomeItemModelClass> trainingRoomItemList=[
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_0.png", title: "Learning Lab", subTitle: "Where Knowledge Meets Opportunity", location: "location"),
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_1.png", title: "Skill Forge", subTitle: "Crafting Competence, One Session at a Time", location: "location"),
@@ -63,7 +61,7 @@ class HomeController extends GetxController {
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_3.png", title: "Education Emporium", subTitle: "Empowering Growth through Learning", location: "location"),
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_4.png", title: "Development Den", subTitle: "Nurturing Talent, Fostering Growth", location: "location"),
     HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_5.png", title: "Knowledge Kingdom", subTitle: "Expand Your Horizons, Expand Your Skills", location: "location"),
-   ];
+  ];
 
   int selectedCategoryIndex=0;
 
@@ -79,25 +77,25 @@ class HomeController extends GetxController {
     selectedCategoryIndex=index;
 
     if(selectedCategoryIndex==0)
-      {
-        itemListHome.clear();
-        itemListHome.addAll(meetingRoomItemList);
-      }
+    {
+      itemListHome.clear();
+      itemListHome.addAll(meetingRoomItemList);
+    }
     if(selectedCategoryIndex==1)
-      {
-        itemListHome.clear();
-        itemListHome.addAll(virtualOfficeItemList);
-      }
+    {
+      itemListHome.clear();
+      itemListHome.addAll(virtualOfficeItemList);
+    }
     if(selectedCategoryIndex==2)
-      {
-        itemListHome.clear();
-        itemListHome.addAll(officeSpaceItemList);
-      }
+    {
+      itemListHome.clear();
+      itemListHome.addAll(officeSpaceItemList);
+    }
     if(selectedCategoryIndex==3)
-      {
-        itemListHome.clear();
-        itemListHome.addAll(trainingRoomItemList);
-      }
+    {
+      itemListHome.clear();
+      itemListHome.addAll(trainingRoomItemList);
+    }
 
     update();
   }

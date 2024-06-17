@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:workspace/controller/home_wrapper_controller.dart';
-import 'package:workspace/screens/account_screen.dart';
 import 'package:workspace/screens/bookings_screen.dart';
-import 'package:workspace/screens/home_screen.dart';
-import 'package:workspace/screens/team_screen.dart';
-import 'package:workspace/screens/wishlist_screen.dart';
 
 import '../app_data/app_colors/app_color.dart';
 import '../app_data/app_fonts/app_font.dart';
@@ -51,11 +47,11 @@ class HomeWrapperScreen extends StatelessWidget {
             body: IndexedStack(
               index: controller.stackIndex,
               children: const [
-                HomeScreen(),
-                WishlistScreen(),
+                //HomeScreen(),
+                //WishlistScreen(),
                 BookingsScreen(),
-                TeamScreen(),
-                AccountScreen()
+                //TeamScreen(),
+                //AccountScreen()
               ],
             ),
             bottomNavigationBar: Container(

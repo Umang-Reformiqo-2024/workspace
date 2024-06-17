@@ -1,12 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/bookings_controller.dart';
-import 'package:workspace/controller/home_wrapper_controller.dart';
 import 'package:workspace/widgets/button_widget.dart';
 
 class BookingsScreen extends StatelessWidget {
@@ -49,7 +46,7 @@ class BookingsScreen extends StatelessWidget {
               body: TabBarView(
                 children: [
                   ListView.builder(
-                    itemCount: controller.homeController.meetingRoomItemList.length,
+                    itemCount: controller.itemListScreenController.meetingRoomItemList.length,
                     itemBuilder: (context, index) {
                     return Container(
                       margin: const EdgeInsets.all(10),
@@ -69,7 +66,7 @@ class BookingsScreen extends StatelessWidget {
                                     color: Colors.black26,
                                     borderRadius: BorderRadius.circular(8)
                                 ),
-                                child: ClipRRect(borderRadius: BorderRadius.circular(8),child: Image.asset(controller.homeController.meetingRoomItemList[index].pngAssetPath)),
+                                child: ClipRRect(borderRadius: BorderRadius.circular(8),child: Image.asset(controller.itemListScreenController.meetingRoomItemList[index].pngAssetPath)),
                               ),
                               Expanded(
                                 child: Container(
@@ -81,8 +78,8 @@ class BookingsScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(controller.homeController.meetingRoomItemList[index].title,style: TextStyle(color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontSize: 18,fontWeight: FontWeight.bold),),
-                                      Text(controller.homeController.meetingRoomItemList[index].subTitle,style: TextStyle(color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontSize: 14,fontWeight: FontWeight.normal),),
+                                      Text(controller.itemListScreenController.meetingRoomItemList[index].title,style: const TextStyle(color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontSize: 18,fontWeight: FontWeight.bold),),
+                                      Text(controller.itemListScreenController.meetingRoomItemList[index].subTitle,style: const TextStyle(color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontSize: 14,fontWeight: FontWeight.normal),),
                                     ],
                                   ),
                                 ),
@@ -99,7 +96,7 @@ class BookingsScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Column(
+                                const Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -107,7 +104,7 @@ class BookingsScreen extends StatelessWidget {
                                     Text("06-06-2024",style: TextStyle(fontSize: 14,color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontWeight: FontWeight.bold),),
                                   ],
                                 ),
-                                ButtonWidget.primaryButton(text: Text("More Details",style: TextStyle(color: AppColor.whiteTextPrimary),),color: Color(0xFF2F2F2F), width: 100,height: 40,onTap: () {
+                                ButtonWidget.primaryButton(text: const Text("More Details",style: TextStyle(color: AppColor.whiteTextPrimary),),color: const Color(0xFF2F2F2F), width: 100,height: 40,onTap: () {
                                   
                                 },)
                               ],
@@ -118,7 +115,7 @@ class BookingsScreen extends StatelessWidget {
                     );
                   },),
                   ListView.builder(
-                    itemCount: controller.homeController.officeSpaceItemList.length,
+                    itemCount: controller.itemListScreenController.officeSpaceItemList.length,
                     itemBuilder: (context, index) {
                     return Container(
                       margin: const EdgeInsets.all(10),
@@ -138,7 +135,7 @@ class BookingsScreen extends StatelessWidget {
                                     color: Colors.black26,
                                     borderRadius: BorderRadius.circular(8)
                                 ),
-                                child: ClipRRect(borderRadius: BorderRadius.circular(8),child: Image.asset(controller.homeController.meetingRoomItemList[index].pngAssetPath)),
+                                child: ClipRRect(borderRadius: BorderRadius.circular(8),child: Image.asset(controller.itemListScreenController.meetingRoomItemList[index].pngAssetPath)),
                               ),
                               Expanded(
                                 child: Container(
@@ -150,8 +147,8 @@ class BookingsScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(controller.homeController.officeSpaceItemList[index].title,style: TextStyle(color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontSize: 18,fontWeight: FontWeight.bold),),
-                                      Text(controller.homeController.officeSpaceItemList[index].subTitle,style: TextStyle(color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontSize: 14,fontWeight: FontWeight.normal),),
+                                      Text(controller.itemListScreenController.officeSpaceItemList[index].title,style: const TextStyle(color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontSize: 18,fontWeight: FontWeight.bold),),
+                                      Text(controller.itemListScreenController.officeSpaceItemList[index].subTitle,style: const TextStyle(color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontSize: 14,fontWeight: FontWeight.normal),),
                                     ],
                                   ),
                                 ),
@@ -168,7 +165,7 @@ class BookingsScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Column(
+                                const Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -176,7 +173,7 @@ class BookingsScreen extends StatelessWidget {
                                     Text("01-06-2024",style: TextStyle(fontSize: 14,color: AppColor.blackTextPrimary,fontFamily: AppFont.primary,fontWeight: FontWeight.bold),),
                                   ],
                                 ),
-                                ButtonWidget.primaryButton(text: Text("More Details",style: TextStyle(color: AppColor.whiteTextPrimary),),color: Color(0xFF2F2F2F), width: 100,height: 40,onTap: () {
+                                ButtonWidget.primaryButton(text: const Text("More Details",style: TextStyle(color: AppColor.whiteTextPrimary),),color: const Color(0xFF2F2F2F), width: 100,height: 40,onTap: () {
                                   debugPrint("More Detail of Booking BTN");
                                   QuickAlert.show(context: context, type: QuickAlertType.success);
                                 },)

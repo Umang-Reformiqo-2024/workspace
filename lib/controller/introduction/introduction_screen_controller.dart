@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:workspace/screens/intro_2_screen.dart';
 import 'package:workspace/screens/login_signup/login_signup_screen.dart';
 import 'package:workspace/widgets/console_print.dart';
 
