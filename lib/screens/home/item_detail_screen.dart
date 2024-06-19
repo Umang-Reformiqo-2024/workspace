@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/home/item_detail_controller.dart';
 import 'package:workspace/model/home_item_model_class.dart';
+import 'package:workspace/screens/bookings/booking_schedule_screen.dart';
 import 'package:workspace/widgets/button_widget.dart';
 import 'package:workspace/widgets/recommended_space_widget.dart';
 
@@ -26,8 +27,8 @@ class ItemDetailScreen extends StatelessWidget {
             centerTitle: true,
           ),
           body: Padding(padding: const EdgeInsets.all(8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Material(
           color: Colors.transparent,
@@ -76,7 +77,9 @@ class ItemDetailScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20,),
-              Align(alignment: Alignment.center,child: ButtonWidget.primaryButton(text: const Text("Reserve",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontFamily: AppFont.primary),), onTap: () {},)),
+              Align(alignment: Alignment.center,child: ButtonWidget.primaryButton(text: const Text("Reserve",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontFamily: AppFont.primary),), onTap: () {
+                Get.to(const BookingScheduleScreen(),transition: Transition.cupertino,duration: const Duration(milliseconds: 700),curve: Curves.easeIn);
+              },)),
               const SizedBox(height: 20,),
               Container(
                 width: MediaQuery.of(context).size.width,
@@ -109,11 +112,11 @@ class ItemDetailScreen extends StatelessWidget {
                   return Container(
                     height: 30,
                     width: 90,
-                    margin: EdgeInsets.symmetric(horizontal: 10,vertical: 2),
+                    margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 2),
                     decoration: BoxDecoration(
-                      color: Color(0xFFEFEFEF),
+                      color: const Color(0xFFEFEFEF),
                       borderRadius: BorderRadius.circular(30),
-                      border: Border.all(color: Color(0xFFA6A6A6))
+                      border: Border.all(color: const Color(0xFFA6A6A6))
                     ),
                     child: Center(child: Text("Feature ${index+1}"),),
                   );
