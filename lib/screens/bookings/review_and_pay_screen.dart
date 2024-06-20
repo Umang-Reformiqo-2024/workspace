@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/bookings/review_and_pay_screen_controller.dart';
+import 'package:workspace/screens/bookings/successful_payment_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
 class ReviewAndPayScreen extends StatelessWidget {
@@ -128,7 +129,7 @@ class ReviewAndPayScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 8),
-                              child: Text("Required Credits (0.5⭐ x 120 / 30)",style: TextStyle(color: Color(0xFF6D6D6D)),),
+                              child: Text("Required Credits (120 / 30 x 0.5 ⭐)",style: TextStyle(color: Color(0xFF6D6D6D)),),
                             ),
                             Divider(),
                             Padding(
@@ -163,7 +164,7 @@ class ReviewAndPayScreen extends StatelessWidget {
                 ],
               ),
               bottomNavigationBar: AppButtonPrimary(onTap: () {
-
+                Get.to(()=> SuccessfulPaymentScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
               }, text: "Pay Now"),
         ));
       },
