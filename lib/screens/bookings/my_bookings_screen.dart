@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/controller/bookings/my_bookings_screen_controller.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
-
 import '../../app_data/app_fonts/app_font.dart';
-import '../visitor/add_new_visit_screen.dart';
 
 class MyBookingsScreen extends StatelessWidget {
   const MyBookingsScreen({super.key});
@@ -159,12 +157,12 @@ class MyBookingsScreen extends StatelessWidget {
                                       )
                                     ],
                                   ),
-                                  SizedBox(height: 10,),
+                                  const SizedBox(height: 10,),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 10,bottom: 10),
                                     child: Row(
                                       children: [
-                                        Expanded(
+                                        const Expanded(
                                           child: Row(
                                             mainAxisAlignment: MainAxisAlignment.start,
                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,10 +192,10 @@ class MyBookingsScreen extends StatelessWidget {
                                           child: AppButtonPrimary(onTap: () {
 
                                           }, text: "More Detail",buttonHeight: 40,textSize: 14,buttonMargin: EdgeInsets.zero,),
-                                        )
+                                        ),
                                       ],
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -205,10 +203,11 @@ class MyBookingsScreen extends StatelessWidget {
                         },
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
-            ));
+            ),
+        );
     },);
   }
 }
