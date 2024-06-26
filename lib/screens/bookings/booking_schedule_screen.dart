@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/bookings/booking_schedule_screen_controller.dart';
+
 class BookingScheduleScreen extends StatelessWidget {
   const BookingScheduleScreen({super.key});
 
@@ -13,96 +14,227 @@ class BookingScheduleScreen extends StatelessWidget {
     return GetBuilder(
       init: BookingScheduleScreenController(),
       builder: (controller) {
-        return SafeArea(child: Scaffold(
-          backgroundColor: Colors.white,
+        return SafeArea(
+            child: Scaffold(
+          backgroundColor: const Color(0xFFEBEBEB),
           appBar: AppBar(
             backgroundColor: Colors.white,
             forceMaterialTransparency: true,
           ),
-          body: ListView(
-            padding: EdgeInsets.only(left: 20, right: 20),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Schedule Your Booking", style: TextStyle(fontSize: 22,
-                  fontFamily: AppFont.primary,
-                  fontWeight: FontWeight.bold),),
-              SizedBox(
-                height: 500,
-                child: Timetable<String>(
-                  controller: controller.controller,
-                  items: controller.items!,
-                  // cellBuilder: (datetime) => Container(
-                  //   decoration: BoxDecoration(
-                  //     border: Border.all(color: Colors.blueGrey, width: 0.2),
-                  //   ),
-                  //   child: Center(
-                  //     child: Text(
-                  //       DateFormat("MM/d/yyyy\nha").format(datetime),
-                  //       style: TextStyle(
-                  //         color: Color(0xff000000 + (0x002222 * datetime.hour) + (0x110000 * datetime.day)).withOpacity(0.5),
-                  //       ),
-                  //       textAlign: TextAlign.center,
-                  //     ),
-                  //   ),
-                  // ),
-                  // cornerBuilder: (datetime) => Container(
-                  //   color: Colors.accents[datetime.day % Colors.accents.length],
-                  //   child: Center(child: Text("${datetime.year}")),
-                  // ),
-                  headerCellBuilder: (datetime) {
-                    //final color = Colors.primaries[datetime.day % Colors.accents.length];
-                    return Container(
-                      decoration: BoxDecoration(
-                        border: Border(bottom: BorderSide(color: AppColor.black, width: 2)),
-                      ),
-                      child: Center(
-                        child: Text(
-                          DateFormat("E\nMMM d").format(datetime),
-                          style: TextStyle(
-                            color: AppColor.black,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    );
-                  },
-                  hourLabelBuilder: (time) {
-                    final hour = time.hour == 12 ? 12 : time.hour % 12;
-                    final period = time.hour < 12 ? "am" : "pm";
-                    final isCurrentHour = time.hour == DateTime.now().hour;
-                    return Text(
-                      "$hour$period",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: isCurrentHour ? FontWeight.bold : FontWeight.normal,
-                      ),
-                    );
-                  },
-                  itemBuilder: (item) => Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white.withAlpha(220),
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 4,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Center(
+              const Padding(
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                child: Text(
+                  "Schedule Your Booking",
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontFamily: AppFont.primary,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                       child: Text(
-                        item.data ?? "",
-                        style: const TextStyle(fontSize: 14),
+                        "Select Date and Time Slot",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: AppFont.primary,
+                            fontWeight: FontWeight.normal),
                       ),
                     ),
-                  ),
-                  nowIndicatorColor: Colors.red,
-                  snapToDay: true,
+                    // Divider(),
+                    Container(
+                      height: 80,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: const EdgeInsets.only(
+                          left: 10, right: 10, bottom: 10),
+                      padding: const EdgeInsets.only(right: 5),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.dates.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () =>
+                                controller.onTapDateSelection(index: index),
+                            child: Container(
+                              width: 80,
+                              margin: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  color: controller.dates[index].isSelected
+                                      ? const Color(0xFF2F2F2F).withOpacity(0.8)
+                                      : Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: AppColor.black)),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        controller.dates[index].date.toString(),
+                                        style: TextStyle(
+                                            color: controller
+                                                    .dates[index].isSelected
+                                                ? Colors.white
+                                                : Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        controller.dates[index].month
+                                            .toString(),
+                                        style: TextStyle(
+                                            color: controller
+                                                    .dates[index].isSelected
+                                                ? Colors.white
+                                                : Colors.black,
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    controller.dates[index].day.toString(),
+                                    style: TextStyle(
+                                        color:
+                                            controller.dates[index].isSelected
+                                                ? Colors.white
+                                                : Colors.black,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    // Divider(),
+                    Container(
+                      height: 30,
+                      margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                height: 15,
+                                width: 15,
+                                margin: const EdgeInsets.only(right: 10),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(color: Colors.black)),
+                              ),
+                              const Text("Available"),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: 15,
+                                width: 15,
+                                margin: const EdgeInsets.only(right: 10),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFE2E2E2),
+                                    borderRadius: BorderRadius.circular(100),
+                                    border:
+                                        Border.all(color: Color(0xFFE2E2E2))),
+                              ),
+                              const Text("Unavailable"),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: 15,
+                                width: 15,
+                                margin: const EdgeInsets.only(right: 10),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFF303030),
+                                    borderRadius: BorderRadius.circular(100),
+                                    border:
+                                        Border.all(color: Color(0xFF303030))),
+                              ),
+                              const Text("Selected"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 300,
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                childAspectRatio: 16 / 9,
+                                mainAxisSpacing: 0,
+                                crossAxisSpacing: 0,
+                                mainAxisExtent: 70),
+                        itemCount: controller.timeSlots.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () => controller.onTapTimeSlots(index: index),
+                            child: Container(
+                              margin: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  color:
+                                  controller.timeSlots[index].isSelected
+                                      ? Color(0xFF303030)
+                                      : controller.timeSlots[index].isAvailable
+                                      ? Colors.white 
+                                      : const Color(0xFFE2E2E2),
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: controller.timeSlots[index].isAvailable
+                                        ? Colors.black
+                                        : const Color(0xFFE2E2E2),
+                                  )),
+                              child: Center(
+                                  child: Text(
+                                      controller.timeSlots[index].time ?? "",
+                                    style: controller.timeSlots[index].isSelected
+                                        ? TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+                                        : TextStyle(color: Color(0xFF303030), fontWeight: FontWeight.normal),
+                                  )),
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                  ],
                 ),
               ),
             ],
           ),
         ));
-      },);
+      },
+    );
   }
 }

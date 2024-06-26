@@ -3,42 +3,82 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_timetable/flutter_timetable.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class BookingScheduleScreenController extends GetxController{
-  List<TimetableItem<String>>? items;
-  final controller = TimetableController(
-    start: DateUtils.dateOnly(DateTime.now()),
-    initialColumns: 1,
-    cellHeight: 150,
-    startHour: 0,
-    endHour: 23,
-  );
+
+  List<DateTimeModelClass> dates = List.generate(14, (index) {
+    DateTime date = DateTime.now().add(Duration(days: index));
+    String dayName = DateFormat('E').format(date);
+    String dateString = DateFormat('d').format(date);
+    String monthName = DateFormat('MMM').format(date);
+    return DateTimeModelClass(
+        date: dateString,
+        month: monthName,
+        day: dayName,
+        isSelected: false);
+  },);
+
+  List<TimeSlotModelClass> timeSlots = List.generate(48, (index) {
+    DateTime startTime = DateTime(DateTime.now().year).add(Duration(minutes: 30 * index));
+    DateTime endTime = startTime.add(Duration(minutes: 30));
+    String formattedStartTime = DateFormat('HH:mm').format(startTime);
+    String formattedEndTime = DateFormat('HH:mm').format(endTime);
+    return TimeSlotModelClass(time: "$formattedStartTime - $formattedEndTime",isAvailable: index%5!=0?true:false); '$formattedStartTime - $formattedEndTime';
+  },);
+
+
 
   @override
   void onInit() {
+    // TODO: implement onInit
     super.onInit();
-    items=generateItems();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      Future.delayed(const Duration(milliseconds: 100), () {
-        controller.jumpTo(DateTime.now());
-      });
-    });
+    dates[0].isSelected=true;
     update();
   }
 
-  List<TimetableItem<String>> generateItems() {
-    final random = Random();
-    final items = <TimetableItem<String>>[];
-    final today = DateUtils.dateOnly(DateTime.now());
-    for (var i = 0; i < 100; i++) {
-      int hourOffset = random.nextInt(56 * 24) - (7 * 24);
-      final date = today.add(Duration(hours: hourOffset));
-      items.add(TimetableItem(
-        date,
-        date.add(Duration(minutes: (random.nextInt(8) * 15) + 15)),
-        data: "item $i",
-      ));
+  onTapDateSelection({required int index}){
+    for (var element in dates) {
+      element.isSelected=false;
     }
-    return items;
+    dates[index].isSelected=true;
+    update();
+    debugPrint("===[Selected Date : ${dates[index].date} ${dates[index].month} ${dates[index].day}]===");
   }
+
+  onTapTimeSlots({required int index}){
+
+    if(timeSlots[index].isAvailable)
+      {
+        timeSlots[index].isSelected == true
+            ? timeSlots[index].isSelected = false
+            : timeSlots[index].isSelected = true ;
+        update();
+      }
+
+  }
+
+
+
+
+
+
+}
+
+class DateTimeModelClass {
+  String? date;
+  String? month;
+  String? day;
+  bool isSelected=false;
+
+  DateTimeModelClass({required this.date, required this.month,required this.day,this.isSelected=false});
+}
+
+
+class TimeSlotModelClass {
+  String? time;
+  bool isSelected=false;
+  bool isAvailable=true;
+
+  TimeSlotModelClass({required this.time,this.isSelected=false,this.isAvailable=true});
 }

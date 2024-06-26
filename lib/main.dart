@@ -8,10 +8,11 @@ import 'package:workspace/screens/common_screen/privacy_policy_screen.dart';
 import 'package:workspace/screens/introduction/introduction_screen.dart';
 import 'package:workspace/screens/membership/membership_screen.dart';
 import 'package:workspace/screens/splash_screen/splash_screen.dart';
+import 'package:workspace/screens/user_account/user_account_screen.dart';
 
 void main() {
-  runApp(GetMaterialApp(home: MembershipScreen(),));
-  // runApp(const GetMaterialApp(home: SplashScreen(),));
+  // runApp(GetMaterialApp(home: UserAccountScreen(),));
+  runApp(const GetMaterialApp(home: SplashScreen(),));
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
