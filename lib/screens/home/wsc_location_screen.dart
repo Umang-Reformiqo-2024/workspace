@@ -16,7 +16,7 @@ class WscLocationScreen extends StatelessWidget {
     return GetBuilder(
       init: WscLocationController(),
       builder: (controller) => Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFEBEBEB),
         appBar: AppBar(
           forceMaterialTransparency: true,
           title: Image.asset("assets/v2/png/app_logo.webp",height: 150,width: 150,fit: BoxFit.fill,),
@@ -25,7 +25,7 @@ class WscLocationScreen extends StatelessWidget {
           actions: const [Icon(Icons.message_outlined),SizedBox(width: 10,),Icon(Icons.info_outline),SizedBox(width: 10,)],
         ),
         body: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,15 +115,54 @@ class WscLocationScreen extends StatelessWidget {
               AppButtonPrimary(onTap: () {
 
               }, text: "Book Now",buttonMargin: EdgeInsets.zero,),
-              const SizedBox(height: 20,),
-              const Text("Our Locations",style: TextStyle(fontFamily: AppFont.primary,fontWeight: FontWeight.bold,fontSize: 22),),
-              const SizedBox(height: 20,),
+              Container(
+                height: 40,
+                padding: const EdgeInsets.only(top: 10),
+                margin: EdgeInsets.only(top: 15),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black12.withOpacity(0.055),
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          offset: const Offset(0, -1)
+                      ),
+                    ],
+                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
+                ),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    height: 5,
+                    width: 70,
+                    decoration: BoxDecoration(
+                        color: const Color(0xFF464646),
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                  ),
+                ),
+              ),
+              // const SizedBox(height: 20,),
+              ColoredBox(
+                color: Colors.white,
+                child: Row(
+                  children: [
+                    SizedBox(width: 10,),
+                    const Text("Our Locations",style: TextStyle(fontFamily: AppFont.primary,fontWeight: FontWeight.bold,fontSize: 22),),
+                  ],
+                ),
+              ),
+              // const SizedBox(height: 20,),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 4,
-                  itemBuilder: (context, index) {
-                  return locationCard(index: index,onTapLocation: () => Get.to(()=> WscLocationDetailScreen()),);
-                },),
+                child: ColoredBox(
+                  color: Colors.white,
+                  child: ListView.builder(
+                    itemCount: 4,
+                    itemBuilder: (context, index) {
+                    return locationCard(index: index,onTapLocation: () => Get.to(()=> WscLocationDetailScreen(),duration: Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut),);
+                  },),
+                ),
               )
             ],
           ),
@@ -137,7 +176,7 @@ class WscLocationScreen extends StatelessWidget {
       splashFactory: NoSplash.splashFactory,
       onTap: () => onTapLocation(),
       child: Container(
-          margin: const EdgeInsets.fromLTRB(5, 10, 5, 5),
+          margin: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               border: Border.all(color: const Color(0xFFCACACA))
@@ -146,7 +185,7 @@ class WscLocationScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(borderRadius: const BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),child: Image.asset("assets/v2/png/location_${index+1}.webp")),
+              SizedBox(height: 150,width:double.infinity,child: ClipRRect(borderRadius: const BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15)),child: Image.asset("assets/v2/png/location_${index+1}.webp",fit: BoxFit.cover,),),),
               const SizedBox(height: 10,),
               const Padding(
                 padding: EdgeInsets.only(left: 10),

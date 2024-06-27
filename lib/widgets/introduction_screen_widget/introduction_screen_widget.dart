@@ -27,7 +27,7 @@ class IntroductionScreenWidget extends StatelessWidget{
           // ]
         ),
         child: Column(children: [
-          Image.asset(webpImage,height: 250,width:250,),
+          Image.asset(webpImage,height: 200,width:200,),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Align(alignment: Alignment.centerLeft,child: Text(title,style: TextStyle(fontSize: 18,fontFamily: AppFont.primary,fontWeight: FontWeight.bold),)),

@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timetable/flutter_timetable.dart';
@@ -5,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/bookings/booking_schedule_screen_controller.dart';
+import 'package:workspace/screens/bookings/review_and_pay_screen.dart';
+import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
 class BookingScheduleScreen extends StatelessWidget {
   const BookingScheduleScreen({super.key});
@@ -156,10 +161,10 @@ class BookingScheduleScreen extends StatelessWidget {
                                 width: 15,
                                 margin: const EdgeInsets.only(right: 10),
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFE2E2E2),
+                                    color: const Color(0xFFE2E2E2),
                                     borderRadius: BorderRadius.circular(100),
                                     border:
-                                        Border.all(color: Color(0xFFE2E2E2))),
+                                        Border.all(color: const Color(0xFFE2E2E2))),
                               ),
                               const Text("Unavailable"),
                             ],
@@ -171,10 +176,10 @@ class BookingScheduleScreen extends StatelessWidget {
                                 width: 15,
                                 margin: const EdgeInsets.only(right: 10),
                                 decoration: BoxDecoration(
-                                    color: Color(0xFF303030),
+                                    color: const Color(0xFF303030),
                                     borderRadius: BorderRadius.circular(100),
                                     border:
-                                        Border.all(color: Color(0xFF303030))),
+                                        Border.all(color: const Color(0xFF303030))),
                               ),
                               const Text("Selected"),
                             ],
@@ -206,7 +211,7 @@ class BookingScheduleScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                   color:
                                   controller.timeSlots[index].isSelected
-                                      ? Color(0xFF303030)
+                                      ? const Color(0xFF303030)
                                       : controller.timeSlots[index].isAvailable
                                       ? Colors.white 
                                       : const Color(0xFFE2E2E2),
@@ -220,14 +225,38 @@ class BookingScheduleScreen extends StatelessWidget {
                                   child: Text(
                                       controller.timeSlots[index].time ?? "",
                                     style: controller.timeSlots[index].isSelected
-                                        ? TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
-                                        : TextStyle(color: Color(0xFF303030), fontWeight: FontWeight.normal),
+                                        ? const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+                                        : const TextStyle(color: Color(0xFF303030), fontWeight: FontWeight.normal),
                                   )),
                             ),
                           );
                         },
                       ),
-                    )
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text("No. of People"),
+                    ),
+                    Container(
+                      height: 50,
+                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      child:  CustomDropdown<String>(
+                        hintText: 'Select job role',
+                        items: controller.noOfPeopleList,
+                        initialItem: controller.noOfPeopleList[0],
+                        decoration: const CustomDropdownDecoration(
+                          prefixIcon: Icon(Icons.person),
+                        ),
+                        onChanged: (value) {
+                          log('changing value to: $value');
+                        },
+                      ),
+                    ),
+                    AppButtonPrimary(onTap: () => Get.to(()=> const ReviewAndPayScreen(),duration: const Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut), text: "Book Now")
                   ],
                 ),
               ),

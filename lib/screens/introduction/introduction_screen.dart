@@ -35,7 +35,7 @@ class IntroductionScreen extends StatelessWidget {
                     children: [
                       Image.asset(
                         "assets/v2/png/app_logo.webp",
-                        height: 200,
+                        height: 150,
                         width: 200,
                       ),
                       Expanded(
@@ -61,7 +61,7 @@ class IntroductionScreen extends StatelessWidget {
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
-                            padding: const EdgeInsets.only(bottom: 50),
+                            padding: const EdgeInsets.only(bottom: 45),
                             child: Row(
                               children: [
                                 IntroductionIndicatorWidget(isDarken:controller.currentPage==0?true:false),
