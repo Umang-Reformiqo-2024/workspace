@@ -1,6 +1,8 @@
 import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:get/get.dart';
+import 'package:workspace/controller/bottom_bar_controller.dart';
 import 'package:workspace/screens/bookings/my_bookings_screen.dart';
 import 'package:workspace/screens/home/wsc_location_detail_screen.dart';
 import 'package:workspace/screens/home/wsc_location_screen.dart';
@@ -26,20 +28,33 @@ const List<TabItem> items = [
   ),
 ];
 
-class HomeScreen extends StatelessWidget {
-   HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  int bottomIndex = 0;
+  HomeScreen({super.key, this.bottomIndex=0});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   int visit = 0;
+
   double height = 30;
+
   Color colorSelect =const Color(0XFF0686F8);
+
   Color color = const Color(0XFF7AC0FF);
+
   Color color2 = const Color(0XFF96B1FD);
+
   Color bgColor = const  Color(0XFF1752FE);
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
-        index: visit,
+        index: widget.bottomIndex,
         children: const [
           WscLocationDetailScreen(),
           MyBookingsScreen(),
@@ -52,8 +67,12 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         color: const Color(0xFF5D5D5D),
         colorSelected: const Color(0xFF2F2F2F),
-        indexSelected: visit,
-        onTap: (int index) => visit = index,
+        indexSelected: widget.bottomIndex,
+        onTap: (index) {
+          setState(() {
+            widget.bottomIndex = index;
+          });
+        },
         enableShadow: true,
         animated: true,
       ),

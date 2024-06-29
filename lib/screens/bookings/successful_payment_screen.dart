@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/bookings/successful_payment_screen_controller.dart';
+import 'package:workspace/controller/bottom_bar_controller.dart';
 import 'package:workspace/screens/bookings/my_bookings_screen.dart';
+import 'package:workspace/screens/home/home_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
 class SuccessfulPaymentScreen extends StatelessWidget {
-  const SuccessfulPaymentScreen({super.key});
+  SuccessfulPaymentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,10 @@ class SuccessfulPaymentScreen extends StatelessWidget {
           backgroundColor: Colors.white,
           appBar: AppBar(
             forceMaterialTransparency: true,
-            leading: IconButton(onPressed: () => Get.back(), icon: const Icon(Icons.highlight_off_rounded)),
+            leading: IconButton(onPressed:() {
+              Get.offAll(()=> HomeScreen(),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
+
+            }, icon: const Icon(Icons.highlight_off_rounded)),
           ),
           body: Center(
             child: Column(
@@ -55,7 +60,7 @@ class SuccessfulPaymentScreen extends StatelessWidget {
                   ),),
                 ),
                 AppButtonPrimary(onTap: () {
-                  Get.to(()=> MyBookingsScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
+                  Get.offAll(()=> HomeScreen(bottomIndex: 1,),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
                 }, text: "View Bookings"),
                 const SizedBox(height: 30,)
               ],
