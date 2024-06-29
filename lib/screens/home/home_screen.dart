@@ -2,6 +2,7 @@ import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:workspace/screens/bookings/my_bookings_screen.dart';
+import 'package:workspace/screens/home/wsc_location_detail_screen.dart';
 import 'package:workspace/screens/home/wsc_location_screen.dart';
 import 'package:workspace/screens/membership/membership_screen.dart';
 import 'package:workspace/screens/user_account/user_account_screen.dart';
@@ -39,8 +40,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: IndexedStack(
         index: visit,
-        children: [
-          WscLocationScreen(),
+        children: const [
+          WscLocationDetailScreen(),
           MyBookingsScreen(),
           UserAccountScreen(),
           MembershipScreen(),
@@ -49,8 +50,8 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: BottomBarDefault(
         items: items,
         backgroundColor: Colors.white,
-        color: Color(0xFF5D5D5D),
-        colorSelected: Color(0xFF2F2F2F),
+        color: const Color(0xFF5D5D5D),
+        colorSelected: const Color(0xFF2F2F2F),
         indexSelected: visit,
         onTap: (int index) => visit = index,
         enableShadow: true,

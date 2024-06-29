@@ -28,24 +28,7 @@ class WscLocationDetailScreen extends StatelessWidget {
                 backgroundColor: Colors.white,
                 //centerTitle: true,
                 actions: const [Icon(Icons.message_outlined),SizedBox(width: 10,),Icon(Icons.info_outline),SizedBox(width: 10,)],
-                // bottom: TabBar(
-                //   isScrollable: true,
-                //   splashFactory: NoSplash.splashFactory,
-                //   automaticIndicatorColorAdjustment: true,
-                //   tabAlignment: TabAlignment.start,
-                //   labelColor: Colors.black,
-                //   unselectedLabelColor: Colors.grey,
-                //   indicatorColor: Colors.red,
-                //   tabs: [
-                //     Tab(text: 'Meeting Room',icon: Center(child: Image.asset("assets/v2/png/cat_meeting_room.webp",height: 50,width: 50,),),),
-                //     Tab(text: 'Desk',icon: Center(child: Image.asset("assets/v2/png/cat_desk.webp",height: 50,width: 50,),),),
-                //     Tab(text: 'Cabin',icon: Center(child: Image.asset("assets/v2/png/cat_cabin.webp",height: 50,width: 50,),),),
-                //     Tab(text: 'Shop',icon: Center(child: Image.asset("assets/v2/png/cat_shop.webp",height: 50,width: 50,),),),
-                //     Tab(text: 'Community',icon: Center(child: Image.asset("assets/v2/png/cat_community.webp",height: 50,width: 50,),),),
-                //     Tab(text: 'Feed',icon: Center(child: Image.asset("assets/v2/png/cat_feed.webp",height: 50,width: 50,),),),
-                //     Tab(text: 'Visitor',icon: Center(child: Image.asset("assets/v2/png/cat_visitors.webp",height: 50,width: 50,),),),
-                //   ],
-                // ),
+
               ),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -55,19 +38,6 @@ class WscLocationDetailScreen extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                   child: Text("WorkSpaceCo. City Center",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
                 ),
-                // AppButtonPrimary(onTap: () {
-                //
-                // }, text: "WorkSpaceCo. City Center",buttonHeight: 40,buttonMargin: EdgeInsets.all(10),),
-                // Padding(
-                //   padding: const EdgeInsets.fromLTRB(10, 20, 10, 30),
-                //   child: Row(children: [
-                //             Expanded(child: AppButtonPrimary(onTap: () {Get.to(CommunityScreen());}, text: "Community",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
-                //             const SizedBox(width: 10,),
-                //             Expanded(child: AppButtonPrimary(onTap: () {Get.to(FeedScreen());}, text: "Feed",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
-                //             const SizedBox(width: 10,),
-                //             Expanded(child: AppButtonPrimary(onTap: () {Get.to(VisitorScreen());}, text: "Visitor",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
-                //   ],),
-                // ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20,bottom: 30),
                   child: SizedBox(

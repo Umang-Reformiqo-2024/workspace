@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/home/wsc_location_controller.dart';
 import 'package:workspace/controller/home/wsc_location_detail_screen_controller.dart';
+import 'package:workspace/screens/bookings/booking_schedule_screen.dart';
+import 'package:workspace/screens/home/home_screen.dart';
 import 'package:workspace/screens/home/wsc_location_detail_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
@@ -112,9 +114,7 @@ class WscLocationScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 15,),
-              AppButtonPrimary(onTap: () {
-
-              }, text: "Book Now",buttonMargin: EdgeInsets.zero,),
+              AppButtonPrimary(onTap: () => Get.to(()=> const BookingScheduleScreen(),duration: Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut), text: "Book Now",buttonMargin: EdgeInsets.zero,),
               Container(
                 height: 40,
                 padding: const EdgeInsets.only(top: 10),
@@ -144,12 +144,12 @@ class WscLocationScreen extends StatelessWidget {
                 ),
               ),
               // const SizedBox(height: 20,),
-              ColoredBox(
+              const ColoredBox(
                 color: Colors.white,
                 child: Row(
                   children: [
                     SizedBox(width: 10,),
-                    const Text("Our Locations",style: TextStyle(fontFamily: AppFont.primary,fontWeight: FontWeight.bold,fontSize: 22),),
+                    Text("Our Locations",style: TextStyle(fontFamily: AppFont.primary,fontWeight: FontWeight.bold,fontSize: 22),),
                   ],
                 ),
               ),
@@ -160,7 +160,7 @@ class WscLocationScreen extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: 4,
                     itemBuilder: (context, index) {
-                    return locationCard(index: index,onTapLocation: () => Get.to(()=> WscLocationDetailScreen(),duration: Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut),);
+                    return locationCard(index: index,onTapLocation: () => Get.to(()=> HomeScreen(),duration: Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut),);
                   },),
                 ),
               )
