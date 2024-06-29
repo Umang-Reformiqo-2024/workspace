@@ -7,6 +7,8 @@ import 'package:workspace/controller/bookings/review_and_pay_screen_controller.d
 import 'package:workspace/screens/bookings/successful_payment_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
+import '../../widgets/common_widgets/app_bar.dart';
+
 class ReviewAndPayScreen extends StatelessWidget {
   const ReviewAndPayScreen({super.key});
 
@@ -18,20 +20,10 @@ class ReviewAndPayScreen extends StatelessWidget {
         return SafeArea(
             child: Scaffold(
           backgroundColor: const Color(0xFFEBEBEB),
-              appBar: AppBar(
-                backgroundColor: Colors.white,
-                forceMaterialTransparency: true,
-                automaticallyImplyLeading: true,
-              ),
+              appBar: WorkSpaceCoAppBar(title: "Review and Pay",titleSize: 20,),
               body: ListView(
                 padding: const EdgeInsets.only(left: 20,right: 20),
                 children: [
-                  Text("Review and Pay",style: TextStyle(
-                    color: AppColor.black,
-                    fontFamily: AppFont.primary,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
-                  ),),
                   Container(
                     margin: EdgeInsets.only(top: 20),
                     padding: const EdgeInsets.all(10),

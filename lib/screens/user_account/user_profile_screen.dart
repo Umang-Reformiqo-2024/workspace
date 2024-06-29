@@ -8,6 +8,7 @@ import 'package:workspace/controller/user_account/user_profile_screen_controller
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 import 'package:badges/badges.dart' as badges;
 import '../../app_data/app_fonts/app_font.dart';
+import '../../widgets/common_widgets/app_bar.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -19,6 +20,7 @@ class UserProfileScreen extends StatelessWidget {
       builder: (controller) => SafeArea(
         child: Scaffold(
           backgroundColor: Colors.white,
+          appBar: WorkSpaceCoAppBar(title: "Profile",titleSize: 20,),
           body: AnimatedContainer(
             duration: const Duration(seconds: 1),
             transform: Matrix4.translationValues(0, controller.startNextPageAnimation ? -MediaQuery.of(context).size.height * 1 : 0, 0,),
@@ -31,24 +33,6 @@ class UserProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    InkWell(
-                        splashFactory: NoSplash.splashFactory,
-                        onTap: () => Get.back(),
-                        child: const Icon(
-                          Icons.arrow_back,
-                          color: Colors.black,
-                        )),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Text(
-                      "Profile",
-                      style: TextStyle(
-                          fontFamily: AppFont.primary,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Colors.black),
-                    ),
                     const SizedBox(
                       height: 10,
                     ),

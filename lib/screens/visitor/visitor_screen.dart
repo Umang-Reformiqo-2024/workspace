@@ -5,6 +5,7 @@ import 'package:workspace/controller/visitor/visitor_screen_controller.dart';
 import 'package:workspace/screens/visitor/add_new_visit_screen.dart';
 
 import '../../app_data/app_fonts/app_font.dart';
+import '../../widgets/common_widgets/app_bar.dart';
 
 class VisitorScreen extends StatelessWidget {
   const VisitorScreen({super.key});
@@ -17,38 +18,11 @@ class VisitorScreen extends StatelessWidget {
         return SafeArea(
             child: Scaffold(
           backgroundColor: const Color(0xFFEBEBEB),
-          appBar: AppBar(
-            forceMaterialTransparency: true,
-            backgroundColor: Colors.white,
-            actions: const [
-              Icon(Icons.message_outlined),
-              SizedBox(
-                width: 10,
-              ),
-              Icon(Icons.info_outline),
-              SizedBox(
-                width: 10,
-              )
-            ],
-          ),
+              appBar: WorkSpaceCoAppBar(title: "Visitors",titleSize: 20,),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text(
-                  "Visitors",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: AppFont.primary),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
               Center(
                 child: TabBarWidget(
                   firstTab: "Visits",

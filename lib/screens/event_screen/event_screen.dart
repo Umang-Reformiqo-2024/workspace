@@ -5,6 +5,7 @@ import 'package:workspace/controller/event_screen_controller/event_screen_contro
 
 import '../../app_data/app_colors/app_color.dart';
 import '../../app_data/app_fonts/app_font.dart';
+import '../../widgets/common_widgets/app_bar.dart';
 
 class EventScreen extends StatelessWidget {
   const EventScreen({super.key});
@@ -17,13 +18,7 @@ class EventScreen extends StatelessWidget {
         return SafeArea(
             child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: const Text("Events"),
-            forceMaterialTransparency: true,
-            automaticallyImplyLeading: true,
-            centerTitle: true,
-          ),
+              appBar: WorkSpaceCoAppBar(title: "Events",titleSize: 20,),
           body: ListView.builder(
             itemCount: 10,
             itemBuilder: (context, index) {

@@ -11,6 +11,8 @@ import 'package:workspace/controller/bookings/booking_schedule_screen_controller
 import 'package:workspace/screens/bookings/review_and_pay_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
+import '../../widgets/common_widgets/app_bar.dart';
+
 class BookingScheduleScreen extends StatelessWidget {
   const BookingScheduleScreen({super.key});
 
@@ -22,24 +24,11 @@ class BookingScheduleScreen extends StatelessWidget {
         return SafeArea(
             child: Scaffold(
           backgroundColor: const Color(0xFFEBEBEB),
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            forceMaterialTransparency: true,
-          ),
+              appBar: WorkSpaceCoAppBar(title: "Schedule Your Booking",titleSize: 20,),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: Text(
-                  "Schedule Your Booking",
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontFamily: AppFont.primary,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
               Expanded(
                 child: ListView(
                   children: [
@@ -188,12 +177,12 @@ class BookingScheduleScreen extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: 300,
                       margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10)),
                       child: GridView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
@@ -256,12 +245,12 @@ class BookingScheduleScreen extends StatelessWidget {
                         },
                       ),
                     ),
-                    AppButtonPrimary(onTap: () => Get.to(()=> const ReviewAndPayScreen(),duration: const Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut), text: "Book Now")
                   ],
                 ),
               ),
             ],
           ),
+              bottomNavigationBar: AppButtonPrimary(onTap: () => Get.to(()=> const ReviewAndPayScreen(),duration: const Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut), text: "Book Now"),
         ));
       },
     );

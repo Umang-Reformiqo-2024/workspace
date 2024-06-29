@@ -6,6 +6,8 @@ import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/membership/membership_screen_controller.dart';
 
+import '../../widgets/common_widgets/app_bar.dart';
+
 class MembershipScreen extends StatelessWidget {
   const MembershipScreen({super.key});
 
@@ -17,12 +19,7 @@ class MembershipScreen extends StatelessWidget {
         return SafeArea(
             child: Scaffold(
           backgroundColor: const Color(0xFF2F2F2F),
-              appBar: AppBar(
-                forceMaterialTransparency: true,
-                automaticallyImplyLeading: true,
-                title: const Text("Membership",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22),),
-                actions: [const Icon(Icons.message_outlined,color: Colors.white,),const SizedBox(width: 10,),const Icon(Icons.info_outline,color: Colors.white,),const SizedBox(width: 10,)],
-              ),
+              appBar: WorkSpaceCoAppBar(title: "Membership",titleSize: 20,titleColor: Colors.white,actionIconColorIsWhite: true,),
               body: Padding(
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: Column(

@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/community/community_detail_screen_controller.dart';
 
+import '../../widgets/common_widgets/app_bar.dart';
+
 class CommunityDetailScreen extends StatelessWidget {
   const CommunityDetailScreen({super.key});
 
@@ -14,21 +16,13 @@ class CommunityDetailScreen extends StatelessWidget {
       builder: (controller) {
       return SafeArea(child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          automaticallyImplyLeading: true,
-          forceMaterialTransparency: true,
-          backgroundColor: Colors.white,
-        ),
+        appBar: WorkSpaceCoAppBar(title: "Company Name",titleSize: 20,),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text("Company Name",style: TextStyle(fontFamily: AppFont.primary,fontWeight: FontWeight.bold,fontSize: 22),),
-              ),
               const Padding(
                 padding: EdgeInsets.only(left: 10,top: 5),
                 child: Text("5 Members",style: TextStyle(color: Color(0xFF575757),fontFamily: AppFont.primary,fontWeight: FontWeight.normal,fontSize: 14),),

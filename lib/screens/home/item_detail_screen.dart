@@ -8,6 +8,7 @@ import 'package:workspace/widgets/button_widget.dart';
 import 'package:workspace/widgets/recommended_space_widget.dart';
 
 import '../../app_data/app_colors/app_color.dart';
+import '../../widgets/common_widgets/app_bar.dart';
 
 class ItemDetailScreen extends StatelessWidget {
   final HomeItemModelClass itemDetail;
@@ -21,11 +22,7 @@ class ItemDetailScreen extends StatelessWidget {
       builder: (controller) {
         return SafeArea(child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: const Text("Details"),
-            centerTitle: true,
-          ),
+          appBar: WorkSpaceCoAppBar(title: "Space Details",titleSize: 20,),
           body: Padding(padding: const EdgeInsets.all(8),
           child: ListView(
             // crossAxisAlignment: CrossAxisAlignment.start,

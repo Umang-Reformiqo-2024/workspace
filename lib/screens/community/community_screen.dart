@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/community/community_screen_controller.dart';
 import 'package:workspace/screens/community/community_detail_screen.dart';
+
+import '../../widgets/common_widgets/app_bar.dart';
 class CommunityScreen extends StatelessWidget {
   const CommunityScreen({super.key});
 
@@ -15,20 +17,11 @@ class CommunityScreen extends StatelessWidget {
       builder: (controller) => SafeArea(
         child: Scaffold(
           backgroundColor: const Color(0xFFEBEBEB),
-          appBar: AppBar(
-            forceMaterialTransparency: true,
-            backgroundColor: Colors.white,
-            actions: const [Icon(Icons.message_outlined),SizedBox(width: 10,),Icon(Icons.info_outline),SizedBox(width: 10,)],
-          ),
+          appBar: WorkSpaceCoAppBar(title: "Community",titleSize: 20,),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text("Community",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
-              ),
-              const SizedBox(height: 30,),
               Center(
                 child: TabBarWidget(
                   firstTab: "Companies",

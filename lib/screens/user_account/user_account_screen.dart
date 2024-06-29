@@ -4,6 +4,16 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/user_account/user_account_screen_controller.dart';
+import 'package:workspace/screens/app_screens/about_app_screen.dart';
+import 'package:workspace/screens/bookings/my_bookings_screen.dart';
+import 'package:workspace/screens/common_screen/help_and_support_screen.dart';
+import 'package:workspace/screens/common_screen/privacy_policy_screen.dart';
+import 'package:workspace/screens/home/home_screen.dart';
+import 'package:workspace/screens/splash_screen/splash_screen.dart';
+import 'package:workspace/screens/user_account/user_profile_screen.dart';
+import 'package:workspace/widgets/common_widgets/app_navigator.dart';
+
+import '../../widgets/common_widgets/app_bar.dart';
 
 class UserAccountScreen extends StatelessWidget {
   const UserAccountScreen({super.key});
@@ -15,14 +25,7 @@ class UserAccountScreen extends StatelessWidget {
       builder: (controller) {
         return SafeArea(child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(
-            title: const Text("Account",style: TextStyle(color: Color(0xFF2D2D2D),fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
-            actions: [
-              IconButton(onPressed: () {}, icon: const Icon(Icons.message_outlined)),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.info_outline))
-            ],
-            forceMaterialTransparency: true,
-          ),
+          appBar: WorkSpaceCoAppBar(title: "Your Account",titleSize: 20,),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SingleChildScrollView(
@@ -32,7 +35,7 @@ class UserAccountScreen extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Container(
                         height: 60,
@@ -44,17 +47,20 @@ class UserAccountScreen extends StatelessWidget {
                         ),
                         child: const Icon(Icons.image_outlined,color: Colors.white,),
                       ),
-                      const Column(
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("User Name",style: TextStyle(
+                          const Text("User Name",style: TextStyle(
                             color: Colors.black,
                             fontFamily: AppFont.primary,
                             fontWeight: FontWeight.bold,
                             fontSize: 22
                           ),),
-                          Text("View Profile")
+                          GestureDetector(onTap: () {
+                            debugPrint("===[View Profile Text Button]===");
+                            Get.to(()=> const UserProfileScreen(),transition: Transition.cupertino,curve: Curves.easeInOut,duration: const Duration(milliseconds: 700));
+                          },child: Container(height: 25,color: Colors.transparent,child: const Text("View Profile")))
                         ],
                       )
                     ],
@@ -75,7 +81,7 @@ class UserAccountScreen extends StatelessWidget {
                       children: [
                         const Expanded(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                             Text("Get your Credits",style: TextStyle(
@@ -90,78 +96,63 @@ class UserAccountScreen extends StatelessWidget {
                           ],),
                         ),
                         Container(
-                          height: 70,
-                          width: 70,
                           decoration: BoxDecoration(
-                            color: Colors.white,
                             borderRadius: BorderRadius.circular(10)
                           ),
-                          child: const Icon(Icons.currency_rupee),
+                          child: Image.asset("assets/v2/png/credits_coin_icon.webp",fit: BoxFit.fill,width: 70,),
                         )
                       ],
                     ),
                   ),
                   profileTile(
-                    prefixIcon: Icons.access_time_rounded,
+                    prefixIconString : "assets/v2/png/bookings_icon.webp",
                     suffixIcon: Icons.keyboard_arrow_right,
                     text: "Bookings",
-                    onTap: () {
-                      debugPrint("Profile Tile On Tap Pressed - Bookings");
-                    },
+                    onTap: () => AppNavigator.screenTo(screen:const MyBookingsScreen()),
                   ),
                   profileTile(
-                    prefixIcon: Icons.sticky_note_2_outlined,
+                    prefixIconString:"assets/v2/png/support_ticket_icon.webp",
                     suffixIcon: Icons.keyboard_arrow_right,
                     text: "Support Ticket",
-                    onTap: () {
-                      debugPrint("Profile Tile On Tap Pressed - Support Ticket");
-                    },
+                    onTap: () => AppNavigator.screenTo(screen: HelpAndSupportScreen()),
                   ),
                   profileTile(
-                    prefixIcon: Icons.payment,
+                    prefixIconString:"assets/v2/png/payment_method_icon.webp",
                     suffixIcon: Icons.keyboard_arrow_right,
                     text: "Payment Methods",
                     onTap: () {
                       debugPrint("Profile Tile On Tap Pressed - Payment Methods");
                     },
                   ),
+                  // profileTile(
+                  //   prefixIcon: Icons.language,
+                  //   suffixIcon: Icons.keyboard_arrow_right,
+                  //   text: "Language",
+                  //   onTap: () {
+                  //     debugPrint("Profile Tile On Tap Pressed - Language");
+                  //   },
+                  // ),
                   profileTile(
-                    prefixIcon: Icons.language,
-                    suffixIcon: Icons.keyboard_arrow_right,
-                    text: "Language",
-                    onTap: () {
-                      debugPrint("Profile Tile On Tap Pressed - Language");
-                    },
-                  ),
-                  profileTile(
-                    prefixIcon: Icons.privacy_tip_outlined,
+                    prefixIconString:"assets/v2/png/privacy_policy_icon.webp",
                     suffixIcon: Icons.keyboard_arrow_right,
                     text: "Privacy Policy",
-                    onTap: () {
-                      debugPrint("Profile Tile On Tap Pressed - Privacy Policy");
-                    },
+                    onTap: () => AppNavigator.screenTo(screen: const PrivacyPolicyScreen()),
                   ),
                   profileTile(
-                    prefixIcon: Icons.local_police_outlined,
+                    prefixIconString:"assets/v2/png/terms_of_use_icon.webp",
                     suffixIcon: Icons.keyboard_arrow_right,
                     text: "Terms of Use",
-                    onTap: () {
-                      debugPrint("Profile Tile On Tap Pressed - Terms of Use");
-                    },
+                    onTap: () => AppNavigator.screenTo(screen: const PrivacyPolicyScreen()),
                   ),
                   profileTile(
-                    prefixIcon: Icons.info_outline,
+                    prefixIconString:"assets/v2/png/about_app_icon.webp",
                     suffixIcon: Icons.keyboard_arrow_right,
                     text: "About App",
                     bottomDivider: true,
-                    onTap: () {
-                      debugPrint("Profile Tile On Tap Pressed - Terms of Use");
-                    },
+                    onTap: () => AppNavigator.screenTo(screen: const AboutAppScreen()),
                   ),
                   InkWell(
-                    onTap: () {
-                      debugPrint("===[Log Out Text Button]===");
-                    },
+                      onTap: () => AppNavigator.screenOffAll(screen: const SplashScreen()),
                     splashFactory: NoSplash.splashFactory,
                     splashColor: Colors.transparent,
                     child: const Padding(
@@ -177,10 +168,10 @@ class UserAccountScreen extends StatelessWidget {
                   Center(
                     child: Column(
                       children: [
-                        Text("Developed By"),
+                        const Text("Developed By"),
                         Container(
                           width: 120,
-                          margin: EdgeInsets.only(top: 5,bottom: 10),
+                          margin: const EdgeInsets.only(top: 5,bottom: 10),
                           // height: 50,
                           child: Image.asset("assets/v2/png/reformiqo.webp")
                         )
@@ -198,7 +189,7 @@ class UserAccountScreen extends StatelessWidget {
 
   Widget profileTile({
     required IconData suffixIcon,
-    required IconData prefixIcon,
+    required String prefixIconString,
     required String text,
     required void Function() onTap,
     bool bottomDivider = false
@@ -214,7 +205,7 @@ class UserAccountScreen extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Row(
               children: [
-                SizedBox(width: 25,child: Icon(prefixIcon,size: 25,)),
+                SizedBox(width: 25,child: Image.asset(prefixIconString)),
                 const SizedBox(width: 15,),
                 Text(text,style: const TextStyle(
                     fontSize: 18,

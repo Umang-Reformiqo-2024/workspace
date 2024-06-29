@@ -9,6 +9,8 @@ import 'package:workspace/screens/home/item_list_screen.dart';
 import 'package:workspace/screens/visitor/visitor_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
+import '../../widgets/common_widgets/app_bar.dart';
+
 class WscLocationDetailScreen extends StatelessWidget {
   const WscLocationDetailScreen({super.key});
 
@@ -22,52 +24,61 @@ class WscLocationDetailScreen extends StatelessWidget {
             initialIndex: 0,
             child: Scaffold(
               backgroundColor: Color(0xFFEBEBEB),
-              appBar: AppBar(
-                forceMaterialTransparency: true,
-                //title: const Text("WorkSpaceCo. City Center",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
-                backgroundColor: Colors.white,
-                //centerTitle: true,
-                actions: const [Icon(Icons.message_outlined),SizedBox(width: 10,),Icon(Icons.info_outline),SizedBox(width: 10,)],
-
-              ),
+              appBar: WorkSpaceCoAppBar(title: "WorkSpaceCo. City Center",titleSize: 20,),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                  child: Text("WorkSpaceCo. City Center",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
-                ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20,bottom: 30),
-                  child: SizedBox(
-                    height: 50,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 2, 5, 2),
-                          child: SizedBox(width: 100,child: AppButtonPrimary(onTap: () {Get.to(CommunityScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Community",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 2, 5, 2),
-                          child: SizedBox(width: 100,child: AppButtonPrimary(onTap: () {Get.to(FeedScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Feed",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 2, 5, 2),
-                          child: SizedBox(width: 100,child: AppButtonPrimary(onTap: () {Get.to(EventScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Events",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(5, 2, 10, 2),
-                          child: SizedBox(width: 100,child: AppButtonPrimary(onTap: () {Get.to(VisitorScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Visitor",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
-                        )
-                      ],
-                    ),
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(CommunityScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Community",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                      const SizedBox(width: 20,),
+                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(FeedScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Feed",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                    ],
+                  ),
+                ),Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(EventScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Events",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                      const SizedBox(width: 20,),
+                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(VisitorScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Visitor",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                    ],
                   ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 20,bottom: 30),
+                //   child: SizedBox(
+                //     height: 50,
+                //     child: ListView(
+                //       scrollDirection: Axis.horizontal,
+                //       children: [
+                //         Padding(
+                //           padding: const EdgeInsets.fromLTRB(10, 2, 5, 2),
+                //           child: SizedBox(width: 100,child: AppButtonPrimary(onTap: () {Get.to(CommunityScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Community",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                //         ),
+                //         Padding(
+                //           padding: const EdgeInsets.fromLTRB(10, 2, 5, 2),
+                //           child: SizedBox(width: 100,child: AppButtonPrimary(onTap: () {Get.to(FeedScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Feed",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                //         ),
+                //         Padding(
+                //           padding: const EdgeInsets.fromLTRB(10, 2, 5, 2),
+                //           child: SizedBox(width: 100,child: AppButtonPrimary(onTap: () {Get.to(EventScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Events",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                //         ),
+                //         Padding(
+                //           padding: const EdgeInsets.fromLTRB(5, 2, 10, 2),
+                //           child: SizedBox(width: 100,child: AppButtonPrimary(onTap: () {Get.to(VisitorScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Visitor",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                //         )
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 Container(
                   height: 40,
                   padding: const EdgeInsets.only(top: 10),
+                  margin: EdgeInsets.only(top: 10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -103,10 +114,10 @@ class WscLocationDetailScreen extends StatelessWidget {
                     unselectedLabelColor: Colors.grey,
                     indicatorColor: Colors.red,
                     tabs: [
-                      Tab(text: 'Meeting Room',icon: Center(child: Image.asset("assets/v2/png/cat_meeting_room.webp",height: 50,width: 50,),),),
-                      Tab(text: 'Desk',icon: Center(child: Image.asset("assets/v2/png/cat_desk.webp",height: 50,width: 50,),),),
-                      Tab(text: 'Cabin',icon: Center(child: Image.asset("assets/v2/png/cat_cabin.webp",height: 50,width: 50,),),),
-                      Tab(text: 'Shop',icon: Center(child: Image.asset("assets/v2/png/cat_shop.webp",height: 50,width: 50,),),),
+                      Tab(text: 'Meeting Room',icon: Center(child: Image.asset("assets/v2/png/meeting_room_icon.webp",height: 50,width: 50,),),),
+                      Tab(text: 'Desk',icon: Center(child: Image.asset("assets/v2/png/desk_icon.webp",height: 50,width: 50,),),),
+                      Tab(text: 'Cabin',icon: Center(child: Image.asset("assets/v2/png/cabin_icon.webp",height: 50,width: 50,),),),
+                      Tab(text: 'Shop',icon: Center(child: Image.asset("assets/v2/png/shop_icon.webp",height: 50,width: 50,),),),
                       // Tab(text: 'Community',icon: Center(child: Image.asset("assets/v2/png/cat_community.webp",height: 50,width: 50,),),),
                       // Tab(text: 'Feed',icon: Center(child: Image.asset("assets/v2/png/cat_feed.webp",height: 50,width: 50,),),),
                       // Tab(text: 'Visitor',icon: Center(child: Image.asset("assets/v2/png/cat_visitors.webp",height: 50,width: 50,),),),
@@ -117,8 +128,8 @@ class WscLocationDetailScreen extends StatelessWidget {
                   child: TabBarView(
                     children: [
                     const ItemListScreen(),
-                    Center(child: Image.asset("assets/v2/png/cat_desk.webp")),
-                    Center(child: Image.asset("assets/v2/png/cat_cabin.webp")),
+                    const ItemListScreen(),
+                    const ItemListScreen(),
                     Center(child: Image.asset("assets/v2/png/cat_shop.webp")),
                     // Center(child: Image.asset("assets/v2/png/cat_community.webp")),
                     // Center(child: Image.asset("assets/v2/png/cat_feed.webp")),

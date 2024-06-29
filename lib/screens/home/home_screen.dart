@@ -1,11 +1,7 @@
-import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
-import 'package:get/get.dart';
-import 'package:workspace/controller/bottom_bar_controller.dart';
 import 'package:workspace/screens/bookings/my_bookings_screen.dart';
 import 'package:workspace/screens/home/wsc_location_detail_screen.dart';
-import 'package:workspace/screens/home/wsc_location_screen.dart';
 import 'package:workspace/screens/membership/membership_screen.dart';
 import 'package:workspace/screens/user_account/user_account_screen.dart';
 

@@ -24,7 +24,7 @@ class ItemListScreen extends StatelessWidget {
                   children: [
                     const SizedBox(height: 16),
                     ListView.builder(
-                      itemCount: controller.itemListHome.length,
+                      itemCount: controller.itemListHome.length-15,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {

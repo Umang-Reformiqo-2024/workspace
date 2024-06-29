@@ -6,6 +6,7 @@ import 'package:workspace/controller/common_screen/help_and_support_screen_contr
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
 import '../../app_data/app_fonts/app_font.dart';
+import '../../widgets/common_widgets/app_bar.dart';
 
 class HelpAndSupportScreen extends StatelessWidget {
   HelpAndSupportScreen({super.key});
@@ -21,38 +22,11 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
         return SafeArea(
             child: Scaffold(
               backgroundColor: const Color(0xFFEBEBEB),
-              appBar: AppBar(
-                forceMaterialTransparency: true,
-                backgroundColor: Colors.white,
-                actions: const [
-                  Icon(Icons.message_outlined),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(Icons.info_outline),
-                  SizedBox(
-                    width: 10,
-                  )
-                ],
-              ),
+                appBar: WorkSpaceCoAppBar(title: "Help & Support",titleSize: 20,titleActions: [],),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      "Help & Support",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: AppFont.primary),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
                   Center(
                     child: TabBarWidget(
                       firstTab: "FAQs",

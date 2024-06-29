@@ -5,6 +5,7 @@ import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/controller/feed/feed_screen_controller.dart';
 
 import '../../app_data/app_fonts/app_font.dart';
+import '../../widgets/common_widgets/app_bar.dart';
 
 class FeedScreen extends StatelessWidget {
   const FeedScreen({super.key});
@@ -17,13 +18,7 @@ class FeedScreen extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             backgroundColor: Colors.white,
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: const Text("Feed"),
-              forceMaterialTransparency: true,
-              automaticallyImplyLeading: true,
-              centerTitle: true,
-            ),
+            appBar: WorkSpaceCoAppBar(title: "Feed",titleSize: 20,),
             body: ListView.builder(itemBuilder: (context, index) {
               return Container(
                 margin: const EdgeInsets.all(12),

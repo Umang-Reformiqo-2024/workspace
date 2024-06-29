@@ -3,6 +3,7 @@ import 'package:fw_tab_bar/fw_tab_bar.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/controller/bookings/my_bookings_screen_controller.dart';
+import 'package:workspace/widgets/common_widgets/app_bar.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 import '../../app_data/app_fonts/app_font.dart';
 
@@ -17,33 +18,11 @@ class MyBookingsScreen extends StatelessWidget {
         return SafeArea(
             child: Scaffold(
               backgroundColor: const Color(0xFFEBEBEB),
-              appBar: AppBar(
-                forceMaterialTransparency: true,
-                backgroundColor: Colors.white,
-                automaticallyImplyLeading: false,
-                title: const Text("My Bookings",style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: AppFont.primary),),
-                actions: const [
-                  Icon(Icons.message_outlined),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(Icons.info_outline),
-                  SizedBox(
-                    width: 10,
-                  )
-                ],
-              ),
+              appBar: WorkSpaceCoAppBar(title: "My Bookings",titleSize: 20,),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
                   Center(
                     child: TabBarWidget(
                       firstTab: "Upcoming",

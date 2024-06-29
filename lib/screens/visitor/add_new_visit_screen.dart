@@ -5,6 +5,8 @@ import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/visitor/add_new_visit_screen_controller.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
+import '../../widgets/common_widgets/app_bar.dart';
+
 class AddNewVisitScreen extends StatelessWidget {
   const AddNewVisitScreen({super.key});
 
@@ -15,15 +17,13 @@ class AddNewVisitScreen extends StatelessWidget {
       builder: (controller) {
       return SafeArea(child: Scaffold(
         backgroundColor: Colors.white,
+        appBar: WorkSpaceCoAppBar(title: "New Visit",titleSize: 20,),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
           child: ListView(
             // crossAxisAlignment: CrossAxisAlignment.start,
             physics: const ClampingScrollPhysics(),
             children: [
-              Align(alignment: Alignment.centerRight,child: IconButton(onPressed: () => Get.back(),icon: Icon(CupertinoIcons.clear_circled_solid,color: Color(0xFF2F2F2F),).paddingZero,)),
-              const Text("New Visit",style: TextStyle(color: Color(0xFF2D2D2D),fontFamily: AppFont.primary,fontWeight: FontWeight.bold,fontSize: 24),),
-              const SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: TextField(
