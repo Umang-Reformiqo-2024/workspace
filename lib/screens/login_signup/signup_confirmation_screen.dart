@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
@@ -32,15 +31,15 @@ class SignupConfirmationScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 0,top: 200),
                         child: Image.asset("assets/v2/png/success_icon.webp",height: 150,width: 150,),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 100,top: 115),
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 100,top: 115),
                         child: Text("You have Successfully registered",style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: AppFont.primary,
                           fontSize: 22
                         ),),
                       ),
-                      Text("For a full fledged experience",style: TextStyle(fontFamily: AppFont.primary),),
+                      const Text("For a full fledged experience",style: TextStyle(fontFamily: AppFont.primary),),
                       AppButtonPrimary(onTap: () => controller.onTapSetYourProfile(), text: "Set your profile"),
                       AppButtonSecondary(onTap:() => controller.onTapSkipAndNext(), text: "Skip and Next")
                     ],

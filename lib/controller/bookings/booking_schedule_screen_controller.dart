@@ -1,7 +1,5 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_timetable/flutter_timetable.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -21,7 +19,7 @@ class BookingScheduleScreenController extends GetxController{
 
   List<TimeSlotModelClass> timeSlots = List.generate(48, (index) {
     DateTime startTime = DateTime(DateTime.now().year).add(Duration(minutes: 30 * index));
-    DateTime endTime = startTime.add(Duration(minutes: 30));
+    DateTime endTime = startTime.add(const Duration(minutes: 30));
     String formattedStartTime = DateFormat('HH:mm').format(startTime);
     String formattedEndTime = DateFormat('HH:mm').format(endTime);
     return TimeSlotModelClass(time: "$formattedStartTime - $formattedEndTime",isAvailable: index%5!=0?true:false); '$formattedStartTime - $formattedEndTime';

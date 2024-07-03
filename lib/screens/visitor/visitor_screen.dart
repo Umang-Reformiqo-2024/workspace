@@ -167,7 +167,7 @@ class VisitorScreen extends StatelessWidget {
             ],
           ),
               floatingActionButton: FloatingActionButton(
-                onPressed: () => Get.to(AddNewVisitScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino),
+                onPressed: () => Get.to(const AddNewVisitScreen(),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino),
                 backgroundColor: const Color(0xFF2F2F2F),
                 shape: const CircleBorder(),
                 child: const Icon(Icons.add,color: Colors.white,size: 30,),

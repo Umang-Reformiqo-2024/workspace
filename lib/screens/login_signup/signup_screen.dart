@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/controller/login_signup/signup_screen_controller.dart';
@@ -181,7 +180,7 @@ class SignupScreen extends StatelessWidget {
                               onChanged: (value) => controller
                                   .onSelectingTermsOfService(userResponse: value!),
                               activeColor: Colors.black),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Flexible(
@@ -189,13 +188,13 @@ class SignupScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text("By selecting Agree and continue, I agree to ",style: TextStyle(fontFamily: AppFont.primary),),
-                              InkWell(onTap: () => controller.onTapTermsOfServiceText(),child: Text("Terms of Service",style: TextStyle(fontFamily: AppFont.primary,color: Color(0xFF61AFDC),decoration: TextDecoration.underline,decorationColor: Color(0xFF61AFDC)),))
+                              const Text("By selecting Agree and continue, I agree to ",style: TextStyle(fontFamily: AppFont.primary),),
+                              InkWell(onTap: () => controller.onTapTermsOfServiceText(),child: const Text("Terms of Service",style: TextStyle(fontFamily: AppFont.primary,color: Color(0xFF61AFDC),decoration: TextDecoration.underline,decorationColor: Color(0xFF61AFDC)),))
                             ],
                           )),
                         ],
                       ),
-                      SizedBox(height: 150,),
+                      const SizedBox(height: 150,),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -208,7 +207,7 @@ class SignupScreen extends StatelessWidget {
                               child: Image.asset("assets/v2/png/google_icon.webp"),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                             width: 50,
                             child: VerticalDivider(indent: 2,endIndent: 2,),
@@ -223,9 +222,9 @@ class SignupScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      Center(child: Text("Sign up using other options")),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 10,),
+                      const Center(child: Text("Sign up using other options")),
+                      const SizedBox(height: 20,),
                       AppButtonPrimary(
                           onTap: () => controller.onTapSignupButton(),
                           text: "Sign up"),

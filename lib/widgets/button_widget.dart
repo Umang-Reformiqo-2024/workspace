@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:workspace/widgets/text_widget.dart';
 
 import '../app_data/app_colors/app_color.dart';
 

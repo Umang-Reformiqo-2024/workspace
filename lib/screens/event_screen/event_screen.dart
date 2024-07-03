@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/controller/event_screen_controller/event_screen_controller.dart';
@@ -34,13 +33,13 @@ class EventScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(5),
                       child: ClipRRect(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10)),
                           child: Image.asset("assets/v2/png/location_2.webp")),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         "Join Us for an Inspiring TED Talk Event!",
                         style: TextStyle(
@@ -57,12 +56,12 @@ class EventScreen extends StatelessWidget {
                           Container(
                             height: 10,
                             width: 10,
-                            margin: EdgeInsets.only(right: 5),
+                            margin: const EdgeInsets.only(right: 5),
                             decoration: BoxDecoration(
                                 color: AppColor.red,
                                 borderRadius: BorderRadius.circular(50)),
                           ),
-                          Text(
+                          const Text(
                             "20th May 2024",
                             style: TextStyle(
                                 fontFamily: AppFont.primary,
@@ -73,12 +72,12 @@ class EventScreen extends StatelessWidget {
                           Container(
                             height: 10,
                             width: 10,
-                            margin: EdgeInsets.only(left: 20,right: 5),
+                            margin: const EdgeInsets.only(left: 20,right: 5),
                             decoration: BoxDecoration(
                                 color: AppColor.red,
                                 borderRadius: BorderRadius.circular(50)),
                           ),
-                          Text(
+                          const Text(
                             "5:00 pm - 7:00 pm",
                             style: TextStyle(
                                 fontFamily: AppFont.primary,
@@ -89,7 +88,7 @@ class EventScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(padding: EdgeInsets.all(8),child: Text("Are you ready to be inspired and gain new insights into the future of work? We are thrilled to announce a TED Talk event that you won't want to miss! Join us for an evening of captivating talks, thought-provoking discussions, and networking with like-minded individuals."),)
+                    const Padding(padding: EdgeInsets.all(8),child: Text("Are you ready to be inspired and gain new insights into the future of work? We are thrilled to announce a TED Talk event that you won't want to miss! Join us for an evening of captivating talks, thought-provoking discussions, and networking with like-minded individuals."),)
                   ],
                 ),
               );

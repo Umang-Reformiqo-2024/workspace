@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
@@ -28,7 +27,7 @@ class IntroductionScreen extends StatelessWidget {
                 ),
                 child: AnimatedOpacity(
                   opacity: controller.startNextPageAnimation ? 0 : 1,
-                  duration: Duration(seconds: 1),
+                  duration: const Duration(seconds: 1),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,

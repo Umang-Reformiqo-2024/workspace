@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fw_tab_bar/fw_tab_bar.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/community/community_screen_controller.dart';
-import 'package:workspace/screens/community/community_detail_screen.dart';
 
 import '../../widgets/common_widgets/app_bar.dart';
 class CommunityScreen extends StatelessWidget {
@@ -33,10 +31,10 @@ class CommunityScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(30),topLeft: Radius.circular(30)),
+                  borderRadius: const BorderRadius.only(topRight: Radius.circular(30),topLeft: Radius.circular(30)),
                   boxShadow: [
                     BoxShadow(
                         color: Colors.black12.withOpacity(0.055),
@@ -53,7 +51,7 @@ class CommunityScreen extends StatelessWidget {
                       child: Container(
                         height: 5,
                         width: 70,
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         decoration: BoxDecoration(
                             color: const Color(0xFF464646),
                             borderRadius: BorderRadius.circular(20)
@@ -64,25 +62,25 @@ class CommunityScreen extends StatelessWidget {
                       child: TextField(
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: Color(0xFFD0D0D0).withOpacity(0.3),
+                          fillColor: const Color(0xFFD0D0D0).withOpacity(0.3),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide(color: Colors.black)
+                            borderSide: const BorderSide(color: Colors.black)
                           ),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(color: Colors.black)
+                              borderSide: const BorderSide(color: Colors.black)
                           ),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(color: Colors.black)
+                              borderSide: const BorderSide(color: Colors.black)
                           ),
                           labelText: "Search",
                           floatingLabelAlignment: FloatingLabelAlignment.start,
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           alignLabelWithHint: true,
-                          suffixIcon: Icon(Icons.search),
-                          contentPadding: EdgeInsets.only(left: 30)
+                          suffixIcon: const Icon(Icons.search),
+                          contentPadding: const EdgeInsets.only(left: 30)
 
                         ),
                       ),
@@ -105,14 +103,14 @@ class CommunityScreen extends StatelessWidget {
                               Container(
                                 height: 40,
                                 width: 40,
-                                margin: EdgeInsets.all(10),
+                                margin: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(colors: [Color(0xFF525151),Color(0xFF262626)])
+                                  gradient: const LinearGradient(colors: [Color(0xFF525151),Color(0xFF262626)])
                                 ),
-                                child: Icon(Icons.image_outlined,color: Colors.white,),
+                                child: const Icon(Icons.image_outlined,color: Colors.white,),
                               ),
-                              Text(controller.selectedTabIndex==1?"Company Name ${index+1}":"User Name ${index+1}",style: TextStyle(
+                              Text(controller.selectedTabIndex==1?"Company Name ${index+1}":"User Name ${index+1}",style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppFont.primary,

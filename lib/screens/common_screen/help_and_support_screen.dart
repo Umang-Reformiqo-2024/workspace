@@ -22,7 +22,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
         return SafeArea(
             child: Scaffold(
               backgroundColor: const Color(0xFFEBEBEB),
-                appBar: WorkSpaceCoAppBar(title: "Help & Support",titleSize: 20,titleActions: [],),
+                appBar: WorkSpaceCoAppBar(title: "Help & Support",titleSize: 20,titleActions: const [],),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,

@@ -95,7 +95,7 @@ class UserProfileScreenController extends GetxController{
       startNextPageAnimation = true;
       update();
       Future.delayed(const Duration(seconds: 1), () {
-        Get.to(() => const WscLocationScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: Duration(milliseconds: 1500));
+        Get.to(() => const WscLocationScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: const Duration(milliseconds: 1500));
       }).whenComplete(() {
         Future.delayed(const Duration(seconds: 2),() {
           startNextPageAnimation = false;

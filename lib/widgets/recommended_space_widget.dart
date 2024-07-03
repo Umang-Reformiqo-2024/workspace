@@ -13,7 +13,7 @@ class RecommendedSpaceItem extends StatelessWidget {
   final void Function() onTapFavIcon;
   final String heroTag;
 
-  RecommendedSpaceItem({
+  RecommendedSpaceItem({super.key, 
     required this.pngAssetPath,
     required this.title,
     required this.description,

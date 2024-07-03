@@ -1,13 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/home/wsc_location_controller.dart';
-import 'package:workspace/controller/home/wsc_location_detail_screen_controller.dart';
 import 'package:workspace/screens/bookings/booking_schedule_screen.dart';
 import 'package:workspace/screens/home/home_screen.dart';
-import 'package:workspace/screens/home/wsc_location_detail_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
 import '../../widgets/common_widgets/app_bar.dart';
@@ -20,7 +16,7 @@ class WscLocationScreen extends StatelessWidget {
     return GetBuilder(
       init: WscLocationController(),
       builder: (controller) => Scaffold(
-        backgroundColor: Color(0xFFEBEBEB),
+        backgroundColor: const Color(0xFFEBEBEB),
         appBar:WorkSpaceCoAppBar(title: "WorkSpaceCo",titleSize: 20,automaticallyLeading: false,),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -110,11 +106,11 @@ class WscLocationScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 15,),
-              AppButtonPrimary(onTap: () => Get.to(()=> const BookingScheduleScreen(),duration: Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut), text: "Book Now",buttonMargin: EdgeInsets.zero,),
+              AppButtonPrimary(onTap: () => Get.to(()=> const BookingScheduleScreen(),duration: const Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut), text: "Book Now",buttonMargin: EdgeInsets.zero,),
               Container(
                 height: 40,
                 padding: const EdgeInsets.only(top: 10),
-                margin: EdgeInsets.only(top: 15),
+                margin: const EdgeInsets.only(top: 15),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -156,7 +152,7 @@ class WscLocationScreen extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: 4,
                     itemBuilder: (context, index) {
-                    return locationCard(index: index,onTapLocation: () => Get.to(()=> HomeScreen(),duration: Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut),);
+                    return locationCard(index: index,onTapLocation: () => Get.to(()=> HomeScreen(),duration: const Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut),);
                   },),
                 ),
               )

@@ -14,7 +14,7 @@ class CommunityScreenController extends GetxController{
   onTapCompanyItem(){
     if(selectedTabIndex==1)
       {
-        Get.to(CommunityDetailScreen(),duration: Duration(milliseconds: 500),transition: Transition.cupertino);
+        Get.to(const CommunityDetailScreen(),duration: const Duration(milliseconds: 500),transition: Transition.cupertino);
       }
   }
 }

@@ -1,9 +1,7 @@
 import 'dart:developer';
 
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_timetable/flutter_timetable.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
@@ -182,7 +180,7 @@ class BookingScheduleScreen extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10)),
                       child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,

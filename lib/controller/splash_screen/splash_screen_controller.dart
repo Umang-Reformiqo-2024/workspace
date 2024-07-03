@@ -13,7 +13,7 @@ class SplashScreenController extends GetxController{
       logoUp = true;
       update();
       Future.delayed(const Duration(seconds: 1), () {
-        Get.off(() => const IntroductionScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: Duration(milliseconds: 1500));
+        Get.off(() => const IntroductionScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: const Duration(milliseconds: 1500));
       });
     });
   }

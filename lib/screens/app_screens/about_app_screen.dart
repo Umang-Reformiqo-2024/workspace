@@ -22,16 +22,16 @@ class AboutAppScreen extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Developed By,"),
-                SizedBox(height: 10,),
+                const Text("Developed By,"),
+                const SizedBox(height: 10,),
                 Image.asset("assets/v2/png/reformiqo.webp",width: 200,),
               ],
             ),
             // Spacer(),
-            Text("com.workspaceco.app",style: TextStyle(
+            const Text("com.workspaceco.app",style: TextStyle(
               fontSize: 20,fontWeight: FontWeight.bold,fontFamily: AppFont.primary
             ),),
-            Text("Version 1.01 as on 29/06/2024",style: TextStyle(
+            const Text("Version 1.01 as on 29/06/2024",style: TextStyle(
               fontSize: 14,fontWeight: FontWeight.w500,fontFamily: AppFont.primary
             ),),
           ],

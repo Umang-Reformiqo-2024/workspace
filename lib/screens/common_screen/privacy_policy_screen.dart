@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:workspace/controller/common_screen/privacy_policy_screen_controller.dart';
 
-import '../../app_data/app_fonts/app_font.dart';
 import '../../widgets/common_widgets/app_bar.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {

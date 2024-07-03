@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../app_data/app_fonts/app_font.dart';
 
@@ -7,7 +6,7 @@ class IntroductionScreenWidget extends StatelessWidget{
   String webpImage;
   String title;
   String description;
-  IntroductionScreenWidget({required this.webpImage,required this.title,required this.description});
+  IntroductionScreenWidget({super.key, required this.webpImage,required this.title,required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +29,11 @@ class IntroductionScreenWidget extends StatelessWidget{
           Image.asset(webpImage,height: 200,width:200,),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Align(alignment: Alignment.centerLeft,child: Text(title,style: TextStyle(fontSize: 18,fontFamily: AppFont.primary,fontWeight: FontWeight.bold),)),
+            child: Align(alignment: Alignment.centerLeft,child: Text(title,style: const TextStyle(fontSize: 18,fontFamily: AppFont.primary,fontWeight: FontWeight.bold),)),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Align(alignment: Alignment.centerLeft,child: Text(description,textAlign: TextAlign.justify,style: TextStyle(fontSize: 14,fontFamily: AppFont.primary,fontWeight: FontWeight.normal),)),
+            child: Align(alignment: Alignment.centerLeft,child: Text(description,textAlign: TextAlign.justify,style: const TextStyle(fontSize: 14,fontFamily: AppFont.primary,fontWeight: FontWeight.normal),)),
           ),
         ],),
       ),

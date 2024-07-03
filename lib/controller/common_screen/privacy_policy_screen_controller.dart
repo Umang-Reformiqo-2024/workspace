@@ -23,12 +23,15 @@ class PrivacyPolicyScreenController extends GetxController{
         //   return NavigationDecision.navigate;
         // },
       ),
-    )..runJavaScript("""
-      document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.elementor-185 .elementor-element.elementor-element-a0c58bb').style.display = 'none';
-});
-      """)
-    ..loadRequest(Uri.parse('https://workspaceco.in/privacy-policy/'));
+    )
+    ..loadRequest(Uri.parse('https://workspaceco.in/privacy-policy/'))
+    ..runJavaScript(
+        """
+        document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.elementor-185 .elementor-element.elementor-element-a0c58bb').style.display = 'none';
+        });
+        """
+    );
 
 
   @override

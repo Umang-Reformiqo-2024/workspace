@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/home/wsc_location_detail_screen_controller.dart';
 import 'package:workspace/screens/community/community_screen.dart';
 import 'package:workspace/screens/event_screen/event_screen.dart';
@@ -23,28 +22,28 @@ class WscLocationDetailScreen extends StatelessWidget {
             length: 4,
             initialIndex: 0,
             child: Scaffold(
-              backgroundColor: Color(0xFFEBEBEB),
+              backgroundColor: const Color(0xFFEBEBEB),
               appBar: WorkSpaceCoAppBar(title: "WorkSpaceCo. City Center",titleSize: 20,),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Row(
                     children: [
-                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(CommunityScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Community",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(const CommunityScreen(),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Community",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
                       const SizedBox(width: 20,),
-                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(FeedScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Feed",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(const FeedScreen(),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Feed",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
                     ],
                   ),
                 ),Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Row(
                     children: [
-                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(EventScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Events",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(const EventScreen(),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Events",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
                       const SizedBox(width: 20,),
-                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(VisitorScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Visitor",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
+                      Expanded(child: AppButtonPrimary(onTap: () {Get.to(const VisitorScreen(),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);}, text: "Visitor",buttonMargin: EdgeInsets.zero,buttonHeight: 40,textSize: 14,)),
                     ],
                   ),
                 ),
@@ -78,7 +77,7 @@ class WscLocationDetailScreen extends StatelessWidget {
                 Container(
                   height: 40,
                   padding: const EdgeInsets.only(top: 10),
-                  margin: EdgeInsets.only(top: 10),
+                  margin: const EdgeInsets.only(top: 10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/screens/common_screen/help_and_support_screen.dart';
 import 'package:workspace/screens/common_screen/notification_screen.dart';
-import '../../app_data/app_fonts/app_font.dart'; // Adjust the path based on your project structure
+// Adjust the path based on your project structure
 
 class WorkSpaceCoAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -16,7 +16,7 @@ class WorkSpaceCoAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool actionIconColorIsWhite;
   final List<Widget> titleActions;
 
-  WorkSpaceCoAppBar({
+  WorkSpaceCoAppBar({super.key, 
     this.title = "WorkSpaceCo",
     this.appBarColor = Colors.white,
     this.forceMaterialTransparency = true,
@@ -32,13 +32,13 @@ class WorkSpaceCoAppBar extends StatelessWidget implements PreferredSizeWidget {
     return [
       GestureDetector(
         onTap: () {
-          Get.to(() => const NotificationScreen(),duration: Duration(milliseconds: 400),curve: Curves.easeInOut,transition: Transition.zoom);
+          Get.to(() => const NotificationScreen(),duration: const Duration(milliseconds: 400),curve: Curves.easeInOut,transition: Transition.zoom);
         },
         child: Image.asset("assets/v2/png/notification_icon.png",height: 24,color: actionIconColorIsWhite?Colors.white:null),
       ),
       const SizedBox(width: 15),
       GestureDetector(onTap: () {
-    Get.to(() => HelpAndSupportScreen(),duration: Duration(milliseconds: 400),curve: Curves.easeInOut,transition: Transition.zoom);
+    Get.to(() => HelpAndSupportScreen(),duration: const Duration(milliseconds: 400),curve: Curves.easeInOut,transition: Transition.zoom);
     },child: Image.asset("assets/v2/png/help_and_support_icon.png",height: 24,color: actionIconColorIsWhite?Colors.white:null),),
       const SizedBox(width: 20),
     ];
@@ -50,6 +50,8 @@ class WorkSpaceCoAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: appBarColor,
       forceMaterialTransparency: forceMaterialTransparency,
       automaticallyImplyLeading: automaticallyLeading,
+      surfaceTintColor: Colors.transparent,
+      shadowColor: Colors.transparent,
       title: Text(
         title,
         style: TextStyle(
@@ -65,5 +67,5 @@ class WorkSpaceCoAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

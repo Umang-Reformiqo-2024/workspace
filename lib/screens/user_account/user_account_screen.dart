@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/user_account/user_account_screen_controller.dart';
@@ -8,7 +6,6 @@ import 'package:workspace/screens/app_screens/about_app_screen.dart';
 import 'package:workspace/screens/bookings/my_bookings_screen.dart';
 import 'package:workspace/screens/common_screen/help_and_support_screen.dart';
 import 'package:workspace/screens/common_screen/privacy_policy_screen.dart';
-import 'package:workspace/screens/home/home_screen.dart';
 import 'package:workspace/screens/splash_screen/splash_screen.dart';
 import 'package:workspace/screens/user_account/user_profile_screen.dart';
 import 'package:workspace/widgets/common_widgets/app_navigator.dart';

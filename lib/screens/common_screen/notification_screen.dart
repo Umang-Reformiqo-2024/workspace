@@ -16,7 +16,7 @@ class NotificationScreen extends StatelessWidget {
       builder: (controller) {
         return SafeArea(child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: WorkSpaceCoAppBar(title: "Notification.",titleSize: 20,titleActions: [],),
+          appBar: WorkSpaceCoAppBar(title: "Notification.",titleSize: 20,titleActions: const [],),
           body: Padding(
             padding: const EdgeInsets.all(12.0),
             child:

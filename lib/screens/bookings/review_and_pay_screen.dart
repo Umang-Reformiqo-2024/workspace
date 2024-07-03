@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
@@ -25,7 +24,7 @@ class ReviewAndPayScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20,right: 20),
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 20),
+                    margin: const EdgeInsets.only(top: 20),
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFDFDFD),
@@ -156,7 +155,7 @@ class ReviewAndPayScreen extends StatelessWidget {
                 ],
               ),
               bottomNavigationBar: AppButtonPrimary(onTap: () {
-                Get.to(()=> SuccessfulPaymentScreen(),duration: Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
+                Get.to(()=> const SuccessfulPaymentScreen(),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
               }, text: "Pay Now"),
         ));
       },

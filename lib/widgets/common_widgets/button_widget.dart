@@ -7,12 +7,12 @@ class AppButtonPrimary extends StatelessWidget {
   String text;
   double buttonHeight=60;
   Color textColor = Colors.white;
-  Color buttonColor = Color(0xFF2F2F2F);
+  Color buttonColor = const Color(0xFF2F2F2F);
   double buttonRadius = 10;
   FontWeight textWeight = FontWeight.bold;
   double textSize = 20;
   String textFont = AppFont.primary;
-  EdgeInsetsGeometry buttonMargin = EdgeInsets.symmetric(horizontal: 30,vertical: 10);
+  EdgeInsetsGeometry buttonMargin = const EdgeInsets.symmetric(horizontal: 30,vertical: 10);
   AppButtonPrimary({
     super.key,
     required this.onTap,
@@ -47,14 +47,14 @@ class AppButtonSecondary extends StatelessWidget {
   void Function() onTap;
   String text;
   double buttonHeight=60;
-  Color textColor = Color(0xFF2F2F2F);
-  Color borderColor = Color(0xFF2F2F2F);
+  Color textColor = const Color(0xFF2F2F2F);
+  Color borderColor = const Color(0xFF2F2F2F);
   Color buttonColor = Colors.white;
   double buttonRadius = 10;
   FontWeight textWeight = FontWeight.bold;
   double textSize = 20;
   String textFont = AppFont.primary;
-  EdgeInsetsGeometry buttonMargin = EdgeInsets.symmetric(horizontal: 30,vertical: 10);
+  EdgeInsetsGeometry buttonMargin = const EdgeInsets.symmetric(horizontal: 30,vertical: 10);
   AppButtonSecondary({
     super.key,
     required this.onTap,

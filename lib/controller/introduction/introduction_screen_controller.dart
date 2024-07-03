@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -23,7 +22,7 @@ class IntroductionScreenController extends GetxController{
       startNextPageAnimation = true;
       update();
       Future.delayed(const Duration(seconds: 1), () {
-        Get.off(() => const LoginSignupScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: Duration(milliseconds: 1500));
+        Get.off(() => const LoginSignupScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: const Duration(milliseconds: 1500));
       });
     });
   }
