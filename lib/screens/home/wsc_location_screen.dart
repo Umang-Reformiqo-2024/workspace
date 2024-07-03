@@ -10,6 +10,8 @@ import 'package:workspace/screens/home/home_screen.dart';
 import 'package:workspace/screens/home/wsc_location_detail_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
+import '../../widgets/common_widgets/app_bar.dart';
+
 class WscLocationScreen extends StatelessWidget {
   const WscLocationScreen({super.key});
 
@@ -19,13 +21,7 @@ class WscLocationScreen extends StatelessWidget {
       init: WscLocationController(),
       builder: (controller) => Scaffold(
         backgroundColor: Color(0xFFEBEBEB),
-        appBar: AppBar(
-          forceMaterialTransparency: true,
-          title: Image.asset("assets/v2/png/app_logo.webp",height: 150,width: 150,fit: BoxFit.fill,),
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          actions: const [Icon(Icons.message_outlined),SizedBox(width: 10,),Icon(Icons.info_outline),SizedBox(width: 10,)],
-        ),
+        appBar:WorkSpaceCoAppBar(title: "WorkSpaceCo",titleSize: 20,automaticallyLeading: false,),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

@@ -12,7 +12,8 @@ class PrivacyPolicyScreenController extends GetxController{
           // Update loading bar.
         },
         onPageStarted: (String url) {},
-        onPageFinished: (String url) {},
+        onPageFinished: (String url) {
+        },
         onHttpError: (HttpResponseError error) {},
         onWebResourceError: (WebResourceError error) {},
         // onNavigationRequest: (NavigationRequest request) {
@@ -22,8 +23,13 @@ class PrivacyPolicyScreenController extends GetxController{
         //   return NavigationDecision.navigate;
         // },
       ),
-    )
+    )..runJavaScript("""
+      document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.elementor-185 .elementor-element.elementor-element-a0c58bb').style.display = 'none';
+});
+      """)
     ..loadRequest(Uri.parse('https://workspaceco.in/privacy-policy/'));
+
 
   @override
   void onInit() {

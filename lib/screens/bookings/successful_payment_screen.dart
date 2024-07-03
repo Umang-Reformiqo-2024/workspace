@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/bookings/successful_payment_screen_controller.dart';
+import 'package:workspace/screens/bookings/my_bookings_screen.dart';
 import 'package:workspace/screens/home/home_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
@@ -57,7 +58,12 @@ class SuccessfulPaymentScreen extends StatelessWidget {
                   ),),
                 ),
                 AppButtonPrimary(onTap: () {
-                  Get.offAll(()=> HomeScreen(bottomIndex: 1,),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
+                  // Get.offAll(()=> HomeScreen(bottomIndex: 1,),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
+                  // Get.off(()=> const MyBookingsScreen(),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
+                  Get.offUntil(
+                    MaterialPageRoute(builder: (_) => const MyBookingsScreen()),
+                        (route) => route.settings.name == "/HomeScreen", // This will pop all routes until the first route (Home Page)
+                  );
                 }, text: "View Bookings"),
                 const SizedBox(height: 30,)
               ],

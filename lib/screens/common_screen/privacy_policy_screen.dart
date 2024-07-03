@@ -19,7 +19,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
           appBar: WorkSpaceCoAppBar(title: "Privacy Policy",titleSize: 20,),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Expanded(child: WebViewWidget(controller: controller.webViewController)),
+            child: WebViewWidget(controller: controller.webViewController),
           ),
         ));
       },

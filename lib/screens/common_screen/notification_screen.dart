@@ -4,6 +4,8 @@ import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/common_screen/notification_screen_controller.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
+import '../../widgets/common_widgets/app_bar.dart';
+
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
 
@@ -14,15 +16,7 @@ class NotificationScreen extends StatelessWidget {
       builder: (controller) {
         return SafeArea(child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(
-            backgroundColor: Colors.red,
-            automaticallyImplyLeading: true,
-            // forceMaterialTransparency: true,
-            actions: [
-              IconButton(onPressed: () {}, icon: const Icon(Icons.message_outlined)),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.info_outline)),
-            ],
-          ),
+          appBar: WorkSpaceCoAppBar(title: "Notification.",titleSize: 20,titleActions: [],),
           body: Padding(
             padding: const EdgeInsets.all(12.0),
             child:
@@ -31,8 +25,6 @@ class NotificationScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Notifications",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22,color: Colors.black,fontFamily: AppFont.primary),),
-                const SizedBox(height: 30,),
                 Expanded(
                   child: ListView.builder(
                     itemCount: 3,
