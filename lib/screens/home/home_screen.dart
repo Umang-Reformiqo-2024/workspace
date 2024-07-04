@@ -71,6 +71,14 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         enableShadow: true,
         animated: true,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            spreadRadius: 1,
+            blurRadius: 6,
+            offset: const Offset(0, -1)
+          )
+        ],
       ),
     );
   }

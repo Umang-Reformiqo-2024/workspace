@@ -30,14 +30,34 @@ class BookingScheduleScreen extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
+
+                    const Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text("No. of People"),
+                    ),
+                    Container(
+                      height: 50,
+                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      child:  CustomDropdown<String>(
+                        hintText: 'Select job role',
+                        items: controller.noOfPeopleList,
+                        initialItem: controller.noOfPeopleList[0],
+                        decoration: const CustomDropdownDecoration(
+                          prefixIcon: Icon(Icons.person),
+                        ),
+                        onChanged: (value) {
+                          log('changing value to: $value');
+                        },
+                      ),
+                    ),
                     const Padding(
                       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                       child: Text(
-                        "Select Date and Time Slot",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: AppFont.primary,
-                            fontWeight: FontWeight.normal),
+                        "Select Date and Time Slot"
                       ),
                     ),
                     // Divider(),
@@ -48,7 +68,7 @@ class BookingScheduleScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10)),
                       margin: const EdgeInsets.only(
                           left: 10, right: 10, bottom: 10),
-                      padding: const EdgeInsets.only(right: 5),
+                      padding: const EdgeInsets.only(right: 5,bottom: 3,top: 5,left: 5),
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: controller.dates.length,
@@ -57,8 +77,8 @@ class BookingScheduleScreen extends StatelessWidget {
                             onTap: () =>
                                 controller.onTapDateSelection(index: index),
                             child: Container(
-                              width: 80,
-                              margin: const EdgeInsets.all(10),
+                              width: 70,
+                              margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 5),
                               decoration: BoxDecoration(
                                   color: controller.dates[index].isSelected
                                       ? const Color(0xFF2F2F2F).withOpacity(0.8)
@@ -82,7 +102,7 @@ class BookingScheduleScreen extends StatelessWidget {
                                                 ? Colors.white
                                                 : Colors.black,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 20),
+                                            fontSize: 18),
                                       ),
                                       const SizedBox(
                                         width: 5,
@@ -96,7 +116,7 @@ class BookingScheduleScreen extends StatelessWidget {
                                                 ? Colors.white
                                                 : Colors.black,
                                             fontWeight: FontWeight.w300,
-                                            fontSize: 12),
+                                            fontSize: 14),
                                       ),
                                     ],
                                   ),
@@ -108,7 +128,7 @@ class BookingScheduleScreen extends StatelessWidget {
                                                 ? Colors.white
                                                 : Colors.black,
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 18),
+                                        fontSize: 16),
                                   ),
                                 ],
                               ),
@@ -119,8 +139,8 @@ class BookingScheduleScreen extends StatelessWidget {
                     ),
                     // Divider(),
                     Container(
-                      height: 30,
-                      margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      height: 40,
+                      margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -183,18 +203,17 @@ class BookingScheduleScreen extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                childAspectRatio: 16 / 9,
+                                crossAxisCount: 4,
                                 mainAxisSpacing: 0,
                                 crossAxisSpacing: 0,
-                                mainAxisExtent: 70),
+                                mainAxisExtent: 60),
                         itemCount: controller.timeSlots.length,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () => controller.onTapTimeSlots(index: index),
                             child: Container(
-                              margin: const EdgeInsets.all(10),
+                              margin: const EdgeInsets.symmetric(vertical: 8,horizontal: 5),
                               decoration: BoxDecoration(
                                   color:
                                   controller.timeSlots[index].isSelected
@@ -212,34 +231,11 @@ class BookingScheduleScreen extends StatelessWidget {
                                   child: Text(
                                       controller.timeSlots[index].time ?? "",
                                     style: controller.timeSlots[index].isSelected
-                                        ? const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
-                                        : const TextStyle(color: Color(0xFF303030), fontWeight: FontWeight.normal),
+                                        ? const TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 12)
+                                        : const TextStyle(color: Color(0xFF303030), fontWeight: FontWeight.normal,fontSize: 10),
                                   )),
                             ),
                           );
-                        },
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text("No. of People"),
-                    ),
-                    Container(
-                      height: 50,
-                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)
-                      ),
-                      child:  CustomDropdown<String>(
-                        hintText: 'Select job role',
-                        items: controller.noOfPeopleList,
-                        initialItem: controller.noOfPeopleList[0],
-                        decoration: const CustomDropdownDecoration(
-                          prefixIcon: Icon(Icons.person),
-                        ),
-                        onChanged: (value) {
-                          log('changing value to: $value');
                         },
                       ),
                     ),
