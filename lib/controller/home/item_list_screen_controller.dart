@@ -39,29 +39,29 @@ class ItemListScreenController extends GetxController{
     HomeItemModelClass(pngAssetPath: "assets/v2/png/location_1.webp", title: "title", subTitle: "subTitle", location: "location"),
 
   ];
-  List<HomeItemModelClass> virtualOfficeItemList=[
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/virtual_office_0.png", title: "Digital HQ", subTitle: "Your Online Command Center", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/virtual_office_1.png", title: "Remote Lounge", subTitle: "Connect Seamlessly from Anywhere", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/virtual_office_2.png", title: "Cyber Suite", subTitle: "A Virtual Sanctuary for Productivity", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/virtual_office_3.png", title: "Telecommuter's Haven", subTitle: "Bringing the Office to Your Screen", location: "location"),
+  List<HomeItemModelClass> deskItemList=[
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_2.webp", title: "Digital HQ", subTitle: "Your Online Command Center", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_2.webp", title: "Remote Lounge", subTitle: "Connect Seamlessly from Anywhere", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_2.webp", title: "Cyber Suite", subTitle: "A Virtual Sanctuary for Productivity", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_2.webp", title: "Telecommuter's Haven", subTitle: "Bringing the Office to Your Screen", location: "location"),
   ];
-  List<HomeItemModelClass> officeSpaceItemList=[
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_0.png", title: "Hub Central", subTitle: "The Heartbeat of Collaboration", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_1.png", title: "Unity Commons", subTitle: "Where Community and Creativity Converge", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_2.png", title: "Innovator's Nexus", subTitle: "Where Boundless Ideas Intersect", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/location_2.png", title: "Elevate Workspace", subTitle: "Inspiring Growth and Success", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/location_3.png", title: "Collab Central", subTitle: "Where Teams Come Together to Thrive", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/location_4.png", title: "Creative Commons", subTitle: "Unleash Your Imagination in a Shared Space", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/coworking_space_6.png", title: "Synergy Station", subTitle: "Where Energy and Ideas Flow Freely", location: "location"),
+  List<HomeItemModelClass> cabinItemList=[
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_3.webp", title: "Hub Central", subTitle: "The Heartbeat of Collaboration", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_3.webp", title: "Unity Commons", subTitle: "Where Community and Creativity Converge", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_3.webp", title: "Innovator's Nexus", subTitle: "Where Boundless Ideas Intersect", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_3.webp", title: "Elevate Workspace", subTitle: "Inspiring Growth and Success", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_3.webp", title: "Collab Central", subTitle: "Where Teams Come Together to Thrive", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_3.webp", title: "Creative Commons", subTitle: "Unleash Your Imagination in a Shared Space", location: "location"),
+    HomeItemModelClass(pngAssetPath: "assets/v2/png/location_3.webp", title: "Synergy Station", subTitle: "Where Energy and Ideas Flow Freely", location: "location"),
   ];
-  List<HomeItemModelClass> trainingRoomItemList=[
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_0.png", title: "Learning Lab", subTitle: "Where Knowledge Meets Opportunity", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_1.png", title: "Skill Forge", subTitle: "Crafting Competence, One Session at a Time", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_2.png", title: "Training Terrace", subTitle: "Elevate Your Skills in a Dynamic Environment", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_3.png", title: "Education Emporium", subTitle: "Empowering Growth through Learning", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_4.png", title: "Development Den", subTitle: "Nurturing Talent, Fostering Growth", location: "location"),
-    HomeItemModelClass(pngAssetPath: "assets/icons/item_icons/training_room_5.png", title: "Knowledge Kingdom", subTitle: "Expand Your Horizons, Expand Your Skills", location: "location"),
-  ];
+  // List<HomeItemModelClass> trainingRoomItemList=[
+  //   HomeItemModelClass(pngAssetPath: "assets/v2/png/location_4.webp", title: "Learning Lab", subTitle: "Where Knowledge Meets Opportunity", location: "location"),
+  //   HomeItemModelClass(pngAssetPath: "assets/v2/png/location_4.webp", title: "Skill Forge", subTitle: "Crafting Competence, One Session at a Time", location: "location"),
+  //   HomeItemModelClass(pngAssetPath: "assets/v2/png/location_4.webp", title: "Training Terrace", subTitle: "Elevate Your Skills in a Dynamic Environment", location: "location"),
+  //   HomeItemModelClass(pngAssetPath: "assets/v2/png/location_4.webp", title: "Education Emporium", subTitle: "Empowering Growth through Learning", location: "location"),
+  //   HomeItemModelClass(pngAssetPath: "assets/v2/png/location_4.webp", title: "Development Den", subTitle: "Nurturing Talent, Fostering Growth", location: "location"),
+  //   HomeItemModelClass(pngAssetPath: "assets/v2/png/location_4.webp", title: "Knowledge Kingdom", subTitle: "Expand Your Horizons, Expand Your Skills", location: "location"),
+  // ];
 
   int selectedCategoryIndex=0;
 
@@ -84,18 +84,18 @@ class ItemListScreenController extends GetxController{
     if(selectedCategoryIndex==1)
     {
       itemListHome.clear();
-      itemListHome.addAll(virtualOfficeItemList);
+      itemListHome.addAll(deskItemList);
     }
     if(selectedCategoryIndex==2)
     {
       itemListHome.clear();
-      itemListHome.addAll(officeSpaceItemList);
+      itemListHome.addAll(cabinItemList);
     }
-    if(selectedCategoryIndex==3)
-    {
-      itemListHome.clear();
-      itemListHome.addAll(trainingRoomItemList);
-    }
+    // if(selectedCategoryIndex==3)
+    // {
+    //   itemListHome.clear();
+    //   itemListHome.addAll(trainingRoomItemList);
+    // }
 
     update();
   }

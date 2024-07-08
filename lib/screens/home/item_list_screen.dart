@@ -18,13 +18,13 @@ class ItemListScreen extends StatelessWidget {
             backgroundColor: Colors.white,
             body: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 10),
                     ListView.builder(
-                      itemCount: controller.itemListHome.length-15,
+                      itemCount: controller.itemListHome.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {

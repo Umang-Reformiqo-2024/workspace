@@ -22,7 +22,8 @@ class WscLocationDetailScreen extends StatelessWidget {
             length: 4,
             initialIndex: 0,
             child: Scaffold(
-              backgroundColor: const Color(0xFFEBEBEB),
+              // backgroundColor: const Color(0xFFEBEBEB),
+              backgroundColor: Colors.white,
               appBar: WorkSpaceCoAppBar(title: "WorkSpaceCo. City Center",titleSize: 20,),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -75,43 +76,48 @@ class WscLocationDetailScreen extends StatelessWidget {
                 //   ),
                 // ),
                 Container(
-                  height: 40,
+                  height: 20,
                   padding: const EdgeInsets.only(top: 10),
                   margin: const EdgeInsets.only(top: 10),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12.withOpacity(0.055),
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                        offset: const Offset(0, -1)
-                      ),
-                    ],
-                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black12.withOpacity(0.055),
+                            spreadRadius: 2,
+                            blurRadius: 2,
+                            offset: const Offset(0, -2)
+                        ),
+                      ],
+                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
                   ),
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      height: 5,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          color: const Color(0xFF464646),
-                        borderRadius: BorderRadius.circular(20)
-                      ),
-                    ),
-                  ),
+                  // child: Align(
+                  //   alignment: Alignment.topCenter,
+                  //   child: Container(
+                  //     height: 5,
+                  //     width: 70,
+                  //     decoration: BoxDecoration(
+                  //         color: const Color(0xFF464646),
+                  //       borderRadius: BorderRadius.circular(20)
+                  //     ),
+                  //   ),
+                  // ),
                 ),
                 ColoredBox(
                   color: Colors.white,
                   child: TabBar(
-                    isScrollable: true,
+                    onTap: (value) {
+                      controller.onChangedTabBar(value);
+                    },
+                    isScrollable: false,
+                    physics: NeverScrollableScrollPhysics(),
                     splashFactory: NoSplash.splashFactory,
                     automaticIndicatorColorAdjustment: true,
-                    tabAlignment: TabAlignment.start,
+                    tabAlignment: TabAlignment.center,
                     labelColor: Colors.black,
                     unselectedLabelColor: Colors.grey,
                     indicatorColor: Colors.red,
+                    padding: EdgeInsets.only(bottom: 8),
                     tabs: [
                       Tab(text: 'Meeting Room',icon: Center(child: Image.asset("assets/v2/png/meeting_room_icon.webp",height: 50,width: 50,),),),
                       Tab(text: 'Desk',icon: Center(child: Image.asset("assets/v2/png/desk_icon.webp",height: 50,width: 50,),),),
@@ -125,6 +131,7 @@ class WscLocationDetailScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: TabBarView(
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
                     const ItemListScreen(),
                     const ItemListScreen(),

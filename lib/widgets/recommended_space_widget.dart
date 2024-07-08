@@ -33,8 +33,17 @@ class RecommendedSpaceItem extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[100]
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: const Color(0xFFFFFFFF)),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  offset: const Offset(1, 1),
+                  blurRadius: 4,
+                  spreadRadius: 2
+              )
+            ]
         ),
         child: InkWell(
           onTap: () => onTapItem(),
@@ -58,7 +67,7 @@ class RecommendedSpaceItem extends StatelessWidget {
                               ),
                             ),),
                             options: CarouselOptions(
-                              autoPlay: true,
+                              autoPlay: false,
                               enlargeCenterPage: true,
                               viewportFraction: 1,
                               aspectRatio: 16/9,

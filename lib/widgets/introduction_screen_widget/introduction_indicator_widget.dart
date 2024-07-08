@@ -15,10 +15,10 @@ class IntroductionIndicatorWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(100)),
       child: AnimatedOpacity(
           opacity: isDarken?1:0,
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         child: AnimatedSlide(
-          offset: isDarken ? Offset(0, 0) : Offset(-4, 0),
-          duration: Duration(milliseconds: 500),
+          offset: isDarken ? const Offset(0, 0) : const Offset(-4, 0),
+          duration: const Duration(milliseconds: 500),
           child: Container(
             height: 16,
             width: 16,
