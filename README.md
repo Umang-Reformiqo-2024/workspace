@@ -1,8 +1,6 @@
 ![Logo](https://workspaceco.in/wp-content/uploads/2023/09/w3.png)
 
-# Workspaceco.in
-
-## Developed By
+# Workspaceco.in Developed By
 **Reformiqo Business Service PVT. LTD.**
 ![Logo](https://reformiqo.com/wp-content/uploads/2024/03/reformiqo-final-logo.rgb-file.ai-blue-01-768x105.jpg)
 
