@@ -2,7 +2,12 @@
 
 # Workspaceco.in
 
-## Description
+## Developed By
+**Reformiqo Business Service PVT. LTD.**
+![Logo](https://reformiqo.com/wp-content/uploads/2024/03/reformiqo-final-logo.rgb-file.ai-blue-01-768x105.jpg)
+
+
+## About Application
 **Workspaceco.in** is a mobile application developed to enhance the management and operational efficiency of co-working spaces located in Surat, India. The application is designed to cater to the needs of both administrators and users, providing a seamless and user-friendly experience.
 
 ## Features
@@ -30,9 +35,6 @@
 - **Profile Management:** Manage your personal profile, including your membership details and preferences.
 - **Support:** Access a dedicated support team to assist you with any issues or queries.
 
-## Developed By
-**Reformiqo Business Service PVT. LTD.**
-![Logo](https://reformiqo.com/wp-content/uploads/2024/03/reformiqo-final-logo.rgb-file.ai-blue-01-768x105.jpg)
 
 ## Extra Details
 Workspaceco.in is crafted to ensure efficient utilization of co-working facilities and to improve user satisfaction. Whether you're a freelancer, a startup, or an established business, our application provides the tools you need to thrive in a co-working environment. Join us and be a part of a vibrant and collaborative community.
