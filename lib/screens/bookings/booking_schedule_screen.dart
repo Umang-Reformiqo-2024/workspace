@@ -4,7 +4,6 @@ import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
-import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/bookings/booking_schedule_screen_controller.dart';
 import 'package:workspace/screens/bookings/review_and_pay_screen.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
@@ -21,7 +20,7 @@ class BookingScheduleScreen extends StatelessWidget {
       builder: (controller) {
         return SafeArea(
             child: Scaffold(
-          backgroundColor: const Color(0xFFEBEBEB),
+          backgroundColor: Colors.white,
               appBar: WorkSpaceCoAppBar(title: "Schedule Your Booking",titleSize: 20,),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -40,10 +39,18 @@ class BookingScheduleScreen extends StatelessWidget {
                       margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                offset: const Offset(0, 0),
+                                blurRadius: 4,
+                                spreadRadius: 1
+                            )
+                          ],
+                          borderRadius: const BorderRadius.all(Radius.circular(10))
                       ),
                       child:  CustomDropdown<String>(
-                        hintText: 'Select job role',
+                        hintText: 'Select People',
                         items: controller.noOfPeopleList,
                         initialItem: controller.noOfPeopleList[0],
                         decoration: const CustomDropdownDecoration(
@@ -65,7 +72,16 @@ class BookingScheduleScreen extends StatelessWidget {
                       height: 80,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                offset: const Offset(0, 0),
+                                blurRadius: 4,
+                                spreadRadius: 1
+                            )
+                          ],
+                          borderRadius: const BorderRadius.all(Radius.circular(10))
+                      ),
                       margin: const EdgeInsets.only(
                           left: 10, right: 10, bottom: 10),
                       padding: const EdgeInsets.only(right: 5,bottom: 3,top: 5,left: 5),
@@ -144,7 +160,16 @@ class BookingScheduleScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                offset: const Offset(0, 0),
+                                blurRadius: 4,
+                                spreadRadius: 1
+                            )
+                          ],
+                          borderRadius: const BorderRadius.all(Radius.circular(10))
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

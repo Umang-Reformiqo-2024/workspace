@@ -49,7 +49,7 @@ class WscLocationScreen extends StatelessWidget {
                             ),
                             child:  CustomDropdown<String>(
                               hintText: 'Select job role',
-                              items: ['Home','City Center','Skyline','Rise'],
+                              items: const ['Home','City Center','Skyline','Rise'],
                               initialItem: 'Home',
                               decoration: const CustomDropdownDecoration(closedFillColor: Color(0xFFEBEBEB),expandedFillColor: Color(0xFFEBEBEB)),
                               onChanged: (value) {
@@ -76,7 +76,7 @@ class WscLocationScreen extends StatelessWidget {
                             ),
                             child:  CustomDropdown<String>(
                               hintText: 'Select job role',
-                              items: ['Meeting Room','Personal Cabin','Dedicated Desk'],
+                              items: const ['Meeting Room','Personal Cabin','Dedicated Desk'],
                               initialItem: 'Meeting Room',
                               decoration: const CustomDropdownDecoration(closedFillColor: Color(0xFFEBEBEB),expandedFillColor: Color(0xFFEBEBEB)),
                               onChanged: (value) {
@@ -153,13 +153,13 @@ class WscLocationScreen extends StatelessWidget {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.black12.withOpacity(0.055),
-                          spreadRadius: 2,
-                          blurRadius: 2,
-                          offset: const Offset(0, -2)
-                      ),
+                          color: Colors.black.withOpacity(0.1),
+                          offset: const Offset(0, -1),
+                          blurRadius: 4,
+                          spreadRadius: 2
+                      )
                     ],
-                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10))
+                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
                 ),
                 child: const Row(
                   children: [

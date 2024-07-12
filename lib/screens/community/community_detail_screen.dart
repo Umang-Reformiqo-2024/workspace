@@ -33,8 +33,16 @@ class CommunityDetailScreen extends StatelessWidget {
                     return Container(
                       margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: const Color(0xFFCACACA))
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                offset: const Offset(0, 1),
+                                blurRadius: 2,
+                                spreadRadius: 1
+                            )
+                          ],
+                          borderRadius: const BorderRadius.all(Radius.circular(10))
                       ),
                       child: Row(
                         children: [

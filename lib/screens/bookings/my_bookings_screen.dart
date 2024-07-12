@@ -17,7 +17,7 @@ class MyBookingsScreen extends StatelessWidget {
       builder: (controller) {
         return SafeArea(
             child: Scaffold(
-              backgroundColor: const Color(0xFFEBEBEB),
+              backgroundColor: Colors.white,
               appBar: WorkSpaceCoAppBar(title: "My Bookings",titleSize: 20,),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,37 +34,37 @@ class MyBookingsScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 40,
+                    height: 20,
+                    width: double.infinity,
                     margin: const EdgeInsets.only(top: 20),
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(30),
-                          topLeft: Radius.circular(30)),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black12.withOpacity(0.055),
-                            spreadRadius: 2,
-                            blurRadius: 2,
-                            offset: const Offset(0, -1)),
-                      ],
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              offset: const Offset(0, -1),
+                              blurRadius: 4,
+                              spreadRadius: 2
+                          )
+                        ],
+                        borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
                     ),
-                    child: Column(
-                      children: [
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: Container(
-                            height: 5,
-                            width: 70,
-                            margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                                color: const Color(0xFF464646),
-                                borderRadius: BorderRadius.circular(30)),
-                          ),
-                        ),
-                        // const Divider(color: Colors.black26,indent: 10,endIndent: 10,)
-                      ],
-                    ),
+                    // child: Column(
+                    //   children: [
+                    //     Align(
+                    //       alignment: Alignment.topCenter,
+                    //       child: Container(
+                    //         height: 5,
+                    //         width: 70,
+                    //         margin: const EdgeInsets.only(top: 10),
+                    //         decoration: BoxDecoration(
+                    //             color: const Color(0xFF464646),
+                    //             borderRadius: BorderRadius.circular(30)),
+                    //       ),
+                    //     ),
+                    //     // const Divider(color: Colors.black26,indent: 10,endIndent: 10,)
+                    //   ],
+                    // ),
                   ),
                   Expanded(
                     child: ColoredBox(
@@ -75,14 +75,26 @@ class MyBookingsScreen extends StatelessWidget {
                           return GestureDetector(
                             // onTap: () => controller.onTapCompanyItem(),
                             child: Container(
-                              margin: const EdgeInsets.fromLTRB(15, 5, 15, 5),
+                              margin: const EdgeInsets.fromLTRB(10, 5, 10, 10),
                               padding: const EdgeInsets.only(right: 10),
+                              // decoration: BoxDecoration(
+                              //     color: Colors.white,
+                              //     borderRadius:
+                              //     const BorderRadius.all(Radius.circular(10)),
+                              //     border:
+                              //     Border.all(color: const Color(0xFFCACACA))),
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                                  border:
-                                  Border.all(color: const Color(0xFFCACACA))),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.1),
+                                        offset: const Offset(0, 1),
+                                        blurRadius: 2,
+                                        spreadRadius: 1
+                                    )
+                                  ],
+                                  borderRadius: const BorderRadius.all(Radius.circular(10))
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,

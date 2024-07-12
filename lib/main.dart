@@ -4,11 +4,17 @@ import 'package:get/get.dart';
 import 'package:workspace/screens/splash_screen/splash_screen.dart';
 
 void main() {
-  // runApp(GetMaterialApp(home: MyApp(),));
-  // runApp(GetMaterialApp(home: HomeScreen(),));
-  runApp(const GetMaterialApp(home: SplashScreen(),));
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.white,
+    statusBarBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.white,
+    systemNavigationBarDividerColor: Colors.white,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  runApp(const GetMaterialApp(home: SplashScreen(),));
 }
 

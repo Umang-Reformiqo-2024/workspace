@@ -17,8 +17,9 @@ class MembershipScreen extends StatelessWidget {
       builder: (controller) {
         return SafeArea(
             child: Scaffold(
-          backgroundColor: const Color(0xFF2F2F2F),
-              appBar: WorkSpaceCoAppBar(title: "Membership",titleSize: 20,titleColor: Colors.white,actionIconColorIsWhite: true,),
+          // backgroundColor: const Color(0xFF2F2F2F),
+          backgroundColor: Colors.white,
+              appBar: WorkSpaceCoAppBar(title: "Membership",titleSize: 20),
               body: Padding(
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: Column(
@@ -72,12 +73,17 @@ class MembershipScreen extends StatelessWidget {
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.only(top: 10),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30)
-                          )
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  offset: const Offset(0, -1),
+                                  blurRadius: 4,
+                                  spreadRadius: 2
+                              )
+                            ],
+                            borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -89,9 +95,10 @@ class MembershipScreen extends StatelessWidget {
                                 child: Container(
                                   height: 4,
                                   width: 60,
-                                  margin: const EdgeInsets.only(top: 10,bottom: 20),
+                                  // margin: const EdgeInsets.only(top: 10,bottom: 20),
+                                  margin: const EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFF464646),
+                                    // color: const Color(0xFF464646),
                                     borderRadius: BorderRadius.circular(100)
                                   ),
                                 ),
@@ -114,12 +121,24 @@ class MembershipScreen extends StatelessWidget {
                                         curve: Curves.easeInOut,
                                         child: FadeInAnimation(
                                           child: Container(
-                                            margin: const EdgeInsets.symmetric(vertical: 5),
+                                            margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 5),
                                             height: 60,
+                                            // decoration: BoxDecoration(
+                                            //   color: const Color(0xFFFFFFFF),
+                                            //   border: Border.all(color: const Color(0xFFCACACA)),
+                                            //   borderRadius: BorderRadius.circular(10),
+                                            // ),
                                             decoration: BoxDecoration(
-                                              color: const Color(0xFFFFFFFF),
-                                              border: Border.all(color: const Color(0xFFCACACA)),
-                                              borderRadius: BorderRadius.circular(10),
+                                                color: Colors.white,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: Colors.black.withOpacity(0.1),
+                                                      offset: const Offset(0, 1),
+                                                      blurRadius: 2,
+                                                      spreadRadius: 1
+                                                  )
+                                                ],
+                                                borderRadius: const BorderRadius.all(Radius.circular(10))
                                             ),
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.start,

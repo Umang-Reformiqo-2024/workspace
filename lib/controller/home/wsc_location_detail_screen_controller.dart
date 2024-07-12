@@ -3,7 +3,7 @@ import 'package:workspace/controller/home/item_list_screen_controller.dart';
 
 class WscLocationDetailScreenController extends GetxController{
 
-  ItemListScreenController _itemListScreenController = Get.put(ItemListScreenController());
+  final ItemListScreenController _itemListScreenController = Get.put(ItemListScreenController());
 
   void onChangedTabBar(int value) {
 

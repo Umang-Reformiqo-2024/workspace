@@ -44,9 +44,21 @@ class ItemDetailScreen extends StatelessWidget {
                     child: Container(
                       height: 50,
                       padding: const EdgeInsets.only(left: 10),
+                      // decoration: BoxDecoration(
+                      //   color: Colors.grey[100],
+                      //   borderRadius: BorderRadius.circular(10),
+                      // ),
                       decoration: BoxDecoration(
-                        color: Colors.grey[100],
-                        borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                offset: const Offset(0, 1),
+                                blurRadius: 2,
+                                spreadRadius: 1
+                            )
+                          ],
+                          borderRadius: const BorderRadius.all(Radius.circular(10))
                       ),
                       child: const Row(
                         children: [
@@ -60,10 +72,22 @@ class ItemDetailScreen extends StatelessWidget {
                     height: 50,
                     padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                     margin: const EdgeInsets.only(left: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[100],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                    // decoration: BoxDecoration(
+                    //   color: Colors.grey[100],
+                    //   borderRadius: BorderRadius.circular(10),
+                    // ),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                offset: const Offset(0, 1),
+                                blurRadius: 2,
+                                spreadRadius: 1
+                            )
+                          ],
+                          borderRadius: const BorderRadius.all(Radius.circular(10))
+                      ),
                     child: const Column(
                       children: [
                         Row(children: [Icon(Icons.star,color: Color(0xFFFFB61D),size: 18,),SizedBox(width: 5,),Text("4.9",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),)],),
@@ -81,10 +105,22 @@ class ItemDetailScreen extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width,
                 padding: const EdgeInsets.all(10),
+                // decoration: BoxDecoration(
+                //   color: const Color(0xFFFDFDFD),
+                //   border: Border.all(color: const Color(0xFFB5B5B5)),
+                //   borderRadius: BorderRadius.circular(10),
+                // ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFDFDFD),
-                  border: Border.all(color: const Color(0xFFB5B5B5)),
-                  borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          offset: const Offset(0, 1),
+                          blurRadius: 2,
+                          spreadRadius: 1
+                      )
+                    ],
+                    borderRadius: const BorderRadius.all(Radius.circular(10))
                 ),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start
