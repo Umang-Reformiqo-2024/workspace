@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:motion/motion.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/membership/membership_screen_controller.dart';
@@ -12,6 +13,15 @@ class MembershipScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (Motion.instance.isPermissionRequired &&
+        !Motion.instance.isPermissionGranted) {
+      showPermissionRequestDialog(
+        context,
+        onDone: () {
+          Get.forceAppUpdate();
+        },
+      );
+    }
     return GetBuilder(
       init: MembershipScreenController(),
       builder: (controller) {
@@ -24,15 +34,15 @@ class MembershipScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: Column(
                   children: [
-                    Column(
+                    Motion.elevated(elevation: 70, child: Column(
                       children: [
                         Container(
                           height: 150,
                           margin: const EdgeInsets.only(left: 10,top: 10,right: 10),
                           padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
                           decoration: const BoxDecoration(
-                            color: Color(0xFF1E1E1E),
-                            borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20))
+                              color: Color(0xFF1E1E1E),
+                              borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20))
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,21 +50,21 @@ class MembershipScreen extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                const Text("Available Credits",style: TextStyle(fontSize: 18,color: Color(0xFFADADAD),fontFamily: AppFont.primary),),
-                                IconButton(onPressed: () {
+                                  const Text("Available Credits",style: TextStyle(fontSize: 18,color: Color(0xFFADADAD),fontFamily: AppFont.primary),),
+                                  IconButton(onPressed: () {
 
-                                }, icon: const Icon(Icons.info_outline,color: Colors.white,))
-                              ],),
+                                  }, icon: const Icon(Icons.info_outline,color: Colors.white,))
+                                ],),
                               const Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                Text("+ 25.5",style: TextStyle(fontSize: 28,color: Colors.white,fontFamily: AppFont.primary),),
-                                SizedBox(width: 10,),
-                                Text("Credits",style: TextStyle(fontSize: 14,color: Color(0xFFADADAD),fontFamily: AppFont.primary),),
-                                Spacer(),
-                                Text("1 Credit = 500 \u{20B9}",style: TextStyle(fontSize: 14,color: Color(0xFFADADAD),fontFamily: AppFont.primary),),
-                              ],),
+                                  Text("+ 25.5",style: TextStyle(fontSize: 28,color: Colors.white,fontFamily: AppFont.primary),),
+                                  SizedBox(width: 10,),
+                                  Text("Credits",style: TextStyle(fontSize: 14,color: Color(0xFFADADAD),fontFamily: AppFont.primary),),
+                                  Spacer(),
+                                  Text("1 Credit = 500 \u{20B9}",style: TextStyle(fontSize: 14,color: Color(0xFFADADAD),fontFamily: AppFont.primary),),
+                                ],),
 
                             ],
                           ),
@@ -63,13 +73,13 @@ class MembershipScreen extends StatelessWidget {
                           height: 50,
                           margin: const EdgeInsets.only(left: 10,top: 0,right: 10,bottom: 10),
                           decoration: const BoxDecoration(
-                            color: Color(0xFF000000),
+                              color: Color(0xFF000000),
                               borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),bottomLeft: Radius.circular(20))
                           ),
                           child: const Center(child: Text("Add Credits ⭐",style: TextStyle(color: Colors.white,fontFamily: AppFont.primary,fontWeight: FontWeight.bold),),),
                         ),
                       ],
-                    ),
+                    ),),
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.only(top: 10),
@@ -189,5 +199,28 @@ class MembershipScreen extends StatelessWidget {
         ));
       },
     );
+  }
+  Future<void> showPermissionRequestDialog(BuildContext context,
+      {required Function() onDone}) async {
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Permission required'),
+          content: const Text(
+              'On iOS 13+, you need to grant access to the gyroscope. A permission will be requested to proceed.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'Cancel'),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Motion.instance.requestPermission();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ));
   }
 }

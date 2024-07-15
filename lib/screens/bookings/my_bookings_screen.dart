@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:fw_tab_bar/fw_tab_bar.dart';
 import 'package:get/get.dart';
+import 'package:hyper_effects/hyper_effects.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/controller/bookings/my_bookings_screen_controller.dart';
 import 'package:workspace/widgets/common_widgets/app_bar.dart';
@@ -190,7 +193,13 @@ class MyBookingsScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                          );
+                          ).scrollTransition((context, widget, event) => TransformEffect(
+                            rotateX: -50 * event.screenOffsetFraction * pi / 400,
+                            translateY: (event.screenOffsetFraction * -1) * 20,
+                            translateZ: event.screenOffsetFraction.abs() * 50,
+                            scaleX: 1 - (event.screenOffsetFraction.abs() / 25),
+                            depth: 0.000,
+                          ).apply(context, widget));
                         },
                       ),
                     ),

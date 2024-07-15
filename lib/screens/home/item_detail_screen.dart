@@ -36,7 +36,8 @@ class ItemDetailScreen extends StatelessWidget {
                   description: itemDetail.subTitle,
                   favIcon: Icon(itemDetail.isFavourite?Icons.favorite_outlined:Icons.favorite_outline_sharp,color:itemDetail.isFavourite?AppColor.red: Colors.white,),
                   onTapItem: () {},
-                  onTapFavIcon: () {},),
+                  onTapFavIcon: () {},
+                ),
               ),
               Row(
                 children: [
