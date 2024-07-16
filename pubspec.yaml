@@ -52,8 +52,7 @@ dependencies:
   awesome_bottom_bar: ^1.2.4
   motion: ^2.0.0
   hyper_effects: ^0.2.3
-  adaptive_theme: ^3.4.1
-  flutter_box_transform: ^0.4.2
+  stylish_bottom_bar: ^1.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 import 'package:workspace/screens/bookings/my_bookings_screen.dart';
 import 'package:workspace/screens/home/wsc_location_detail_screen.dart';
 import 'package:workspace/screens/membership/membership_screen.dart';
@@ -44,13 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Color color2 = const Color(0XFF96B1FD);
 
   Color bgColor = const  Color(0XFF1752FE);
-
-
+  PageController _pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: widget.bottomIndex,
+      body: PageView(
+        controller: _pageController,
         children: const [
           WscLocationDetailScreen(),
           MyBookingsScreen(),
@@ -58,27 +58,32 @@ class _HomeScreenState extends State<HomeScreen> {
           MembershipScreen(),
         ],
       ),
-      bottomNavigationBar: BottomBarDefault(
-        items: items,
-        backgroundColor: Colors.white,
-        color: const Color(0xFF5D5D5D),
-        colorSelected: const Color(0xFF2F2F2F),
-        indexSelected: widget.bottomIndex,
-        onTap: (index) {
+      bottomNavigationBar: StylishBottomBar(
+        currentIndex: widget.bottomIndex,
+        onTap: (value) {
           setState(() {
-            widget.bottomIndex = index;
+            _pageController.jumpToPage(value);
+            widget.bottomIndex = value ;
           });
         },
-        enableShadow: true,
-        animated: true,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            spreadRadius: 1,
-            blurRadius: 6,
-            offset: const Offset(0, -1)
-          )
+        elevation: 50,
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(20),
+          topLeft: Radius.circular(20)
+        ),
+        option: AnimatedBarOptions(
+          barAnimation: BarAnimation.transform3D,
+          iconStyle: IconStyle.Default,
+          padding: const EdgeInsets.only(top: 5),
+        ),
+        items: [
+          // BottomBarItem(icon: Container(), title: const Text("Home")),
+          BottomBarItem(icon: Image.asset("assets/v2/png/new_home_icon.webp",height: 25,width: 25,), title: const Text("Home",style: TextStyle(fontSize: 12),),selectedColor: Colors.black),
+          BottomBarItem(icon: Image.asset("assets/v2/png/bookings_icon.webp",height: 25,width: 25,), title: const Text("Bookings",style: TextStyle(fontSize: 12),),selectedColor: Colors.black),
+          BottomBarItem(icon: Image.asset("assets/v2/png/account_icon.webp",height: 25,width: 25,), title: const Text("Account",style: TextStyle(fontSize: 12),),selectedColor: Colors.black),
+          BottomBarItem(icon: Image.asset("assets/v2/png/membership_icon.webp",height: 25,width: 25,), title: const Text("Membership",style: TextStyle(fontSize: 12),),selectedColor: Colors.black),
         ],
+        backgroundColor: Colors.white,
       ),
     );
   }
