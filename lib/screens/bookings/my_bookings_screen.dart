@@ -34,7 +34,7 @@ class MyBookingsScreen extends StatelessWidget {
                       secondTab: "History",
                       onTabChanged: (value) {
                         print("===[$value]===");
-                        ///controller.onChangeTab(value: value);
+                        controller.onChangeBookingTab(value: value);
                       },
                     ),
                   ),
@@ -77,30 +77,30 @@ class MyBookingsScreen extends StatelessWidget {
                       child: ListView.builder(
                         itemCount: 30,
                         itemBuilder: (context, index) {
-                          return Hero(
-                            tag: "Booking_Hero_Tag_$index",
-                            child: Material(
-                              color: Colors.transparent,
-                              child: Container(
-                                margin: const EdgeInsets.fromLTRB(10, 5, 10, 10),
-                                padding: const EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.1),
-                                          offset: const Offset(0, 1),
-                                          blurRadius: 2,
-                                          spreadRadius: 1
-                                      )
-                                    ],
-                                    borderRadius: const BorderRadius.all(Radius.circular(10))
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
+                          return Container(
+                            margin: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+                            padding: const EdgeInsets.only(right: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      offset: const Offset(0, 1),
+                                      blurRadius: 2,
+                                      spreadRadius: 1
+                                  )
+                                ],
+                                borderRadius: const BorderRadius.all(Radius.circular(10))
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Hero(
+                                  tag: "Booking_Hero_Tag_$index",
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: Row(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
@@ -116,18 +116,18 @@ class MyBookingsScreen extends StatelessWidget {
                                                 ])),
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(10),
-                                              child: Image.asset("assets/v2/png/location_1.webp"),
+                                              child:controller.bookingType=="History"?Image.asset("assets/v2/png/location_2.webp"): Image.asset("assets/v2/png/location_1.webp"),
                                             )
                                         ),
-                                        const Expanded(
+                                         Expanded(
                                           child: Padding(
                                             padding: EdgeInsets.only(top: 10),
                                             child: Column(
                                               mainAxisAlignment: MainAxisAlignment.start,
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  "Pitch - Conference Room \n10 Seater",
+                                                Text(controller.bookingType=="History"?
+                                                  "Pitch - Conference Room \n10 Seater" : "Hi-Five - Conference Room \n5 Seater",
                                                   style: TextStyle(
                                                       fontSize: 16,
                                                       fontWeight: FontWeight.w800,
@@ -149,48 +149,48 @@ class MyBookingsScreen extends StatelessWidget {
                                         )
                                       ],
                                     ),
-                                    const SizedBox(height: 8,),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 10,bottom: 10),
-                                      child: Row(
-                                        children: [
-                                          const Expanded(
-                                            child: Row(
+                                  ),
+                                ),
+                                const SizedBox(height: 8,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10,bottom: 10),
+                                  child: Row(
+                                    children: [
+                                      const Expanded(
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Column(
                                               mainAxisAlignment: MainAxisAlignment.start,
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                Column(
-                                                  mainAxisAlignment: MainAxisAlignment.start,
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text("Date",style: TextStyle(color: AppColor.black5D5D5D),),
-                                                    Text("20-06-2024",style: TextStyle(color: AppColor.blackText,fontWeight: FontWeight.w700),),
-                                                  ],
-                                                ),
-                                                SizedBox(width: 50,),
-                                                Column(
-                                                  mainAxisAlignment: MainAxisAlignment.start,
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text("Time",style: TextStyle(color: AppColor.black5D5D5D),),
-                                                    Text("12:00 - 12:30",style: TextStyle(color: AppColor.blackText,fontWeight: FontWeight.w700),),
-                                                  ],
-                                                ),
+                                                Text("Date",style: TextStyle(color: AppColor.black5D5D5D),),
+                                                Text("20-06-2024",style: TextStyle(color: AppColor.blackText,fontWeight: FontWeight.w700),),
                                               ],
                                             ),
-                                          ),
-                                          SizedBox(
-                                            width: 100,
-                                            child: AppButtonPrimary(onTap: () {
-                                              AppNavigator.screenTo(screen: BookingDetailScreen(heroTag: "Booking_Hero_Tag_$index",));
-                                            }, text: "More Detail",buttonHeight: 40,textSize: 14,buttonMargin: EdgeInsets.zero,),
-                                          ),
-                                        ],
+                                            SizedBox(width: 50,),
+                                            Column(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text("Time",style: TextStyle(color: AppColor.black5D5D5D),),
+                                                Text("12:00 - 12:30",style: TextStyle(color: AppColor.blackText,fontWeight: FontWeight.w700),),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                      SizedBox(
+                                        width: 100,
+                                        child: AppButtonPrimary(onTap: () {
+                                          AppNavigator.screenTo(screen: BookingDetailScreen(heroTag: "Booking_Hero_Tag_$index",bookingType: controller.bookingType,));
+                                        }, text: "More Detail",buttonHeight: 40,textSize: 14,buttonMargin: EdgeInsets.zero,),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           );
                         },

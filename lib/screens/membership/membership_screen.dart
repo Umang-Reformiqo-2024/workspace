@@ -123,11 +123,11 @@ class MembershipScreen extends StatelessWidget {
                                     itemBuilder: (context, index) {
                                     return AnimationConfiguration.staggeredList(
                                       position: index,
-                                      duration: const Duration(milliseconds: 700),
-                                      delay: const Duration(milliseconds: 300),
+                                      duration: const Duration(milliseconds: 500),
+                                      delay: const Duration(milliseconds: 200),
                                       child: SlideAnimation(
                                         horizontalOffset: 70.0,
-                                        delay: const Duration(milliseconds: 300),
+                                        delay: const Duration(milliseconds: 200),
                                         curve: Curves.easeInOut,
                                         child: FadeInAnimation(
                                           child: Container(

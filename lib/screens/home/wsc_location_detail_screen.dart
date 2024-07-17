@@ -19,7 +19,7 @@ class WscLocationDetailScreen extends StatelessWidget {
       init: WscLocationDetailScreenController(),
       builder: (controller) => SafeArea(
           child: DefaultTabController(
-            length: 4,
+            length: 3,
             initialIndex: 0,
             child: Scaffold(
               // backgroundColor: const Color(0xFFEBEBEB),
@@ -113,7 +113,7 @@ class WscLocationDetailScreen extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     splashFactory: NoSplash.splashFactory,
                     automaticIndicatorColorAdjustment: true,
-                    tabAlignment: TabAlignment.center,
+                    tabAlignment: TabAlignment.fill,
                     labelColor: Colors.black,
                     unselectedLabelColor: Colors.grey,
                     indicatorColor: Colors.red,
@@ -122,7 +122,7 @@ class WscLocationDetailScreen extends StatelessWidget {
                       Tab(text: 'Meeting Room',icon: Center(child: Image.asset("assets/v2/png/meeting_room_icon.webp",height: 50,width: 50,),),),
                       Tab(text: 'Desk',icon: Center(child: Image.asset("assets/v2/png/desk_icon.webp",height: 50,width: 50,),),),
                       Tab(text: 'Cabin',icon: Center(child: Image.asset("assets/v2/png/cabin_icon.webp",height: 50,width: 50,),),),
-                      Tab(text: 'Shop',icon: Center(child: Image.asset("assets/v2/png/shop_icon.webp",height: 50,width: 50,),),),
+                      //Tab(text: 'Shop',icon: Center(child: Image.asset("assets/v2/png/shop_icon.webp",height: 50,width: 50,),),),
                       // Tab(text: 'Community',icon: Center(child: Image.asset("assets/v2/png/cat_community.webp",height: 50,width: 50,),),),
                       // Tab(text: 'Feed',icon: Center(child: Image.asset("assets/v2/png/cat_feed.webp",height: 50,width: 50,),),),
                       // Tab(text: 'Visitor',icon: Center(child: Image.asset("assets/v2/png/cat_visitors.webp",height: 50,width: 50,),),),
@@ -136,7 +136,7 @@ class WscLocationDetailScreen extends StatelessWidget {
                     const ItemListScreen(),
                     const ItemListScreen(),
                     const ItemListScreen(),
-                    Expanded(child: Image.asset("assets/v2/png/shop_image.webp",fit: BoxFit.fill,)),
+                    //Expanded(child: Image.asset("assets/v2/png/shop_image.webp",fit: BoxFit.fill,)),
                     // Center(child: Image.asset("assets/v2/png/cat_community.webp")),
                     // Center(child: Image.asset("assets/v2/png/cat_feed.webp")),
                     // Center(child: Image.asset("assets/v2/png/cat_visitors.webp")),

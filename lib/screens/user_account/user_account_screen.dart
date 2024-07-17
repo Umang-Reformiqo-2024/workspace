@@ -6,6 +6,7 @@ import 'package:workspace/screens/app_screens/about_app_screen.dart';
 import 'package:workspace/screens/bookings/my_bookings_screen.dart';
 import 'package:workspace/screens/common_screen/help_and_support_screen.dart';
 import 'package:workspace/screens/common_screen/privacy_policy_screen.dart';
+import 'package:workspace/screens/payment_methods/payment_methods_screen.dart';
 import 'package:workspace/screens/splash_screen/splash_screen.dart';
 import 'package:workspace/screens/user_account/user_profile_screen.dart';
 import 'package:workspace/widgets/common_widgets/app_navigator.dart';
@@ -117,9 +118,7 @@ class UserAccountScreen extends StatelessWidget {
                     prefixIconString:"assets/v2/png/payment_method_icon.webp",
                     suffixIcon: Icons.keyboard_arrow_right,
                     text: "Payment Methods",
-                    onTap: () {
-                      debugPrint("Profile Tile On Tap Pressed - Payment Methods");
-                    },
+                    onTap: () => AppNavigator.screenTo(screen: const PaymentMethodsScreen()),
                   ),
                   // profileTile(
                   //   prefixIcon: Icons.language,
