@@ -6,7 +6,9 @@ import 'package:get/get.dart';
 import 'package:hyper_effects/hyper_effects.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/controller/bookings/my_bookings_screen_controller.dart';
+import 'package:workspace/screens/bookings/booking_detail_screen.dart';
 import 'package:workspace/widgets/common_widgets/app_bar.dart';
+import 'package:workspace/widgets/common_widgets/app_navigator.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 import '../../app_data/app_fonts/app_font.dart';
 
@@ -75,131 +77,122 @@ class MyBookingsScreen extends StatelessWidget {
                       child: ListView.builder(
                         itemCount: 30,
                         itemBuilder: (context, index) {
-                          return GestureDetector(
-                            // onTap: () => controller.onTapCompanyItem(),
-                            child: Container(
-                              margin: const EdgeInsets.fromLTRB(10, 5, 10, 10),
-                              padding: const EdgeInsets.only(right: 10),
-                              // decoration: BoxDecoration(
-                              //     color: Colors.white,
-                              //     borderRadius:
-                              //     const BorderRadius.all(Radius.circular(10)),
-                              //     border:
-                              //     Border.all(color: const Color(0xFFCACACA))),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.1),
-                                        offset: const Offset(0, 1),
-                                        blurRadius: 2,
-                                        spreadRadius: 1
-                                    )
-                                  ],
-                                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 70,
-                                        width: 100,
-                                        margin: const EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(10),
-                                            gradient: const LinearGradient(colors: [
-                                              Color(0xFF525151),
-                                              Color(0xFF262626)
-                                            ])),
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(10),
-                                          child: Image.asset("assets/v2/png/location_1.webp"),
-                                        )
-                                      ),
-                                      const Expanded(
-                                        child: Padding(
-                                          padding: EdgeInsets.only(top: 10),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Pitch - Conference Room \n10 Seater",
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w800,
-                                                    fontFamily: AppFont.primary,
-                                                    color: Color(0xFF2D2D2D)),
-                                              ),
-                                              SizedBox(height: 5,),
-                                              Text(
-                                                "WorkSpaceCo. City Center",
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontFamily: AppFont.primary,
-                                                    color: Color(0xFF2D2D2D)),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
+                          return Hero(
+                            tag: "Booking_Hero_Tag_$index",
+                            child: Material(
+                              color: Colors.transparent,
+                              child: Container(
+                                margin: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+                                padding: const EdgeInsets.only(right: 10),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.1),
+                                          offset: const Offset(0, 1),
+                                          blurRadius: 2,
+                                          spreadRadius: 1
                                       )
                                     ],
-                                  ),
-                                  const SizedBox(height: 10,),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10,bottom: 10),
-                                    child: Row(
+                                    borderRadius: const BorderRadius.all(Radius.circular(10))
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
+                                        Container(
+                                            height: 70,
+                                            width: 100,
+                                            margin: const EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(10),
+                                                gradient: const LinearGradient(colors: [
+                                                  Color(0xFF525151),
+                                                  Color(0xFF262626)
+                                                ])),
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(10),
+                                              child: Image.asset("assets/v2/png/location_1.webp"),
+                                            )
+                                        ),
                                         const Expanded(
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Column(
-                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Text("Date",style: TextStyle(color: AppColor.black5D5D5D),),
-                                                  Text("20-06-2024",style: TextStyle(color: AppColor.blackText,fontWeight: FontWeight.w700),),
-                                                ],
-                                              ),
-                                              SizedBox(width: 50,),
-                                              Column(
-                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Text("Time",style: TextStyle(color: AppColor.black5D5D5D),),
-                                                  Text("12:00",style: TextStyle(color: AppColor.blackText,fontWeight: FontWeight.w700),),
-                                                ],
-                                              ),
-                                            ],
+                                          child: Padding(
+                                            padding: EdgeInsets.only(top: 10),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Pitch - Conference Room \n10 Seater",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.w800,
+                                                      fontFamily: AppFont.primary,
+                                                      color: Color(0xFF2D2D2D)),
+                                                ),
+                                                SizedBox(height: 5,),
+                                                Text(
+                                                  "WorkSpaceCo. City Center",
+                                                  style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight: FontWeight.w400,
+                                                      fontFamily: AppFont.primary,
+                                                      color: Color(0xFF2D2D2D)),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width: 100,
-                                          child: AppButtonPrimary(onTap: () {
-
-                                          }, text: "More Detail",buttonHeight: 40,textSize: 14,buttonMargin: EdgeInsets.zero,),
-                                        ),
+                                        )
                                       ],
                                     ),
-                                  ),
-                                ],
+                                    const SizedBox(height: 8,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 10,bottom: 10),
+                                      child: Row(
+                                        children: [
+                                          const Expanded(
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Column(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text("Date",style: TextStyle(color: AppColor.black5D5D5D),),
+                                                    Text("20-06-2024",style: TextStyle(color: AppColor.blackText,fontWeight: FontWeight.w700),),
+                                                  ],
+                                                ),
+                                                SizedBox(width: 50,),
+                                                Column(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text("Time",style: TextStyle(color: AppColor.black5D5D5D),),
+                                                    Text("12:00 - 12:30",style: TextStyle(color: AppColor.blackText,fontWeight: FontWeight.w700),),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 100,
+                                            child: AppButtonPrimary(onTap: () {
+                                              AppNavigator.screenTo(screen: BookingDetailScreen(heroTag: "Booking_Hero_Tag_$index",));
+                                            }, text: "More Detail",buttonHeight: 40,textSize: 14,buttonMargin: EdgeInsets.zero,),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ).scrollTransition((context, widget, event) => TransformEffect(
-                            rotateX: -50 * event.screenOffsetFraction * pi / 400,
-                            translateY: (event.screenOffsetFraction * -1) * 20,
-                            translateZ: event.screenOffsetFraction.abs() * 50,
-                            scaleX: 1 - (event.screenOffsetFraction.abs() / 25),
-                            depth: 0.000,
-                          ).apply(context, widget));
+                          );
                         },
                       ),
                     ),
