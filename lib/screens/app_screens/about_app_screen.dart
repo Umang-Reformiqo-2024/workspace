@@ -27,7 +27,6 @@ class AboutAppScreen extends StatelessWidget {
                 Image.asset("assets/v2/png/reformiqo.webp",width: 200,),
               ],
             ),
-            // Spacer(),
             const Text("com.workspaceco.app",style: TextStyle(
               fontSize: 20,fontWeight: FontWeight.bold,fontFamily: AppFont.primary
             ),),
