@@ -30,7 +30,7 @@ class AboutAppScreen extends StatelessWidget {
             const Text("com.workspaceco.app",style: TextStyle(
               fontSize: 20,fontWeight: FontWeight.bold,fontFamily: AppFont.primary
             ),),
-            const Text("Version 1.1 as on 18/07/2024",style: TextStyle(
+            const Text("Version 1.1 as on 26/07/2024",style: TextStyle(
               fontSize: 14,fontWeight: FontWeight.w500,fontFamily: AppFont.primary
             ),),
           ],
