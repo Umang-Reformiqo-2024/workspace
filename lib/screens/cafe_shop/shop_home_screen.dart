@@ -24,14 +24,14 @@ class ShopHomeScreen extends StatelessWidget {
             titleActions: [
               GestureDetector(
                 onTap: () {
-                  AppNavigator.screenTo(screen: ShoppingCartScreen());
+                  AppNavigator.screenTo(screen: const ShoppingCartScreen());
                 },
-                child: Badge(smallSize: 10,label: Text("2"),child: Image.asset("assets/v2/png/shop_icon.webp", height: 24)),
+                child: Badge(smallSize: 10,label: const Text("2"),child: Image.asset("assets/v2/png/shop_icon.webp", height: 24)),
               ),
               const SizedBox(width: 15),
               GestureDetector(
                 onTap: () {
-                  AppNavigator.screenTo(screen: ShoppingOrderHistoryScreen());
+                  AppNavigator.screenTo(screen: const ShoppingOrderHistoryScreen());
                 },
                 child: Image.asset("assets/v2/png/shop_history_icon.webp",
                     height: 24),
@@ -168,7 +168,7 @@ class ShopHomeScreen extends StatelessWidget {
             ),
           ),
               bottomNavigationBar: AppButtonPrimary(onTap: () {
-                AppNavigator.screenTo(screen: ShoppingCartScreen());
+                AppNavigator.screenTo(screen: const ShoppingCartScreen());
               }, text: "View Cart",buttonHeight: 50,),
         ));
       },

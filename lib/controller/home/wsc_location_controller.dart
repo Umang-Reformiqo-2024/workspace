@@ -1,29 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:workspace/stored_data/shared_preference.dart';
 
-class WscLocationController extends GetxController{
+import '../../screens/bookings/booking_schedule_screen.dart';
 
-  List<WorkspaceLocation> workSpaceLocations = [
-    WorkspaceLocation(id: 0, title: "Home", logo: "assets/v2/png/location_home.webp"),
-    WorkspaceLocation(id: 0, title: "City Center", logo: "assets/v2/png/location_city_center.webp"),
-    WorkspaceLocation(id: 0, title: "Skyline", logo: "assets/v2/png/location_skyline.webp"),
-    WorkspaceLocation(id: 0, title: "Rise", logo: "assets/v2/png/location_rise.webp"),
-  ];
+class WscLocationController extends GetxController {
 
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    // Get.bottomSheet(Container(height: 250,));
+
+
+  onTapBookNow(){
+    Get.to(()=> const BookingScheduleScreen(),duration: const Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut);
   }
-
-}
-
-
-class WorkspaceLocation{
-  int? id;
-  String? title;
-  String? logo;
-
-  WorkspaceLocation({required this.id, required this.title, required this.logo});
 }

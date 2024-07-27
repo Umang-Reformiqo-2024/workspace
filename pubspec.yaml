@@ -53,6 +53,8 @@ dependencies:
   motion: ^2.0.0
   hyper_effects: ^0.2.3
   stylish_bottom_bar: ^1.1.0
+  http: ^1.2.2
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:

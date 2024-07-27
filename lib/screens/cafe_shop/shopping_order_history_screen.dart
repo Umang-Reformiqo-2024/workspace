@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:workspace/app_data/app_fonts/app_font.dart';
 import 'package:workspace/controller/cafe_shop/shop_home_screen_controller.dart';
 import 'package:workspace/widgets/common_widgets/app_bar.dart';
 

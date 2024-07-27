@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Card;
 import 'package:motion/motion.dart';
 
-import 'package:workspace/widgets/common_widgets/app_bar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,7 +8,7 @@ Future<void> main() async {
 
   /// Globally set the sensors sampling rate to 60 frames per second.
   Motion.instance.setUpdateInterval(60.fps);
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: Test(),
   ));
 }
@@ -58,7 +56,7 @@ class _TestState extends State<Test> {
                     )),
                 Motion.elevated(
                   elevation: 70,
-                  borderRadius: BorderRadius.all(Radius.circular(25)),
+                  borderRadius: const BorderRadius.all(Radius.circular(25)),
                   child: const Card(
                       width: 280, height: 170, borderRadius: BorderRadius.all(Radius.circular(25))),
                 ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:workspace/controller/bookings/booking_detail_screen_controller.dart';
-import 'package:workspace/screens/bookings/successful_payment_screen.dart';
 import 'package:workspace/widgets/common_widgets/app_bar.dart';
 import 'package:workspace/widgets/common_widgets/button_widget.dart';
 
@@ -87,9 +86,9 @@ class BookingDetailScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(bookingType=="History"?
-                                "Pitch - Conference Room \n10 Seater" : "Hi-Five - Conference Room 5 Seater",style: TextStyle(fontSize: 18,color: AppColor.black,fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
-                                SizedBox(height: 5,),
-                                Text("WorkSpaceCo. City Center",style: TextStyle(fontSize: 14,color: Color(0xFF575757),fontWeight: FontWeight.normal,fontFamily: AppFont.primary),),
+                                "Pitch - Conference Room \n10 Seater" : "Hi-Five - Conference Room 5 Seater",style: const TextStyle(fontSize: 18,color: AppColor.black,fontWeight: FontWeight.bold,fontFamily: AppFont.primary),),
+                                const SizedBox(height: 5,),
+                                const Text("WorkSpaceCo. City Center",style: TextStyle(fontSize: 14,color: Color(0xFF575757),fontWeight: FontWeight.normal,fontFamily: AppFont.primary),),
                               ],
                             ),
                           )
@@ -187,13 +186,13 @@ class BookingDetailScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(left: 8,top: 20),
               child: Text("If you cancel this booking anytime before a starting time, 100% of credits will be refunded",style: TextStyle(color: Color(0xFF6D6D6D),fontSize: 10),),
-            ):SizedBox.shrink(),
+            ):const SizedBox.shrink(),
 
           ],
         ),
         bottomNavigationBar: bookingType=="Upcoming"? AppButtonPrimary(onTap: () {
          // Get.to(()=> const SuccessfulPaymentScreen(),duration: const Duration(milliseconds: 700),curve: Curves.easeIn,transition: Transition.cupertino);
-        }, text: "Cancel Booking"):SizedBox.shrink(),
+        }, text: "Cancel Booking"):const SizedBox.shrink(),
       ));
       },
     );

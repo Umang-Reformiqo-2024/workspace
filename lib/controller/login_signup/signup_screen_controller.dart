@@ -1,10 +1,15 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:workspace/screens/login_signup/signup_confirmation_screen.dart';
+import '../../api_services/api_endpoints.dart';
+import '../../api_services/api_methods.dart';
+import '../../model/login_api_response_model.dart';
 
 class SignupScreenController extends GetxController {
 
-  TextEditingController nameController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool startNextPageAnimation=false;
@@ -31,9 +36,9 @@ class SignupScreenController extends GetxController {
   onTapFacebook() {}
 
   void userInputValidation() {
-    if(nameController.text.isEmpty)
+    if(firstNameController.text.isEmpty)
       {
-       Get.snackbar("Something went wrong", "Name can not be blank or empty",margin: const EdgeInsets.all(10));
+       Get.snackbar("Something went wrong", "First Name can not be blank or empty",margin: const EdgeInsets.all(10));
       }
     else if(emailController.text.isEmpty)
       {
@@ -49,11 +54,33 @@ class SignupScreenController extends GetxController {
       }
     else
       {
-        navigateToNextScreen();
+        signupApiCall(firstName: firstNameController.text.toString(), lastName: lastNameController.text.toString(), email: emailController.text.toString(), password: passwordController.text.toString());
       }
   }
 
+  void signupApiCall({required String firstName, required String lastName, required String email, required String password}) async {
+    ///Api Call
+    // String response = await ApiMethods.postApi(apiUrl: ApiEndpoints.baseUrl+ApiEndpoints.signupUrl, apiBody: {'first_name':firstName,'last_name':lastName,'email':email,'password':password}, apiHeaders: { 'Accept': 'application/json' }, isShowLoader: true);
+    // Map<String,dynamic> jsonResponse = jsonDecode(response);
+    ///Data Handling
+    // LoginApiResponseModel loginApiResponseModel = LoginApiResponseModel.fromJson(jsonResponse);
+    // update();
+    // if(loginApiResponseModel.message!.successKey==1)
+    // {
+    //   Get.snackbar("${loginApiResponseModel.message!.message}","Welcome ${loginApiResponseModel.fullName}",margin: const EdgeInsets.all(10));
+    //   navigateToNextScreen();
+    // }
+    // else
+    // {
+    //   Get.snackbar("Something went`s wrong","${loginApiResponseModel.message!.message}",margin: const EdgeInsets.all(10));
+    // }
+  }
+
   void navigateToNextScreen() {
+    firstNameController.clear();
+    lastNameController.clear();
+    emailController.clear();
+    passwordController.clear();
     Future.delayed(const Duration(milliseconds: 10), () {
       startNextPageAnimation = true;
       update();

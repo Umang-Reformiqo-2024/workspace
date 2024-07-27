@@ -129,13 +129,13 @@ class WscLocationDetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: TabBarView(
-                    physics: const NeverScrollableScrollPhysics(),
+                    physics: NeverScrollableScrollPhysics(),
                     children: [
-                    const ItemListScreen(),
-                    const ItemListScreen(),
-                    const ItemListScreen(),
+                    ItemListScreen(),
+                    ItemListScreen(),
+                    ItemListScreen(),
                     //Expanded(child: Image.asset("assets/v2/png/shop_image.webp",fit: BoxFit.fill,)),
                     // Center(child: Image.asset("assets/v2/png/cat_community.webp")),
                     // Center(child: Image.asset("assets/v2/png/cat_feed.webp")),

@@ -120,9 +120,9 @@ class ShoppingCartScreen extends StatelessWidget {
                           );
                         },),
                     ),
-                    Divider(),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Divider(),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Column(
                         children: [
                           Row(
@@ -156,7 +156,7 @@ class ShoppingCartScreen extends StatelessWidget {
                 ),
               ),
               bottomNavigationBar: AppButtonPrimary(onTap: () {
-                AppNavigator.screenTo(screen: SuccessfulPaymentScreen());
+                AppNavigator.screenTo(screen: const SuccessfulPaymentScreen());
               }, text: "Checkout (2 items)"),
             ));
       },

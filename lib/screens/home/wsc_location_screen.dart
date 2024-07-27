@@ -144,7 +144,7 @@ class WscLocationScreen extends StatelessWidget {
               //   ],
               // ),
               const SizedBox(height: 15,),
-              AppButtonPrimary(onTap: () => Get.to(()=> const BookingScheduleScreen(),duration: const Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut), text: "Book Now",buttonMargin: const EdgeInsets.symmetric(horizontal: 8),buttonHeight: 50,textSize: 18,),
+              AppButtonPrimary(onTap: () => controller.onTapBookNow(), text: "Book Now",buttonMargin: const EdgeInsets.symmetric(horizontal: 8),buttonHeight: 50,textSize: 18,),
               Container(
                 height: 45,
                 padding: const EdgeInsets.only(top: 5),

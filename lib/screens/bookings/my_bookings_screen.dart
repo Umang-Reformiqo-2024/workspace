@@ -1,9 +1,7 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:fw_tab_bar/fw_tab_bar.dart';
 import 'package:get/get.dart';
-import 'package:hyper_effects/hyper_effects.dart';
 import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/controller/bookings/my_bookings_screen_controller.dart';
 import 'package:workspace/screens/bookings/booking_detail_screen.dart';
@@ -121,21 +119,21 @@ class MyBookingsScreen extends StatelessWidget {
                                         ),
                                          Expanded(
                                           child: Padding(
-                                            padding: EdgeInsets.only(top: 10),
+                                            padding: const EdgeInsets.only(top: 10),
                                             child: Column(
                                               mainAxisAlignment: MainAxisAlignment.start,
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Text(controller.bookingType=="History"?
                                                   "Pitch - Conference Room \n10 Seater" : "Hi-Five - Conference Room \n5 Seater",
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       fontSize: 16,
                                                       fontWeight: FontWeight.w800,
                                                       fontFamily: AppFont.primary,
                                                       color: Color(0xFF2D2D2D)),
                                                 ),
-                                                SizedBox(height: 5,),
-                                                Text(
+                                                const SizedBox(height: 5,),
+                                                const Text(
                                                   "WorkSpaceCo. City Center",
                                                   style: TextStyle(
                                                       fontSize: 12,
