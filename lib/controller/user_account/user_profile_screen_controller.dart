@@ -1,7 +1,15 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:workspace/screens/home/wsc_location_screen.dart';
+import 'package:workspace/stored_data/shared_preference.dart';
+
+import '../../api_services/api_endpoints.dart';
+import '../../api_services/api_methods.dart';
+import '../../model/signup_api_response_model.dart';
 
 class UserProfileScreenController extends GetxController{
 
@@ -22,8 +30,8 @@ class UserProfileScreenController extends GetxController{
   @override
   void onInit() {
     super.onInit();
-    nameController.text="Test Name";
-    emailController.text="test@test.com";
+    nameController.text=SharedPreferencesData.getUserFullName();
+    emailController.text=SharedPreferencesData.getUserEmail();
   }
 
   onTapEditName(){
@@ -55,26 +63,19 @@ class UserProfileScreenController extends GetxController{
         }
         update();
       },);
+      update();
     }
     update();
   }
 
-  onTapDoneButton() {
+  onTapDoneButton() async {
     userDataValidation();
   }
 
   void userDataValidation() {
-    if(userProfileImage==null)
+    if(!isImageSelected)
       {
         Get.snackbar("Something went wrong", "Please upload image",margin: const EdgeInsets.all(10));
-      }
-    else if(nameController.text.isEmpty)
-      {
-        Get.snackbar("Something went wrong", "Name can not be blank or empty",margin: const EdgeInsets.all(10));
-      }
-    else if(emailController.text.isEmpty)
-      {
-        Get.snackbar("Something went wrong", "Email can not be blank or empty",margin: const EdgeInsets.all(10));
       }
     else if(phoneNumberController.text.isEmpty)
       {
@@ -86,8 +87,33 @@ class UserProfileScreenController extends GetxController{
       }
     else
       {
-        navigateToWscLocationScreen();
+        processUserImage();
       }
+  }
+
+  processUserImage() async {
+    List<int> imageBytes = await userProfileImage!.readAsBytes();
+    String base64Image = base64Encode(imageBytes);
+    debugPrint(base64Image);
+    log(base64Image,name: "IMage");
+    signupApiCall(email: emailController.text.toString(), phone: phoneNumberController.text.toString(), bio: bioController.text.toString(), img: base64Image);
+  }
+  void signupApiCall({required String email, required String phone, required String bio,required String img}) async {
+    ///Api Call
+    String response = await ApiMethods.postApi(apiUrl: ApiEndpoints.baseUrl+ApiEndpoints.signupProfileUrl, apiBody: {'user':email,'mobile_no':phone,'bio':bio,'img':img}, apiHeaders: { 'Accept': 'application/json' }, isShowLoader: true);
+    Map<String,dynamic> jsonResponse = jsonDecode(response);
+    ///Data Handling
+    SignupApiResponseModel signupApiResponseModel = SignupApiResponseModel.fromJson(jsonResponse);
+    update();
+    if(signupApiResponseModel.message!.successKey==1)
+    {
+      Get.snackbar("Account Created","Lets starts with ${signupApiResponseModel.message!.success}",margin: const EdgeInsets.all(10));
+      navigateToWscLocationScreen();
+    }
+    else
+    {
+      Get.snackbar("Something went`s wrong","${signupApiResponseModel.message!.error}",margin: const EdgeInsets.all(10));
+    }
   }
 
   void navigateToWscLocationScreen() {

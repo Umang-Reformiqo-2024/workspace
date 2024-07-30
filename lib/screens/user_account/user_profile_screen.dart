@@ -10,7 +10,8 @@ import '../../app_data/app_fonts/app_font.dart';
 import '../../widgets/common_widgets/app_bar.dart';
 
 class UserProfileScreen extends StatelessWidget {
-  const UserProfileScreen({super.key});
+  bool isSignupProfile;
+  UserProfileScreen({super.key,this.isSignupProfile=false});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class UserProfileScreen extends StatelessWidget {
       builder: (controller) => SafeArea(
         child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: WorkSpaceCoAppBar(title: "Profile",titleSize: 20,),
+          appBar:isSignupProfile ? WorkSpaceCoAppBar(title: "Profile",titleActions: []) : WorkSpaceCoAppBar(title: "Profile",titleSize: 20,),
           body: AnimatedContainer(
             duration: const Duration(seconds: 1),
             transform: Matrix4.translationValues(0, controller.startNextPageAnimation ? -MediaQuery.of(context).size.height * 1 : 0, 0,),
@@ -80,116 +81,76 @@ class UserProfileScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 50,),
-                    Row(
-                      children: [
-                        Flexible(
-                          child: SizedBox(
-                            height: 55,
-                            child: TextField(
-                              controller: controller.nameController,
-                              decoration: InputDecoration(
-                                  border: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Color(0xFFE8E8E8)),
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))),
-                                  enabledBorder: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Color(0xFFE8E8E8)),
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))),
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Color(0xFFE8E8E8)),
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))),
-                                  disabledBorder: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Color(0xFFE8E8E8)),
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))),
-                                  filled: true,
-                                  fillColor: const Color(0xFFF6F6F6),
-                                  labelStyle: TextStyle(
-                                      color: const Color(0xFF838383).withOpacity(0.6),
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: AppFont.primary),
-                                  labelText: "Name",
-                                  prefixIcon: const Icon(Icons.person),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                              enabled: !controller.isNameReadOnly,
-                              style:TextStyle(
-                                  color:controller.isNameReadOnly?const Color(0xFF838383).withOpacity(0.6): Colors.black, fontFamily: AppFont.primary),
-                              cursorColor: Colors.black,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 5,),
-                        Container(
-                          height: 55,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFF6F6F6),
-                            border: Border.all(color: const Color(0xFFE8E8E8)),
-                            borderRadius: const BorderRadius.only(bottomRight: Radius.circular(10),topRight: Radius.circular(10))
-                          ),
-                          child: IconButton(highlightColor: Colors.transparent,onPressed: () => controller.onTapEditName(), icon: const Icon(Icons.edit)),
-                        )
-                      ],
+                    TextField(
+                      controller: controller.nameController,
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color(0xFFE8E8E8)),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        enabledBorder: const OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color(0xFFE8E8E8)),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        focusedBorder: const OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color(0xFFE8E8E8)),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        disabledBorder: const OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color(0xFFE8E8E8)),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        filled: true,
+                        fillColor: const Color(0xFFF6F6F6),
+                        labelStyle: TextStyle(
+                            color: const Color(0xFF838383).withOpacity(0.6),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: AppFont.primary),
+                        labelText: "Name",
+                        prefixIcon: const Icon(Icons.person),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      style:TextStyle(
+                          color:const Color(0xFF838383).withOpacity(0.6), fontFamily: AppFont.primary),
+                      cursorColor: Colors.black,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Row(
-                      children: [
-                        Flexible(
-                          child: SizedBox(
-                            height: 55,
-                            child: TextField(
-                              controller: controller.emailController,
-                              decoration: InputDecoration(
-                                  border: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Color(0xFFE8E8E8)),
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))),
-                                  enabledBorder: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Color(0xFFE8E8E8)),
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))),
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Color(0xFFE8E8E8)),
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))),
-                                  disabledBorder: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Color(0xFFE8E8E8)),
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))),
-                                  filled: true,
-                                  fillColor: const Color(0xFFF6F6F6),
-                                  labelStyle: TextStyle(
-                                      color: const Color(0xFF838383).withOpacity(0.6),
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: AppFont.primary),
-                                  labelText: "Email",
-                                  prefixIcon: const Icon(Icons.email),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                              style:  TextStyle(
-                                  color:controller.isEmailReadOnly?const Color(0xFF838383).withOpacity(0.6): Colors.black, fontFamily: AppFont.primary),
-                              cursorColor: Colors.black,
-                              enabled: !controller.isEmailReadOnly,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 5,),
-                        Container(
-                          height: 55,
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFF6F6F6),
-                              border: Border.all(color: const Color(0xFFE8E8E8)),
-                              borderRadius: const BorderRadius.only(bottomRight: Radius.circular(10),topRight: Radius.circular(10))
-                          ),
-                          child: IconButton(
-                              highlightColor: Colors.transparent,
-                              onPressed: () => controller.onTapEditEmail(), icon: const Icon(Icons.edit)),
-                        )
-                      ],
+                    TextField(
+                      controller: controller.emailController,
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color(0xFFE8E8E8)),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        enabledBorder: const OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color(0xFFE8E8E8)),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        focusedBorder: const OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color(0xFFE8E8E8)),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        disabledBorder: const OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color(0xFFE8E8E8)),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        filled: true,
+                        fillColor: const Color(0xFFF6F6F6),
+                        labelStyle: TextStyle(
+                            color: const Color(0xFF838383).withOpacity(0.6),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: AppFont.primary),
+                        labelText: "Email",
+                        prefixIcon: const Icon(Icons.email),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      style:  TextStyle(
+                          color:const Color(0xFF838383).withOpacity(0.6), fontFamily: AppFont.primary),
+                      cursorColor: Colors.black,
                     ),
                     const SizedBox(height: 20,),
                     TextField(

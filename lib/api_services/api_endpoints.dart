@@ -4,6 +4,8 @@ class ApiEndpoints {
 
   static String loginUrl="wsc.utils.login.login";
   static String signupUrl="wsc.utils.signup.create_user";
+  static String signupProfileUrl="wsc.utils.api.update_user_profile";
+  ///
   static String allSpaceUrl="wsc.utils.api.get_all_spaces";
   static String singleSpaceUrl="wsc.utils.api.space";
   static String spaceBookingUrl="wsc.utils.api.create_booking";

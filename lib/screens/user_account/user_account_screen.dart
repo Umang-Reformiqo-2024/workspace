@@ -57,7 +57,7 @@ class UserAccountScreen extends StatelessWidget {
                           ),),
                           GestureDetector(onTap: () {
                             debugPrint("===[View Profile Text Button]===");
-                            Get.to(()=> const UserProfileScreen(),transition: Transition.cupertino,curve: Curves.easeInOut,duration: const Duration(milliseconds: 700));
+                            Get.to(()=> UserProfileScreen(),transition: Transition.cupertino,curve: Curves.easeInOut,duration: const Duration(milliseconds: 700));
                           },child: Container(height: 25,color: Colors.transparent,child: const Text("View Profile")))
                         ],
                       )

@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:workspace/model/signup_api_response_model.dart';
+import 'package:workspace/screens/common_screen/privacy_policy_screen.dart';
 import 'package:workspace/screens/login_signup/signup_confirmation_screen.dart';
+import 'package:workspace/stored_data/shared_preference.dart';
 import '../../api_services/api_endpoints.dart';
 import '../../api_services/api_methods.dart';
 import '../../model/login_api_response_model.dart';
@@ -15,9 +18,23 @@ class SignupScreenController extends GetxController {
   bool startNextPageAnimation=false;
   bool isPasswordHidden = true;
   bool isTermsOfServiceAccepted = false;
+  bool isPasswordValidLength=false;
+  bool hasPasswordOneDigit=false;
+  bool hasPasswordOneUpperChar=false;
+  bool hasPasswordOneLowerChar=false;
+  bool hasPasswordOneSpecialChar=false;
 
   onTapPasswordEye() {
     isPasswordHidden?isPasswordHidden=false:isPasswordHidden=true;
+    update();
+  }
+
+  onPasswordValueChange({required String password}) {
+    isPasswordValidLength = password.length >= 6;
+    hasPasswordOneUpperChar = password.contains(RegExp(r'[A-Z]'));
+    hasPasswordOneLowerChar = password.contains(RegExp(r'[a-z]'));
+    hasPasswordOneDigit = password.contains(RegExp(r'[0-9]'));
+    hasPasswordOneSpecialChar = password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
     update();
   }
 
@@ -30,10 +47,13 @@ class SignupScreenController extends GetxController {
     userInputValidation();
   }
 
-  onTapTermsOfServiceText() {}
 
-  onTapGoogle() {}
-  onTapFacebook() {}
+  onTapTermsOfServiceText() {
+    Get.to(const PrivacyPolicyScreen());
+  }
+
+  // onTapGoogle() {}
+  // onTapFacebook() {}
 
   void userInputValidation() {
     if(firstNameController.text.isEmpty)
@@ -48,6 +68,26 @@ class SignupScreenController extends GetxController {
       {
         Get.snackbar("Something went wrong", "Password can not be blank or empty",margin: const EdgeInsets.all(10));
       }
+    else if (passwordController.text.length < 6)
+      {
+        Get.snackbar("Something went wrong", "Password must be at least 6 characters long",margin: const EdgeInsets.all(10));
+      }
+    else if (!RegExp(r'[A-Z]').hasMatch(passwordController.text))
+      {
+        Get.snackbar("Something went wrong", "Password must contain at least one uppercase letter",margin: const EdgeInsets.all(10));
+      }
+    else if (!RegExp(r'[a-z]').hasMatch(passwordController.text))
+      {
+        Get.snackbar("Something went wrong", "Password must contain at least one lowercase letter",margin: const EdgeInsets.all(10));
+      }
+    else if (!RegExp(r'[0-9]').hasMatch(passwordController.text))
+      {
+        Get.snackbar("Something went wrong", "Password must contain at least one number",margin: const EdgeInsets.all(10));
+      }
+    else if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(passwordController.text))
+      {
+        Get.snackbar("Something went wrong", "Password must contain at least one special character",margin: const EdgeInsets.all(10));
+      }
     else if (!isTermsOfServiceAccepted)
       {
         Get.snackbar("Something went wrong", "Please accept Terms of Service",margin: const EdgeInsets.all(10));
@@ -60,23 +100,25 @@ class SignupScreenController extends GetxController {
 
   void signupApiCall({required String firstName, required String lastName, required String email, required String password}) async {
     ///Api Call
-    // String response = await ApiMethods.postApi(apiUrl: ApiEndpoints.baseUrl+ApiEndpoints.signupUrl, apiBody: {'first_name':firstName,'last_name':lastName,'email':email,'password':password}, apiHeaders: { 'Accept': 'application/json' }, isShowLoader: true);
-    // Map<String,dynamic> jsonResponse = jsonDecode(response);
+    String response = await ApiMethods.postApi(apiUrl: ApiEndpoints.baseUrl+ApiEndpoints.signupUrl, apiBody: {'first_name':firstName,'last_name':lastName,'email':email,'password':password}, apiHeaders: { 'Accept': 'application/json' }, isShowLoader: true);
+    Map<String,dynamic> jsonResponse = jsonDecode(response);
     ///Data Handling
-    // LoginApiResponseModel loginApiResponseModel = LoginApiResponseModel.fromJson(jsonResponse);
-    // update();
-    // if(loginApiResponseModel.message!.successKey==1)
-    // {
-    //   Get.snackbar("${loginApiResponseModel.message!.message}","Welcome ${loginApiResponseModel.fullName}",margin: const EdgeInsets.all(10));
-    //   navigateToNextScreen();
-    // }
-    // else
-    // {
-    //   Get.snackbar("Something went`s wrong","${loginApiResponseModel.message!.message}",margin: const EdgeInsets.all(10));
-    // }
+    SignupApiResponseModel signupApiResponseModel = SignupApiResponseModel.fromJson(jsonResponse);
+    update();
+    if(signupApiResponseModel.message!.successKey==1)
+    {
+      Get.snackbar("Account Created","Lets starts with ${signupApiResponseModel.message!.success}",margin: const EdgeInsets.all(10));
+      navigateToNextScreen();
+    }
+    else
+    {
+      Get.snackbar("Something went`s wrong","${signupApiResponseModel.message!.error}",margin: const EdgeInsets.all(10));
+    }
   }
 
   void navigateToNextScreen() {
+    SharedPreferencesData.setUserFullName(userFullName: "${firstNameController.text} ${lastNameController.text}");
+    SharedPreferencesData.setUserEmail(userEmail: emailController.text.toString());
     firstNameController.clear();
     lastNameController.clear();
     emailController.clear();
@@ -94,5 +136,4 @@ class SignupScreenController extends GetxController {
       });
     });
   }
-
 }

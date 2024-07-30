@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:workspace/app_data/app_colors/app_color.dart';
 import 'package:workspace/controller/login_signup/signup_screen_controller.dart';
 
 import '../../app_data/app_fonts/app_font.dart';
@@ -167,6 +168,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                       TextField(
                         controller: controller.passwordController,
+                        onChanged: (value) => controller.onPasswordValueChange(password : value),
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
@@ -203,63 +205,77 @@ class SignupScreen extends StatelessWidget {
                         cursorColor: Colors.black,
                         obscureText: controller.isPasswordHidden,
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
+                      Padding(padding: EdgeInsets.fromLTRB(15, 10, 0, 20),
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Checkbox(
-                              value: controller.isTermsOfServiceAccepted,
-                              onChanged: (value) => controller
-                                  .onSelectingTermsOfService(userResponse: value!),
-                              activeColor: Colors.black),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Flexible(
-                              child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              const Text("By selecting Agree and continue, I agree to ",style: TextStyle(fontFamily: AppFont.primary),),
-                              InkWell(onTap: () => controller.onTapTermsOfServiceText(),child: const Text("Terms of Service",style: TextStyle(fontFamily: AppFont.primary,color: Color(0xFF61AFDC),decoration: TextDecoration.underline,decorationColor: Color(0xFF61AFDC)),))
-                            ],
-                          )),
+                          const Text("Password must contains,",style: TextStyle(fontSize: 12,fontFamily: AppFont.primary,color: AppColor.blackTextPrimary),),
+                          SizedBox(height: 5,),
+                          _buildPasswordCondition('At least 6 characters', controller.isPasswordValidLength),
+                          _buildPasswordCondition('At least one uppercase letter', controller.hasPasswordOneUpperChar),
+                          _buildPasswordCondition('At least one lowercase letter', controller.hasPasswordOneLowerChar),
+                          _buildPasswordCondition('At least one number', controller.hasPasswordOneDigit),
+                          _buildPasswordCondition('At least one special character', controller.hasPasswordOneSpecialChar),
                         ],
                       ),
-                      const SizedBox(height: 100,),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () => controller.onTapGoogle(),
-                            child: SizedBox(
-                              height: 30,
-                              width: 30,
-                              child: Image.asset("assets/v2/png/google_icon.webp"),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                            width: 50,
-                            child: VerticalDivider(indent: 2,endIndent: 2,),
-                          ),
-                          GestureDetector(
-                            onTap: () => controller.onTapFacebook(),
-                            child: SizedBox(
-                              height: 30,
-                              width: 30,
-                              child: Image.asset("assets/v2/png/facebook_icon.webp"),
-                            ),
-                          ),
-                        ],
                       ),
-                      const SizedBox(height: 10,),
-                      const Center(child: Text("Sign up using other options")),
-                      const SizedBox(height: 20,),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 70,bottom: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Checkbox(
+                                value: controller.isTermsOfServiceAccepted,
+                                onChanged: (value) => controller
+                                    .onSelectingTermsOfService(userResponse: value!),
+                                activeColor: Colors.black),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Flexible(
+                                child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                const Text("By selecting Agree and continue, I agree to ",style: TextStyle(fontFamily: AppFont.primary),),
+                                InkWell(onTap: () => controller.onTapTermsOfServiceText(),child: const Text("Terms of Service",style: TextStyle(fontFamily: AppFont.primary,color: Color(0xFF61AFDC),decoration: TextDecoration.underline,decorationColor: Color(0xFF61AFDC)),))
+                              ],
+                            )),
+                          ],
+                        ),
+                      ),
+
+                      // Row(
+                      //   crossAxisAlignment: CrossAxisAlignment.center,
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     GestureDetector(
+                      //       onTap: () => controller.onTapGoogle(),
+                      //       child: SizedBox(
+                      //         height: 30,
+                      //         width: 30,
+                      //         child: Image.asset("assets/v2/png/google_icon.webp"),
+                      //       ),
+                      //     ),
+                      //     const SizedBox(
+                      //       height: 30,
+                      //       width: 50,
+                      //       child: VerticalDivider(indent: 2,endIndent: 2,),
+                      //     ),
+                      //     GestureDetector(
+                      //       onTap: () => controller.onTapFacebook(),
+                      //       child: SizedBox(
+                      //         height: 30,
+                      //         width: 30,
+                      //         child: Image.asset("assets/v2/png/facebook_icon.webp"),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(height: 10,),
+                      // const Center(child: Text("Sign up using other options")),
                       AppButtonPrimary(
                           onTap: () => controller.onTapSignupButton(),
                           text: "Sign up"),
@@ -271,6 +287,21 @@ class SignupScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+  Widget _buildPasswordCondition(String text, bool isValid) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          isValid ? Icons.check_circle : Icons.circle_outlined,
+          color: isValid ? Colors.green : Colors.red,
+          size: 12,
+        ),
+        const SizedBox(width: 5),
+        Text(text,style: const TextStyle(fontSize: 10,fontFamily: AppFont.primary,color: AppColor.blackTextPrimary),),
+      ],
     );
   }
 }

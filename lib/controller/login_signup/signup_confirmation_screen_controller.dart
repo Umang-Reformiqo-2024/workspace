@@ -31,7 +31,7 @@ class SignupConfirmationScreenController extends GetxController{
       startNextPageAnimation = true;
       update();
       Future.delayed(const Duration(seconds: 1), () {
-        Get.to(() => const UserProfileScreen(),transition: Transition.fadeIn,curve: Curves.easeIn,duration: const Duration(milliseconds: 1500));
+        Get.to(() => UserProfileScreen(isSignupProfile: true,),transition: Transition.fadeIn,curve: Curves.easeIn,duration: const Duration(milliseconds: 1500));
       }).whenComplete(() {
         Future.delayed(const Duration(seconds: 2),() {
           startNextPageAnimation = false;
