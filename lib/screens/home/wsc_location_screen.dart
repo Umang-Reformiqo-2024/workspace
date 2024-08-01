@@ -48,13 +48,10 @@ class WscLocationScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)
                             ),
                             child:  CustomDropdown<String>(
-                              hintText: 'Select job role',
-                              items: const ['Home','City Center','Skyline','Rise'],
-                              initialItem: 'Home',
+                              items: controller.locationList,
+                              initialItem: controller.locationList.first,
                               decoration: const CustomDropdownDecoration(closedFillColor: Color(0xFFEBEBEB),expandedFillColor: Color(0xFFEBEBEB)),
-                              onChanged: (value) {
-                                log('changing value to: $value');
-                              },
+                              onChanged: (value) => controller.onChangeLocation(location: value!),
                             ),
                           ),
                         ],
@@ -66,7 +63,7 @@ class WscLocationScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text("Type of workspace",style: TextStyle(fontWeight: FontWeight.normal,fontFamily: AppFont.primary),),
+                          const Text("Meeting Room",style: TextStyle(fontWeight: FontWeight.normal,fontFamily: AppFont.primary),),
                           const SizedBox(height: 5,),
                           Container(
                             height: 55,
@@ -75,13 +72,10 @@ class WscLocationScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)
                             ),
                             child:  CustomDropdown<String>(
-                              hintText: 'Select job role',
-                              items: const ['Meeting Room','Personal Cabin','Dedicated Desk'],
-                              initialItem: 'Meeting Room',
+                              items: controller.meetingRoomList,
+                              initialItem: controller.meetingRoomList.first,
                               decoration: const CustomDropdownDecoration(closedFillColor: Color(0xFFEBEBEB),expandedFillColor: Color(0xFFEBEBEB)),
-                              onChanged: (value) {
-                                log('changing value to: $value');
-                              },
+                              onChanged: (value) => controller.onChangeMeetingRoom(meetingRoom: value!),
                             ),
                           ),
                         ],

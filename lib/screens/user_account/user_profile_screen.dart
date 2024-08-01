@@ -59,13 +59,14 @@ class UserProfileScreen extends StatelessWidget {
                               width: 100,
                               decoration: BoxDecoration(
                                 //image: DecorationImage(image: FileImage(File(controller.userProfileImage!.path))),
+                                //image: DecorationImage(image: FileImage(File(controller.userProfileImage!.path))),
                                 gradient: const LinearGradient(colors: [
                                   Color(0xFF4C4B4B),
                                   Color(0xFF2C2C2C),
                                 ],begin: Alignment.topCenter,end: Alignment.bottomCenter,tileMode: TileMode.mirror),
                                 borderRadius: BorderRadius.circular(50)
                               ),
-                              child:controller.isImageSelected?ClipRRect(borderRadius: BorderRadius.circular(50),child: Image.file(File(controller.userProfileImage!.path),fit: BoxFit.fill,)):
+                              child:controller.isImageSelected?ClipRRect(borderRadius: BorderRadius.circular(50),child: Image.file(File(controller.userProfileImage!.path),fit: BoxFit.cover,)):
                               const Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment:  MainAxisAlignment.center,
@@ -85,39 +86,20 @@ class UserProfileScreen extends StatelessWidget {
                       controller: controller.nameController,
                       readOnly: true,
                       decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Color(0xFFE8E8E8)),
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        enabledBorder: const OutlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Color(0xFFE8E8E8)),
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        focusedBorder: const OutlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Color(0xFFE8E8E8)),
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        disabledBorder: const OutlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Color(0xFFE8E8E8)),
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        border: const OutlineInputBorder(borderSide: BorderSide(color: Color(0xFFE8E8E8)), borderRadius: BorderRadius.all(Radius.circular(10))),
+                        enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Color(0xFFE8E8E8)), borderRadius: BorderRadius.all(Radius.circular(10))),
+                        focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Color(0xFFE8E8E8)), borderRadius: BorderRadius.all(Radius.circular(10))),
+                        disabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Color(0xFFE8E8E8)), borderRadius: BorderRadius.all(Radius.circular(10))),
                         filled: true,
                         fillColor: const Color(0xFFF6F6F6),
-                        labelStyle: TextStyle(
-                            color: const Color(0xFF838383).withOpacity(0.6),
-                            fontWeight: FontWeight.bold,
-                            fontFamily: AppFont.primary),
+                        labelStyle: TextStyle(color: const Color(0xFF838383).withOpacity(0.6), fontWeight: FontWeight.bold, fontFamily: AppFont.primary),
                         labelText: "Name",
                         prefixIcon: const Icon(Icons.person),
                       ),
                       keyboardType: TextInputType.emailAddress,
-                      style:TextStyle(
-                          color:const Color(0xFF838383).withOpacity(0.6), fontFamily: AppFont.primary),
-                      cursorColor: Colors.black,
+                      style:TextStyle(color:const Color(0xFF838383).withOpacity(0.6), fontFamily: AppFont.primary), cursorColor: Colors.black,
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20,),
                     TextField(
                       controller: controller.emailController,
                       readOnly: true,

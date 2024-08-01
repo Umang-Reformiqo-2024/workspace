@@ -34,14 +34,14 @@ class UserProfileScreenController extends GetxController{
     emailController.text=SharedPreferencesData.getUserEmail();
   }
 
-  onTapEditName(){
-    isNameReadOnly?isNameReadOnly=false:isNameReadOnly=true;
-    update();
-  }
-  onTapEditEmail(){
-    isEmailReadOnly?isEmailReadOnly=false:isEmailReadOnly=true;
-    update();
-  }
+  // onTapEditName(){
+  //   isNameReadOnly ? isNameReadOnly = false : isNameReadOnly = true ;
+  //   update();
+  // }
+  // onTapEditEmail(){
+  //   isEmailReadOnly?isEmailReadOnly=false:isEmailReadOnly=true;
+  //   update();
+  // }
 
   onTapRemoveUserImage() {
     isImageSelected=false;
@@ -62,7 +62,7 @@ class UserProfileScreenController extends GetxController{
         {
           isImageSelected=true;
           update();
-          log("image");
+          log("user selected image");
         }
     }
     update();

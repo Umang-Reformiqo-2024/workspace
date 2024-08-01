@@ -23,7 +23,7 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  runApp(GetMaterialApp(home: UserProfileScreen(),));
-  // runApp(const GetMaterialApp(home: SplashScreen(),));
+  // runApp(GetMaterialApp(home: UserProfileScreen(),));
+  runApp(const GetMaterialApp(home: SplashScreen(),));
 }
 
