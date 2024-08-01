@@ -49,21 +49,21 @@ class UserProfileScreenController extends GetxController{
   }
 
   onTapUploadImage() async {
+    log("On tap select image");
     if(!isImageSelected){
-      userProfileImage = await picker.pickImage(source: ImageSource.gallery).whenComplete(() {
+      userProfileImage = await picker.pickImage(source: ImageSource.gallery);
         if(userProfileImage == null)
         {
           isImageSelected=false;
           update();
+          log("image is null");
         }
         else
         {
           isImageSelected=true;
           update();
+          log("image");
         }
-        update();
-      },);
-      update();
     }
     update();
   }

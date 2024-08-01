@@ -65,7 +65,7 @@ class UserProfileScreen extends StatelessWidget {
                                 ],begin: Alignment.topCenter,end: Alignment.bottomCenter,tileMode: TileMode.mirror),
                                 borderRadius: BorderRadius.circular(50)
                               ),
-                              child:controller.isImageSelected?ClipRRect(borderRadius: BorderRadius.circular(50),child: Image.file(File(controller.userProfileImage!.path))):
+                              child:controller.isImageSelected?ClipRRect(borderRadius: BorderRadius.circular(50),child: Image.file(File(controller.userProfileImage!.path),fit: BoxFit.fill,)):
                               const Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment:  MainAxisAlignment.center,

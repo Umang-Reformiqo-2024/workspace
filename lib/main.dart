@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:motion/motion.dart';
 import 'package:workspace/screens/splash_screen/splash_screen.dart';
+import 'package:workspace/screens/user_account/user_profile_screen.dart';
 import 'package:workspace/stored_data/shared_preference.dart';
 
 Future<void> main() async {
@@ -22,6 +23,7 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  runApp(const GetMaterialApp(home: SplashScreen(),));
+  runApp(GetMaterialApp(home: UserProfileScreen(),));
+  // runApp(const GetMaterialApp(home: SplashScreen(),));
 }
 
