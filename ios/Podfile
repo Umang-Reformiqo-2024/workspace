@@ -2,7 +2,7 @@
 platform :ios, '12.0'
 
 # Use environment variable for authentication
-source 'https://${PAT}@github.com/Umang-Reformiqo-2024/workspace.git'
+source 'https://github.com/Umang-Reformiqo-2024/workspace.git'
 source 'https://cdn.cocoapods.org/'
 
 target 'Runner' do
