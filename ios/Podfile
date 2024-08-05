@@ -1,8 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '12.0'
 
-source 'https://cdn.cocoapods.org/' # Default CocoaPods spec repo
-source 'https://github.com/custom-repo/custom-podspecs.git' # Custom repo if applicable
+# Use environment variable for authentication
+source 'https://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@github.com/custom-repo/custom-podspecs.git'
 
 target 'Runner' do
   use_frameworks!
