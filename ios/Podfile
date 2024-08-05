@@ -1,15 +1,15 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '12.0'
 
-# Use environment variable for authentication
-source 'https://github.com/Umang-Reformiqo-2024/workspace.git'
+# Specify the sources
 source 'https://cdn.cocoapods.org/'
+source 'https://github.com/Umang-Reformiqo-2024/workspace.git'  # Add this if `motion` is in your private repo
 
 target 'Runner' do
   use_frameworks!
 
   # Pods for Runner
-  pod 'motion' # Ensure this is the correct pod name
+  pod 'motion', '~> 2.0.0'  # Specify the version constraint
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
