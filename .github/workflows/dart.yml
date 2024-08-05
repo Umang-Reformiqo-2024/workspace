@@ -1,4 +1,4 @@
-name: iOS-ipa-build
+name: iOS-ipa-build-last
 
 on:
   workflow_dispatch:
@@ -15,7 +15,6 @@ jobs:
           channel: 'stable'
           architecture: x64
       - run: flutter pub get
-      
 
       - run: pod repo update
         working-directory: ios
@@ -35,8 +34,8 @@ jobs:
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
-          repo_token: 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
+          repo_token: ${{ secrets.LAST_TOKEN }}  # Use the secret here
           file: build/ios/iphoneos/FlutterIpaExport.ipa
           tag: v1.0
           overwrite: true
-          body: "This is first release of IOS"
+          body: "This is the first release of IOS as on 05th Auguest 2024"
