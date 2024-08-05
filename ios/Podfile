@@ -1,0 +1,20 @@
+# Specify the platform and minimum iOS version
+platform :ios, '12.0'
+
+# Add your target
+target 'Runner' do
+  use_frameworks!
+
+  # Specify the Swift version
+  # This will ensure all pods use this version
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '5.0'
+      end
+    end
+  end
+
+  # Pods for Runner
+  pod 'motion' # Add other pods as needed
+end
