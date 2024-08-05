@@ -14,10 +14,8 @@ class WscLocationController extends GetxController {
     'Rise':['Base']
   };
   List<String> meetingRoomList = ['Base','Hi-Five','Shot','Pitch'];
-
   String userSelectedLocation="";
   String userSelectedMeetingRoom="";
-
 
 
   onChangeLocation({required String location}){
@@ -27,15 +25,12 @@ class WscLocationController extends GetxController {
     debugPrint("===$location");
     update();
   }
-
   onChangeMeetingRoom({required String meetingRoom}){
     userSelectedMeetingRoom=meetingRoom;
     debugPrint("===$meetingRoom");
     update();
   }
-
   onTapBookNow(){
-
     // Get.to(()=> const BookingScheduleScreen(),duration: const Duration(milliseconds: 700),transition: Transition.cupertino,curve: Curves.easeInOut);
   }
 }
