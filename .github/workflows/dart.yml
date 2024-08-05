@@ -1,4 +1,4 @@
-name: iOS-ipa-build
+name: iOS-ipa-build-dart
 
 on:
   workflow_dispatch:
