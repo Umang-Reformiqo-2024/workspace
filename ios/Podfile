@@ -1,12 +1,15 @@
-# Specify the platform and minimum iOS version
+# Uncomment the next line to define a global platform for your project
 platform :ios, '12.0'
 
-# Add your target
+source 'https://cdn.cocoapods.org/' # Default CocoaPods spec repo
+source 'https://github.com/custom-repo/custom-podspecs.git' # Custom repo if applicable
+
 target 'Runner' do
   use_frameworks!
 
-  # Specify the Swift version
-  # This will ensure all pods use this version
+  # Pods for Runner
+  pod 'motion' # Ensure this is the correct pod name
+
   post_install do |installer|
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
@@ -14,7 +17,4 @@ target 'Runner' do
       end
     end
   end
-
-  # Pods for Runner
-  pod 'motion' # Add other pods as needed
 end
